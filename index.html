@@ -260,6 +260,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/04/javaWeb02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/04/javaWeb02/" itemprop="url">4.解决Get/Post请求中文乱码问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T22:09:21+08:00">
+                2019-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">javaWeb</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="给服务器设置编码"><a href="#给服务器设置编码" class="headerlink" title="给服务器设置编码"></a>给服务器设置编码</h2><h3 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h3><p>&emsp;&emsp;在url地址栏输入回车是get请求，form表单不写method=”post”,默认就是get请求。<br>&emsp;&emsp;get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码。<font color="red">Tomcat8.0之前</font>，用get请求访问tomcat时的编码方式，默认的编码方式使用ISO-8859-1。<br>&emsp;&emsp;解决方式：<br>&emsp;&emsp;1.先让文字回到ISO-8859-1对应的字节数组，然后再按utf-8组拼字符串，</p>
+<blockquote>
+<p>String name = new String(request.getParameter(“name”).getBytes(“ISO-8859-1”),”utf-8”)</p>
+</blockquote>
+<p>&emsp;&emsp;2.在Tomcat配置文件server.xml中添加URIEncoding=”utf-8”,但是一般不用.定位到 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> redirectPort=<span class="string">"8443"</span> URIEncoding=<span class="string">"utf-8"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<font color="green">从tomcat8.0开始，用get请求访问tomcat时的编码方式不再是ISO-8859-1，而变成了UTF-8 所有Tomcat8.0不用处理get请求乱码问题</font></p>
+<h3 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h3><p>&emsp;&emsp;是以二进制流的形式发送到的服务器。服务器收到数据后。默认以iso-8859-1进行编码。<br>&emsp;&emsp;解决方式：<br>&emsp;&emsp;1.<font color="red">这种方法必须获取请求参数之前调用</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);  <span class="comment">//设置请求体里面的文字编码</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;2.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="keyword">new</span> String(request.getParameter(<span class="string">"参数名"</span>).getBytes(<span class="string">"iso-8859-1"</span>),<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="给浏览器设置编码-常用"><a href="#给浏览器设置编码-常用" class="headerlink" title="给浏览器设置编码 (常用)"></a>给浏览器设置编码 (常用)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>); <span class="comment">//(UTF-8是国际通用编码)</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/01/javaWeb01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -314,8 +466,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaWeb-Web%E5%BA%94%E7%94%A8/" itemprop="url" rel="index">
-                    <span itemprop="name">-javaWeb -Web应用</span>
+                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">-javaWeb</span>
                   </a>
                 </span>
 
@@ -468,7 +620,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -479,7 +631,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -490,7 +642,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -727,5 +879,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
