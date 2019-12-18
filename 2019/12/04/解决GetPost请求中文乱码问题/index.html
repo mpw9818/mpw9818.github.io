@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Web," />
+  <meta name="keywords" content="Get/Post," />
 
 
 
@@ -123,16 +123,16 @@
 
 
 
-<meta name="description" content="一、web应用程序&amp;emsp;&amp;emsp;应用程序可以基于2种不同的模式下开发，一种是CS架构，一种是BS架构。CS架构就是Client&#x2F;Server，用户必须装客户端程序才能使用，Office，WPS,QQ就是基于CS架构的应用，也叫桌面应用程序。BS架构就是Browser&#x2F;Server,用户只要有浏览器就行。像淘宝，京东，微博等的就是基于BS架构的应用程序，也叫web应用程序。 二、应用程序优">
+<meta name="description" content="给服务器设置编码Get请求&amp;emsp;&amp;emsp;在url地址栏输入回车是get请求，form表单不写method&#x3D;”post”,默认就是get请求。&amp;emsp;&amp;emsp;get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码。Tomcat8.0之前，用get请求访问tomcat时的编码方式，默认的编码方式使用ISO-8859-1。&amp;emsp;&amp;emsp;解决方式：&amp;em">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.Web应用程序与Web服务器">
-<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;01&#x2F;javaWeb01&#x2F;index.html">
+<meta property="og:title" content="解决Get&#x2F;Post请求中文乱码问题">
+<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;%E8%A7%A3%E5%86%B3GetPost%E8%AF%B7%E6%B1%82%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98&#x2F;index.html">
 <meta property="og:site_name" content="逍遥阁">
-<meta property="og:description" content="一、web应用程序&amp;emsp;&amp;emsp;应用程序可以基于2种不同的模式下开发，一种是CS架构，一种是BS架构。CS架构就是Client&#x2F;Server，用户必须装客户端程序才能使用，Office，WPS,QQ就是基于CS架构的应用，也叫桌面应用程序。BS架构就是Browser&#x2F;Server,用户只要有浏览器就行。像淘宝，京东，微博等的就是基于BS架构的应用程序，也叫web应用程序。 二、应用程序优">
-<meta property="article:published_time" content="2019-12-01T07:55:54.000Z">
-<meta property="article:modified_time" content="2019-12-17T16:39:20.221Z">
+<meta property="og:description" content="给服务器设置编码Get请求&amp;emsp;&amp;emsp;在url地址栏输入回车是get请求，form表单不写method&#x3D;”post”,默认就是get请求。&amp;emsp;&amp;emsp;get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码。Tomcat8.0之前，用get请求访问tomcat时的编码方式，默认的编码方式使用ISO-8859-1。&amp;emsp;&amp;emsp;解决方式：&amp;em">
+<meta property="article:published_time" content="2019-12-04T14:09:21.000Z">
+<meta property="article:modified_time" content="2019-12-18T05:22:12.984Z">
 <meta property="article:author" content="John">
-<meta property="article:tag" content="Web">
+<meta property="article:tag" content="Get&#x2F;Post">
 <meta name="twitter:card" content="summary">
 
 
@@ -163,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="https://mpw9818.github.io/2019/12/01/javaWeb01/"/>
+  <link rel="canonical" href="https://mpw9818.github.io/2019/12/04/解决GetPost请求中文乱码问题/"/>
 
 
 
 
 
-  <title>1.Web应用程序与Web服务器 | 逍遥阁</title>
+  <title>解决Get/Post请求中文乱码问题 | 逍遥阁</title>
   
 
 
@@ -234,16 +234,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
@@ -254,12 +244,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            关于
+            标签
           </a>
         </li>
       
@@ -270,6 +260,16 @@
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/01/javaWeb01/">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/04/%E8%A7%A3%E5%86%B3GetPost%E8%AF%B7%E6%B1%82%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John">
@@ -323,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">1.Web应用程序与Web服务器</h1>
+          <h1 class="post-title" itemprop="name headline">解决Get/Post请求中文乱码问题</h1>
         
 
         <div class="post-meta">
@@ -335,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T15:55:54+08:00">
-                2019-12-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-04T22:09:21+08:00">
+                2019-12-04
               </time>
             
 
@@ -395,37 +395,18 @@
       
 
       
-        <h2 id="一、web应用程序"><a href="#一、web应用程序" class="headerlink" title="一、web应用程序"></a>一、web应用程序</h2><p>&emsp;&emsp;应用程序可以基于2种不同的模式下开发，一种是CS架构，一种是BS架构。CS架构就是Client/Server，用户必须装客户端程序才能使用，Office，WPS,QQ就是基于CS架构的应用，也叫桌面应用程序。BS架构就是Browser/Server,用户只要有浏览器就行。像淘宝，京东，微博等的就是基于BS架构的应用程序，也叫web应用程序。</p>
-<h2 id="二、应用程序优缺点"><a href="#二、应用程序优缺点" class="headerlink" title="二、应用程序优缺点"></a>二、应用程序优缺点</h2><h3 id="C-S架构"><a href="#C-S架构" class="headerlink" title="C/S架构"></a>C/S架构</h3><p>优点:                         </p>
+        <h2 id="给服务器设置编码"><a href="#给服务器设置编码" class="headerlink" title="给服务器设置编码"></a>给服务器设置编码</h2><h3 id="Get请求"><a href="#Get请求" class="headerlink" title="Get请求"></a>Get请求</h3><p>&emsp;&emsp;在url地址栏输入回车是get请求，form表单不写method=”post”,默认就是get请求。<br>&emsp;&emsp;get请求过来的数据，在url地址栏上就已经经过编码了，所以我们取到的就是乱码。<font color="red">Tomcat8.0之前</font>，用get请求访问tomcat时的编码方式，默认的编码方式使用ISO-8859-1。<br>&emsp;&emsp;解决方式：<br>&emsp;&emsp;1.先让文字回到ISO-8859-1对应的字节数组，然后再按utf-8组拼字符串，</p>
 <blockquote>
-<p>1.交互性强。<br>2.具有安全的存取模式。<br>3.网络通信量低。<br>4.响应速度快。<br>5.利于处理大量数据。</p>
+<p>String name = new String(request.getParameter(“name”).getBytes(“ISO-8859-1”),”utf-8”)</p>
 </blockquote>
-<p>缺点:</p>
-<blockquote>
-<p>1.需要专门的客户端安装程序。<br>2.兼容性差。<br>3.开发、维护成本较高。<br>4.用户群固定。</p>
-</blockquote>
-<h3 id="B-S架构"><a href="#B-S架构" class="headerlink" title="B/S架构"></a>B/S架构</h3><p>优点:                         </p>
-<blockquote>
-<p>1.只要有网络、有浏览器就行。<br>2.业务扩展简单方便，通过增加网页即可增加服务器功能。<br>3.维护简单方便。<br>4.开发简单，共享性强。</p>
-</blockquote>
-<p>缺点:</p>
-<blockquote>
-<p>1.无法实现具有个性化的功能要求。<br>2.不同的浏览器可能体验不同。<br>3.客户端服务器端的交互是请求-响应模式，通常动态刷新页面，响应速度明显降低<br>4.在速度和安全性上需要花费巨大的设计成本。</p>
-</blockquote>
-<h2 id="三、Web应用程序开发的相关知识"><a href="#三、Web应用程序开发的相关知识" class="headerlink" title="三、Web应用程序开发的相关知识"></a>三、Web应用程序开发的相关知识</h2><p>&emsp;&emsp;Web表示是网页，它是Internet上供外界访问的资源。Web资源分为静态web资源和动态web资源，也称静态网页和动态网页。像servlet/jsp可用来做动态网页</p>
-<p>&emsp;&emsp;JavaWeb就是用Java技术来解决相关web互联网领域的技术总和。</p>
-<p>&emsp;&emsp;http协议：HTTP是HyperText Transfer Protocal(超文本传输协议)的简写，它是TCP/IP协议的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的规则。</p>
-<p>&emsp;&emsp;Servlet：Servlet是sun公司提供的一门用于开发动态web资源的技术，同时它也是JSP技术的底层运行基础。Servlet是平台独立的Java类，编写一个Servlet，实际上就是按照Servlet规范编写一个Java类。一句话，Servlet是一个Java类。</p>
-<h2 id="四、Web服务器"><a href="#四、Web服务器" class="headerlink" title="四、Web服务器"></a>四、Web服务器</h2><h3 id="浏览器与服务器之间的交互示意图"><a href="#浏览器与服务器之间的交互示意图" class="headerlink" title="浏览器与服务器之间的交互示意图"></a>浏览器与服务器之间的交互示意图</h3><pre><code>             请求              解析请求消息
-浏览器  -----------&gt;  服务器  -------------&gt; 接收并处理请求（servlet）
-       &lt;-----------             &lt;-------------
-       返回消息             生成响应消息</code></pre><p>&emsp;&emsp;服务器是一个程序，用来接收用户的请求，获取用户传递的参数，将数据以及页面资源返回给用户。只有当Internet上运行在其他计算机中的浏览器发出请求时，服务器才会响应。</p>
-<blockquote>
-<p>HTTP协议传输数据时会自动将用户数据打成一个http数据包，发送到服务器，服务器根据http协议将数据包解开，获取数据，做相应的处理，并将处理结果再次打成http数据包返回客户端，浏览器解开http数据包，显示数据。</p>
-</blockquote>
-<p>&emsp;&emsp;JavaWeb服务器是一个不完整的JavaEE服务器，JAVA EE服务器完全实现JAVA EE标准。JavaWEB服务器主要是包含了Servlet/JSP、JNDI等基本规范的实现。开发中常用的服务器有：Tomcat、Resin、Jetty。</p>
-<p>&emsp;&emsp;Servlet容器（Tomcat）主要为JavaWeb应用提供运行时环境，所以也可以称为JavaWeb应用容器，或者Servlet/JSP容器。Servlet容器主要负责管Servlet、JSP的生命周期以及它们的共享数据。</p>
-
+<p>&emsp;&emsp;2.在Tomcat配置文件server.xml中添加URIEncoding=”utf-8”,但是一般不用.定位到 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Connector connectionTimeout=<span class="string">"20000"</span> port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> redirectPort=<span class="string">"8443"</span> URIEncoding=<span class="string">"utf-8"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<font color="green">从tomcat8.0开始，用get请求访问tomcat时的编码方式不再是ISO-8859-1，而变成了UTF-8 所有Tomcat8.0不用处理get请求乱码问题</font></p>
+<h3 id="Post请求"><a href="#Post请求" class="headerlink" title="Post请求"></a>Post请求</h3><p>&emsp;&emsp;是以二进制流的形式发送到的服务器。服务器收到数据后。默认以iso-8859-1进行编码。<br>&emsp;&emsp;解决方式：<br>&emsp;&emsp;1.<font color="red">这种方法必须获取请求参数之前调用</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">request.setCharacterEncoding(<span class="string">"utf-8"</span>);  <span class="comment">//设置请求体里面的文字编码</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;2.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String name = <span class="keyword">new</span> String(request.getParameter(<span class="string">"参数名"</span>).getBytes(<span class="string">"iso-8859-1"</span>),<span class="string">"utf-8"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="给浏览器设置编码-常用"><a href="#给浏览器设置编码-常用" class="headerlink" title="给浏览器设置编码 (常用)"></a>给浏览器设置编码 (常用)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.setContentType(<span class="string">"text/html;charset=utf-8"</span>); <span class="comment">//(UTF-8是国际通用编码)</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -442,7 +423,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Web/" rel="tag"># Web</a>
+            <a href="/tags/Get-Post/" rel="tag"># Get/Post</a>
           
         </div>
       
@@ -455,14 +436,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/12/02/Cookie%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/" rel="next" title="Cookie详细笔记">
+                <i class="fa fa-chevron-left"></i> Cookie详细笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/04/javaWeb02/" rel="prev" title="4.解决Get/Post请求中文乱码问题">
-                4.解决Get/Post请求中文乱码问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/12/05/Cookie/" rel="prev" title="Cookie (重要)">
+                Cookie (重要) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -544,7 +529,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -566,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -615,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、web应用程序"><span class="nav-text">一、web应用程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、应用程序优缺点"><span class="nav-text">二、应用程序优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-S架构"><span class="nav-text">C&#x2F;S架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-S架构"><span class="nav-text">B&#x2F;S架构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Web应用程序开发的相关知识"><span class="nav-text">三、Web应用程序开发的相关知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Web服务器"><span class="nav-text">四、Web服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器与服务器之间的交互示意图"><span class="nav-text">浏览器与服务器之间的交互示意图</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#给服务器设置编码"><span class="nav-text">给服务器设置编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get请求"><span class="nav-text">Get请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Post请求"><span class="nav-text">Post请求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给浏览器设置编码-常用"><span class="nav-text">给浏览器设置编码 (常用)</span></a></li></ol></div>
             
 
           </div>
