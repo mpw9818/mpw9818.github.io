@@ -338,6 +338,436 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E5%A4%9A%E6%80%81&%E6%8A%BD%E8%B1%A1%E7%B1%BB&%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/%E5%A4%9A%E6%80%81&%E6%8A%BD%E8%B1%A1%E7%B1%BB&%E6%8E%A5%E5%8F%A3/" itemprop="url">多态&抽象类&接口</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T16:44:55+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-多态的概述及其代码体现"><a href="#1-多态的概述及其代码体现" class="headerlink" title="1.多态的概述及其代码体现"></a>1.多态的概述及其代码体现</h3><ul>
+<li>A:多态(polymorphic)概述<ul>
+<li>事物存在的多种形态 </li>
+</ul>
+</li>
+<li>B:多态前提<ul>
+<li>a:要有继承关系。</li>
+<li>b:要有方法重写。</li>
+<li>c:要有父类引用指向子类对象。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>代码体现多态</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-多态中的成员访问特点之成员变量"><a href="#2-多态中的成员访问特点之成员变量" class="headerlink" title="2.多态中的成员访问特点之成员变量"></a>2.多态中的成员访问特点之成员变量</h3><ul>
+<li>成员变量<ul>
+<li>编译看左边(父类)，运行看左边(父类)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-多态中的成员访问特点之成员方法"><a href="#3-多态中的成员访问特点之成员方法" class="headerlink" title="3.多态中的成员访问特点之成员方法"></a>3.多态中的成员访问特点之成员方法</h3><ul>
+<li>成员方法<ul>
+<li>编译看左边(父类)，运行看右边(子类)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-多态中的成员访问特点之静态成员方法"><a href="#4-多态中的成员访问特点之静态成员方法" class="headerlink" title="4.多态中的成员访问特点之静态成员方法"></a>4.多态中的成员访问特点之静态成员方法</h3><ul>
+<li>静态方法<ul>
+<li>编译看左边(父类)，运行看左边(父类)。</li>
+<li>(静态和类相关，算不上重写，所以，访问还是左边的)</li>
+<li>只有非静态的成员方法,编译看左边,运行看右边 </li>
+</ul>
+</li>
+</ul>
+<h3 id="5-多态中向上转型和向下转型"><a href="#5-多态中向上转型和向下转型" class="headerlink" title="5.多态中向上转型和向下转型"></a>5.多态中向上转型和向下转型</h3><ul>
+<li>A:案例演示<ul>
+<li>详细讲解多态中向上转型和向下转型<br>Person p = new SuperMan();向上转型<br>SuperMan sm = (SuperMan)p;向下转型<h3 id="6-多态的好处和弊端"><a href="#6-多态的好处和弊端" class="headerlink" title="6.多态的好处和弊端"></a>6.多态的好处和弊端</h3></li>
+</ul>
+</li>
+<li>A:多态的好处<ul>
+<li>a:提高了代码的维护性(继承保证)</li>
+<li>b:提高了代码的扩展性(由多态保证)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>多态的好处</li>
+<li>可以当作形式参数,可以接收任意子类对象</li>
+</ul>
+</li>
+<li>C:多态的弊端<ul>
+<li>不能使用子类的特有属性和行为。</li>
+</ul>
+</li>
+<li>D:案例演示<br>  method(Animal a)<br>  method(Cat c)</li>
+</ul>
+<h3 id="7-多态中的题目分析题"><a href="#7-多态中的题目分析题" class="headerlink" title="7.多态中的题目分析题"></a>7.多态中的题目分析题</h3><ul>
+<li><p>A:看下面程序是否有问题，如果没有，说出结果</p>
+</li>
+<li><pre><code>class Fu {
+    public void show() {
+        System.out.println(&quot;fu show&quot;);
+    }
+}
+
+class Zi extends Fu {
+    public void show() {
+        System.out.println(&quot;zi show&quot;);
+    }
+
+    public void method() {
+        System.out.println(&quot;zi method&quot;);
+    }
+}
+
+class Test1Demo {
+    public static void main(String[] args) {
+        Fu f = new Zi();
+        f.method();
+        f.show();
+    }
+}</code></pre></li>
+<li><p>B:看下面程序是否有问题，如果没有，说出结果</p>
+</li>
+<li><pre><code>class A {
+    public void show() {
+        show2();
+    }
+    public void show2() {
+        System.out.println(&quot;我&quot;);
+    }
+}
+class B extends A {
+    public void show2() {
+        System.out.println(&quot;爱&quot;);
+    }
+}
+class C extends B {
+    public void show() {
+        super.show();
+    }
+    public void show2() {
+        System.out.println(&quot;你&quot;);
+    }
+}
+public class Test2DuoTai {
+    public static void main(String[] args) {
+        A a = new B();
+        a.show();
+
+        B b = new C();
+        b.show();
+    }
+}</code></pre></li>
+</ul>
+<h3 id="8-抽象类的概述及其特点"><a href="#8-抽象类的概述及其特点" class="headerlink" title="8.抽象类的概述及其特点"></a>8.抽象类的概述及其特点</h3><ul>
+<li>A:抽象类概述<ul>
+<li>抽象就是看不懂的 </li>
+</ul>
+</li>
+<li>B:抽象类特点<ul>
+<li>a:抽象类和抽象方法必须用abstract关键字修饰<ul>
+<li>abstract class 类名 {}</li>
+<li>public abstract void eat();</li>
+</ul>
+</li>
+<li>b:抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</li>
+<li>c:抽象类不能实例化那么，抽象类如何实例化呢?<ul>
+<li>按照多态的方式，由具体的子类实例化。其实这也是多态的一种，抽象类多态。</li>
+</ul>
+</li>
+<li>d:抽象类的子类<ul>
+<li>要么是抽象类</li>
+<li>要么重写抽象类中的所有抽象方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>抽象类特点B:抽象类特点</li>
+<li>a:抽象类和抽象方法必须用abstract关键字修饰<ul>
+<li>abstract class 类名 {}</li>
+<li>public abstract void eat();</li>
+</ul>
+</li>
+<li>b:抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</li>
+<li>c:抽象类不能实例化那么，抽象类如何实例化呢?<ul>
+<li>按照多态的方式，由具体的子类实例化。其实这也是多态的一种，抽象类多态。</li>
+</ul>
+</li>
+<li>d:抽象类的子类<ul>
+<li>要么是抽象类</li>
+<li>要么重写抽象类中的所有抽象方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-抽象类的成员特点"><a href="#9-抽象类的成员特点" class="headerlink" title="9.抽象类的成员特点"></a>9.抽象类的成员特点</h3><ul>
+<li>A:抽象类的成员特点<ul>
+<li>a:成员变量：既可以是变量，也可以是常量。abstract是否可以修饰成员变量?不能修饰成员变量</li>
+<li>b:构造方法：有。<ul>
+<li>用于子类访问父类数据的初始化。</li>
+</ul>
+</li>
+<li>c:成员方法：既可以是抽象的，也可以是非抽象的。</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>抽象类的成员特点</li>
+</ul>
+</li>
+<li>C:抽象类的成员方法特性：<ul>
+<li>a:抽象方法 强制要求子类做的事情。</li>
+<li>b:非抽象方法 子类继承的事情，提高代码复用性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="10-抽象类中的面试题"><a href="#10-抽象类中的面试题" class="headerlink" title="10.抽象类中的面试题"></a>10.抽象类中的面试题</h3><ul>
+<li><p>A:面试题1</p>
+<ul>
+<li>一个抽象类如果没有抽象方法，可不可以定义为抽象类?如果可以，有什么意义?<br>可以,这么做目的只有一个,就是不让其他类创建本类对象,交给子类完成</li>
+</ul>
+</li>
+<li><p>B:面试题2</p>
+<ul>
+<li>abstract不能和哪些关键字共存?</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>1.abstract和static：用abstract修饰的方法是抽象方法，抽象方法没有方法体。用static修饰的方法是静态方法，静态方法可以用‘类名.调用’。调用一个抽象方法是没有任何意义的。<br>2.abstract和final：抽象方法没有方法体，要求子类去重写，而用final修饰的方法不能被重写。<br>3.abstract和private：被abstract修饰的方法是为了让子类看到并强制重写，而用private修饰的方法不让子类访问。</p>
+</blockquote>
+<h3 id="11-接口的概述及其特点"><a href="#11-接口的概述及其特点" class="headerlink" title="11.接口的概述及其特点"></a>11.接口的概述及其特点</h3><ul>
+<li>A:接口概述<ul>
+<li>从狭义的角度讲就是指java中的interface</li>
+<li>从广义的角度讲对外提供规则的都是接口 </li>
+</ul>
+</li>
+<li>B:接口特点<ul>
+<li>a:接口用关键字interface表示    <ul>
+<li>interface 接口名 {}</li>
+</ul>
+</li>
+<li>b:类实现接口用implements表示<ul>
+<li>class 类名 implements 接口名 {}</li>
+</ul>
+</li>
+<li>c:接口不能实例化<ul>
+<li>那么，接口如何实例化呢?</li>
+<li>按照多态的方式来实例化。</li>
+</ul>
+</li>
+<li>d:接口的子类<ul>
+<li>a:可以是抽象类。但是意义不大。</li>
+<li>b:可以是具体类。要重写接口中的所有抽象方法。(推荐方案)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-接口的成员特点"><a href="#12-接口的成员特点" class="headerlink" title="12.接口的成员特点"></a>12.接口的成员特点</h3><ul>
+<li>A:接口成员特点<ul>
+<li>成员变量；只能是常量，并且是静态的并公共的。<pre><code>* 默认修饰符：public static final
+* 建议：自己手动给出。</code></pre></li>
+<li>构造方法：接口没有构造方法。</li>
+<li>成员方法：只能是抽象方法。<pre><code>* 默认修饰符：public abstract
+* 建议：自己手动给出。</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="13-类与类-类与接口-接口与接口的关系"><a href="#13-类与类-类与接口-接口与接口的关系" class="headerlink" title="13.类与类,类与接口,接口与接口的关系"></a>13.类与类,类与接口,接口与接口的关系</h3><ul>
+<li>A:类与类,类与接口,接口与接口的关系<ul>
+<li>a:类与类：<ul>
+<li>继承关系,只能单继承,可以多层继承。</li>
+</ul>
+</li>
+<li>b:类与接口：<ul>
+<li>实现关系,可以单实现,也可以多实现。</li>
+<li>并且还可以在继承一个类的同时实现多个接口。</li>
+</ul>
+</li>
+<li>c:接口与接口：<ul>
+<li>继承关系,可以单继承,也可以多继承。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-抽象类和接口的区别"><a href="#14-抽象类和接口的区别" class="headerlink" title="14.抽象类和接口的区别"></a>14.抽象类和接口的区别</h3><ul>
+<li><p>A:成员区别</p>
+<ul>
+<li>抽象类：<ul>
+<li>成员变量：可以变量，也可以常量</li>
+<li>构造方法：有</li>
+<li>成员方法：可以抽象，也可以非抽象</li>
+</ul>
+</li>
+<li>接口：<ul>
+<li>成员变量：只可以常量</li>
+<li>成员方法：只可以抽象</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>B:关系区别</p>
+<ul>
+<li>类与类<ul>
+<li>继承，单继承</li>
+</ul>
+</li>
+<li>类与接口<ul>
+<li>实现，单实现，多实现</li>
+</ul>
+</li>
+<li>接口与接口<ul>
+<li>继承，单继承，多继承</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C:设计理念区别</p>
+<ul>
+<li>抽象类 被继承体现的是：”is a”的关系。抽象类中定义的是该继承体系的共性功能。</li>
+<li>接口 被实现体现的是：”like a”的关系。接口中定义的是该继承体系的扩展功能。</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1429,7 +1859,7 @@ do {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John">
@@ -1448,7 +1878,7 @@ do {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/" itemprop="url">面向对象&构造方法</a></h1>
+                <a class="post-title-link" href="/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95/" itemprop="url">面向对象&构造方法</a></h1>
         
 
         <div class="post-meta">
@@ -2666,157 +3096,6 @@ invalidate() 强制让会话失效。</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="逍遥阁">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/" itemprop="url">Tomcat服务器和eclipse部署Web应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T22:16:04+08:00">
-                2019-12-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaWeb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、下载和安装Tomcat"><a href="#一、下载和安装Tomcat" class="headerlink" title="一、下载和安装Tomcat"></a>一、下载和安装Tomcat</h2><p>&emsp;&emsp;官方站点：<a href="http://tomcat.apache.org/index.html" target="_blank" rel="noopener">http://tomcat.apache.org/index.html</a> 获取Tomcat安装程序包.</p>
-<p>&emsp;&emsp;tar.gz文件是Linux操作系统下的压缩版本，解压到一个非中文、无空格目录即可。zip文件也是压缩版本，可用于Linux和Windows，解压到一个非中文、无空格目录即可。exe文件是Windows系统下的安装版本，双击运行按照向导进行安装。无论是解压还是安装的，都需要配置JAVA_HOME环境变量，该变量的值是JDK的安装目录</p>
-<h3 id="Tomcat目录结构："><a href="#Tomcat目录结构：" class="headerlink" title="Tomcat目录结构："></a>Tomcat目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/zl1KSnZYO8PHJyo.png" alt="" title="tomcat目录结构"></p>
-<h2 id="二、eclipse下部署Web应用"><a href="#二、eclipse下部署Web应用" class="headerlink" title="二、eclipse下部署Web应用"></a>二、eclipse下部署Web应用</h2><p>步骤：<br>&emsp;&emsp;1.创建Runtime：开发WEB应用之前，必须要创建一个Runtime。Runtime并不是JRE，而是指WEB应用在开发的时候使用的应用服务器（如Tomcat等）。<br>&emsp;&emsp;操作流程：Window——&gt;Preferences——&gt;Server——&gt;Runtime Environment ，Add对应的Tomcat版本，next， 将Tomcat的安装根路径加进来，选上自己的jdk版本，然后Finish完成。</p>
-<p>&emsp;&emsp;2.创建Server：创建了Runtime，只是说明开发时使用的WEB应用运行时环境。在这个环境的基础上，eclipse要托管服务器，才能真正在eclipse里面集成开发。eclipse底下的server窗口将Tomcat托管上。</p>
-<p>&emsp;&emsp;3.创建web项目：File——&gt;New——&gt;Dynamic Web Object,</p>
-<p><img src="https://i.loli.net/2019/12/02/oQpvJDX6x8lF5C7.png" alt="" title="创建web项目"></p>
-<p>&emsp;&emsp;4.部署WEB应用:<br>&emsp;<img src="https://i.loli.net/2019/12/02/TjsVe1LUWa6DP2I.png" alt="" title="部署WEB应用"><br>&emsp;<img src="https://i.loli.net/2019/12/02/n4TjLsMKaF9812q.png" alt="" title="部署WEB应用过程成功"><br><br><br>&emsp;&emsp;5.运行WEB应用：项目run on server<br><br></p>
-<h3 id="web工程目录结构："><a href="#web工程目录结构：" class="headerlink" title="web工程目录结构："></a>web工程目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/RIpTjkMYF9hAPlv.png" alt="" title="web工程目录结构"></p>
-<h3 id="部署war包到Tomcat"><a href="#部署war包到Tomcat" class="headerlink" title="部署war包到Tomcat"></a>部署war包到Tomcat</h3><p>&emsp;&emsp;war文件：war表示一个WEB应用压缩包。是一个可直接运行的web模块，通常用于网站，将其打成包部署到容器中。以Tomcat来说，将war包放在其\webapps\目录下，然后启动Tomcat，这个包就自动解压，相当于发布项目。直接可以用eclipse导出war file<br>&emsp;&emsp;1.一般是开发打war包给测试，比如说现在测试拿到一个war包，名字叫Servlet01.war。<br>&emsp;&emsp;2.打开Tomcat的安装路径，假设是“D:\Tomcat\apache-tomcat-7.0.68”，进入到其webapps文件夹中，把 Servlet01.war放到 webapps文件夹。<br>&emsp;&emsp;3.启动Tomcat。（双击Tomcat-bin-startup.bat）<br>&emsp;&emsp;4.在浏览器输入“http:localhost:tomcat_port/Servlet01即可打开Servlet01项目的 index.html页面（port是tomcat的端口号）。如果Servlet01项目没有index.html页面，那就需要打开其他相应的页面。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2871,7 +3150,7 @@ invalidate() 强制让会话失效。</code></pre></li>
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

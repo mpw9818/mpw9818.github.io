@@ -123,14 +123,14 @@
 
 
 
-<meta name="description" content="1.面向对象的特征 继承：继承是从已有类得到继承信息创建新类的过程。提供继承信息的类被称为父类（超类、基类）；得到继承信息的类被称为子类（派生类）。继承让变化中的软件系统有了一定的延续性，同时继承也是封装程序中可变因素的重要手段。 封装：通常认为封装是把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口。面向对象的本质就是将现实世界描绘成一系列完全自治、封闭的对象。我们在类中编写的方法">
+<meta name="description" content="1.多态的概述及其代码体现 A:多态(polymorphic)概述 事物存在的多种形态    B:多态前提 a:要有继承关系。 b:要有方法重写。 c:要有父类引用指向子类对象。   C:案例演示 代码体现多态    2.多态中的成员访问特点之成员变量 成员变量 编译看左边(父类)，运行看左边(父类)。    3.多态中的成员访问特点之成员方法 成员方法 编译看左边(父类)，运行看右边(子类)。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="面向对象&amp;构造方法">
-<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;21&#x2F;%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&amp;%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&amp;%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99&#x2F;index.html">
+<meta property="og:title" content="多态&amp;抽象类&amp;接口">
+<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;21&#x2F;%E5%A4%9A%E6%80%81&amp;%E6%8A%BD%E8%B1%A1%E7%B1%BB&amp;%E6%8E%A5%E5%8F%A3&#x2F;index.html">
 <meta property="og:site_name" content="逍遥阁">
-<meta property="og:description" content="1.面向对象的特征 继承：继承是从已有类得到继承信息创建新类的过程。提供继承信息的类被称为父类（超类、基类）；得到继承信息的类被称为子类（派生类）。继承让变化中的软件系统有了一定的延续性，同时继承也是封装程序中可变因素的重要手段。 封装：通常认为封装是把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口。面向对象的本质就是将现实世界描绘成一系列完全自治、封闭的对象。我们在类中编写的方法">
-<meta property="article:published_time" content="2019-12-21T06:44:55.000Z">
-<meta property="article:modified_time" content="2019-12-21T08:49:04.235Z">
+<meta property="og:description" content="1.多态的概述及其代码体现 A:多态(polymorphic)概述 事物存在的多种形态    B:多态前提 a:要有继承关系。 b:要有方法重写。 c:要有父类引用指向子类对象。   C:案例演示 代码体现多态    2.多态中的成员访问特点之成员变量 成员变量 编译看左边(父类)，运行看左边(父类)。    3.多态中的成员访问特点之成员方法 成员方法 编译看左边(父类)，运行看右边(子类)。">
+<meta property="article:published_time" content="2019-12-21T08:44:55.000Z">
+<meta property="article:modified_time" content="2019-12-21T09:19:29.659Z">
 <meta property="article:author" content="John">
 <meta property="article:tag" content="java语法">
 <meta name="twitter:card" content="summary">
@@ -163,13 +163,13 @@
 
 
 
-  <link rel="canonical" href="https://mpw9818.github.io/2019/12/21/面向对象&构造方法&方法重载与重写/"/>
+  <link rel="canonical" href="https://mpw9818.github.io/2019/12/21/多态&抽象类&接口/"/>
 
 
 
 
 
-  <title>面向对象&构造方法 | 逍遥阁</title>
+  <title>多态&抽象类&接口 | 逍遥阁</title>
   
 
 
@@ -340,7 +340,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E5%A4%9A%E6%80%81&%E6%8A%BD%E8%B1%A1%E7%B1%BB&%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="John">
@@ -357,7 +357,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">面向对象&构造方法</h1>
+          <h1 class="post-title" itemprop="name headline">多态&抽象类&接口</h1>
         
 
         <div class="post-meta">
@@ -369,7 +369,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T14:44:55+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T16:44:55+08:00">
                 2019-12-21
               </time>
             
@@ -429,187 +429,292 @@
       
 
       
-        <h3 id="1-面向对象的特征"><a href="#1-面向对象的特征" class="headerlink" title="1.面向对象的特征"></a>1.面向对象的特征</h3><ul>
-<li>继承：<br>继承是从已有类得到继承信息创建新类的过程。提供继承信息的类被称为父类（超类、基类）；得到继承信息的类被称为子类（派生类）。继承让变化中的软件系统有了一定的延续性，同时继承也是封装程序中可变因素的重要手段。</li>
-<li>封装：<br>通常认为封装是把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口。面向对象的本质就是将现实世界描绘成一系列完全自治、封闭的对象。我们在类中编写的方法就是对实现细节的一种封装；我们编写一个类就是对数据和数据操作的封装。可以说，封装就是隐藏一切可隐藏的东西，只向外界提供最简单的编程接口。</li>
-<li>多态：<br>多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的对象引用调用同样的方法但是做了不同的事情。多态性分为编译时的多态性和运行时的多态性。如果将对象的方法视为对象向外界提供的服务，那么运行时的多态性可以解释为：当A系统访问B系统提供的服务时，B系统有多种提供服务的方式，但一切对A系统来说都是透明的（就像电动剃须刀是A系统，它的供电系统是B系统，B系统可以使用电池供电或者用交流电，甚至还有可能是太阳能，A系统只会通过B类对象调用供电的方法，但并不知道供电系统的底层实现是什么，究竟通过何种方式获得了动力）。方法重载（overload）实现的是编译时的多态性（也称为前绑定），而方法重写（override）实现的是运行时的多态性（也称为后绑定）。运行时的多态是面向对象最精髓的东西，要实现多态需要做两件事：1). 方法重写（子类继承父类并重写父类中已有的或抽象的方法）；2). 对象造型（用父类型引用引用子类型对象，这样同样的引用调用同样的方法就会根据子类对象的不同而表现出不同的行为）。 </li>
-</ul>
-<h3 id="2-构造方法Constructor概述和格式-掌握"><a href="#2-构造方法Constructor概述和格式-掌握" class="headerlink" title="2.构造方法Constructor概述和格式(掌握)"></a>2.构造方法Constructor概述和格式(掌握)</h3><ul>
-<li>A:构造方法概述和作用<ul>
-<li>给对象的数据(属性)进行初始化</li>
+        <h3 id="1-多态的概述及其代码体现"><a href="#1-多态的概述及其代码体现" class="headerlink" title="1.多态的概述及其代码体现"></a>1.多态的概述及其代码体现</h3><ul>
+<li>A:多态(polymorphic)概述<ul>
+<li>事物存在的多种形态 </li>
 </ul>
 </li>
-<li>B:构造方法格式特点<ul>
-<li>a:方法名与类名相同(大小也要与类名一致)</li>
-<li>b:没有返回值类型，连void都没有</li>
-<li>c:没有具体的返回值return;</li>
+<li>B:多态前提<ul>
+<li>a:要有继承关系。</li>
+<li>b:要有方法重写。</li>
+<li>c:要有父类引用指向子类对象。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>代码体现多态</li>
 </ul>
 </li>
 </ul>
-<h3 id="3-构造方法的重载及注意事项-掌握"><a href="#3-构造方法的重载及注意事项-掌握" class="headerlink" title="3.构造方法的重载及注意事项(掌握)"></a>3.构造方法的重载及注意事项(掌握)</h3><ul>
+<h3 id="2-多态中的成员访问特点之成员变量"><a href="#2-多态中的成员访问特点之成员变量" class="headerlink" title="2.多态中的成员访问特点之成员变量"></a>2.多态中的成员访问特点之成员变量</h3><ul>
+<li>成员变量<ul>
+<li>编译看左边(父类)，运行看左边(父类)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-多态中的成员访问特点之成员方法"><a href="#3-多态中的成员访问特点之成员方法" class="headerlink" title="3.多态中的成员访问特点之成员方法"></a>3.多态中的成员访问特点之成员方法</h3><ul>
+<li>成员方法<ul>
+<li>编译看左边(父类)，运行看右边(子类)。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-多态中的成员访问特点之静态成员方法"><a href="#4-多态中的成员访问特点之静态成员方法" class="headerlink" title="4.多态中的成员访问特点之静态成员方法"></a>4.多态中的成员访问特点之静态成员方法</h3><ul>
+<li>静态方法<ul>
+<li>编译看左边(父类)，运行看左边(父类)。</li>
+<li>(静态和类相关，算不上重写，所以，访问还是左边的)</li>
+<li>只有非静态的成员方法,编译看左边,运行看右边 </li>
+</ul>
+</li>
+</ul>
+<h3 id="5-多态中向上转型和向下转型"><a href="#5-多态中向上转型和向下转型" class="headerlink" title="5.多态中向上转型和向下转型"></a>5.多态中向上转型和向下转型</h3><ul>
 <li>A:案例演示<ul>
-<li>构造方法的重载</li>
-<li>重载:方法名相同,与返回值类型无关(构造方法没有返回值),只看参数列表</li>
+<li>详细讲解多态中向上转型和向下转型<br>Person p = new SuperMan();向上转型<br>SuperMan sm = (SuperMan)p;向下转型<h3 id="6-多态的好处和弊端"><a href="#6-多态的好处和弊端" class="headerlink" title="6.多态的好处和弊端"></a>6.多态的好处和弊端</h3></li>
 </ul>
 </li>
-<li>B:构造方法注意事项<ul>
-<li>a:如果我们没有给出构造方法，系统将自动提供一个无参构造方法。</li>
-<li>b:如果我们给出了构造方法，系统将不再提供默认的无参构造方法。<ul>
-<li>注意：这个时候，如果我们还想使用无参构造方法，就必须自己给出。建议永远自己给出无参构造方法</li>
+<li>A:多态的好处<ul>
+<li>a:提高了代码的维护性(继承保证)</li>
+<li>b:提高了代码的扩展性(由多态保证)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>多态的好处</li>
+<li>可以当作形式参数,可以接收任意子类对象</li>
+</ul>
+</li>
+<li>C:多态的弊端<ul>
+<li>不能使用子类的特有属性和行为。</li>
+</ul>
+</li>
+<li>D:案例演示<br>  method(Animal a)<br>  method(Cat c)</li>
+</ul>
+<h3 id="7-多态中的题目分析题"><a href="#7-多态中的题目分析题" class="headerlink" title="7.多态中的题目分析题"></a>7.多态中的题目分析题</h3><ul>
+<li><p>A:看下面程序是否有问题，如果没有，说出结果</p>
+</li>
+<li><pre><code>class Fu {
+    public void show() {
+        System.out.println(&quot;fu show&quot;);
+    }
+}
+
+class Zi extends Fu {
+    public void show() {
+        System.out.println(&quot;zi show&quot;);
+    }
+
+    public void method() {
+        System.out.println(&quot;zi method&quot;);
+    }
+}
+
+class Test1Demo {
+    public static void main(String[] args) {
+        Fu f = new Zi();
+        f.method();
+        f.show();
+    }
+}</code></pre></li>
+<li><p>B:看下面程序是否有问题，如果没有，说出结果</p>
+</li>
+<li><pre><code>class A {
+    public void show() {
+        show2();
+    }
+    public void show2() {
+        System.out.println(&quot;我&quot;);
+    }
+}
+class B extends A {
+    public void show2() {
+        System.out.println(&quot;爱&quot;);
+    }
+}
+class C extends B {
+    public void show() {
+        super.show();
+    }
+    public void show2() {
+        System.out.println(&quot;你&quot;);
+    }
+}
+public class Test2DuoTai {
+    public static void main(String[] args) {
+        A a = new B();
+        a.show();
+
+        B b = new C();
+        b.show();
+    }
+}</code></pre></li>
+</ul>
+<h3 id="8-抽象类的概述及其特点"><a href="#8-抽象类的概述及其特点" class="headerlink" title="8.抽象类的概述及其特点"></a>8.抽象类的概述及其特点</h3><ul>
+<li>A:抽象类概述<ul>
+<li>抽象就是看不懂的 </li>
+</ul>
+</li>
+<li>B:抽象类特点<ul>
+<li>a:抽象类和抽象方法必须用abstract关键字修饰<ul>
+<li>abstract class 类名 {}</li>
+<li>public abstract void eat();</li>
+</ul>
+</li>
+<li>b:抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</li>
+<li>c:抽象类不能实例化那么，抽象类如何实例化呢?<ul>
+<li>按照多态的方式，由具体的子类实例化。其实这也是多态的一种，抽象类多态。</li>
+</ul>
+</li>
+<li>d:抽象类的子类<ul>
+<li>要么是抽象类</li>
+<li>要么重写抽象类中的所有抽象方法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>抽象类特点B:抽象类特点</li>
+<li>a:抽象类和抽象方法必须用abstract关键字修饰<ul>
+<li>abstract class 类名 {}</li>
+<li>public abstract void eat();</li>
+</ul>
+</li>
+<li>b:抽象类不一定有抽象方法，有抽象方法的类一定是抽象类或者是接口</li>
+<li>c:抽象类不能实例化那么，抽象类如何实例化呢?<ul>
+<li>按照多态的方式，由具体的子类实例化。其实这也是多态的一种，抽象类多态。</li>
+</ul>
+</li>
+<li>d:抽象类的子类<ul>
+<li>要么是抽象类</li>
+<li>要么重写抽象类中的所有抽象方法</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<h3 id="4-给成员变量赋值的两种方式的区别"><a href="#4-给成员变量赋值的两种方式的区别" class="headerlink" title="4.给成员变量赋值的两种方式的区别"></a>4.给成员变量赋值的两种方式的区别</h3><ul>
-<li>A:setXxx()方法<ul>
-<li>修改属性值 </li>
+<h3 id="9-抽象类的成员特点"><a href="#9-抽象类的成员特点" class="headerlink" title="9.抽象类的成员特点"></a>9.抽象类的成员特点</h3><ul>
+<li>A:抽象类的成员特点<ul>
+<li>a:成员变量：既可以是变量，也可以是常量。abstract是否可以修饰成员变量?不能修饰成员变量</li>
+<li>b:构造方法：有。<ul>
+<li>用于子类访问父类数据的初始化。</li>
 </ul>
 </li>
-<li>B:构造方法<ul>
-<li>给对象中属性进行初始化 </li>
+<li>c:成员方法：既可以是抽象的，也可以是非抽象的。</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>抽象类的成员特点</li>
+</ul>
+</li>
+<li>C:抽象类的成员方法特性：<ul>
+<li>a:抽象方法 强制要求子类做的事情。</li>
+<li>b:非抽象方法 子类继承的事情，提高代码复用性。</li>
 </ul>
 </li>
 </ul>
-<h3 id="5-学生类的代码及测试-掌握"><a href="#5-学生类的代码及测试-掌握" class="headerlink" title="5.学生类的代码及测试(掌握)"></a>5.学生类的代码及测试(掌握)</h3><ul>
-<li><p>A:案例演示</p>
+<h3 id="10-抽象类中的面试题"><a href="#10-抽象类中的面试题" class="headerlink" title="10.抽象类中的面试题"></a>10.抽象类中的面试题</h3><ul>
+<li><p>A:面试题1</p>
 <ul>
-<li>学生类：<ul>
-<li>成员变量：<ul>
-<li>name，age</li>
+<li>一个抽象类如果没有抽象方法，可不可以定义为抽象类?如果可以，有什么意义?<br>可以,这么做目的只有一个,就是不让其他类创建本类对象,交给子类完成</li>
 </ul>
 </li>
-<li>构造方法：<ul>
-<li>无参，带两个参</li>
-</ul>
-</li>
-<li>成员方法：<ul>
-<li>getXxx()/setXxx()</li>
-<li>show()：输出该类的所有成员变量值</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>B:给成员变量赋值：</p>
+<li><p>B:面试题2</p>
 <ul>
-<li>a:setXxx()方法</li>
-<li>b:构造方法</li>
+<li>abstract不能和哪些关键字共存?</li>
 </ul>
 </li>
-<li><p>C:输出成员变量值的方式：</p>
+</ul>
+<blockquote>
+<p>1.abstract和static：用abstract修饰的方法是抽象方法，抽象方法没有方法体。用static修饰的方法是静态方法，静态方法可以用‘类名.调用’。调用一个抽象方法是没有任何意义的。<br>2.abstract和final：抽象方法没有方法体，要求子类去重写，而用final修饰的方法不能被重写。<br>3.abstract和private：被abstract修饰的方法是为了让子类看到并强制重写，而用private修饰的方法不让子类访问。</p>
+</blockquote>
+<h3 id="11-接口的概述及其特点"><a href="#11-接口的概述及其特点" class="headerlink" title="11.接口的概述及其特点"></a>11.接口的概述及其特点</h3><ul>
+<li>A:接口概述<ul>
+<li>从狭义的角度讲就是指java中的interface</li>
+<li>从广义的角度讲对外提供规则的都是接口 </li>
+</ul>
+</li>
+<li>B:接口特点<ul>
+<li>a:接口用关键字interface表示    <ul>
+<li>interface 接口名 {}</li>
+</ul>
+</li>
+<li>b:类实现接口用implements表示<ul>
+<li>class 类名 implements 接口名 {}</li>
+</ul>
+</li>
+<li>c:接口不能实例化<ul>
+<li>那么，接口如何实例化呢?</li>
+<li>按照多态的方式来实例化。</li>
+</ul>
+</li>
+<li>d:接口的子类<ul>
+<li>a:可以是抽象类。但是意义不大。</li>
+<li>b:可以是具体类。要重写接口中的所有抽象方法。(推荐方案)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-接口的成员特点"><a href="#12-接口的成员特点" class="headerlink" title="12.接口的成员特点"></a>12.接口的成员特点</h3><ul>
+<li>A:接口成员特点<ul>
+<li>成员变量；只能是常量，并且是静态的并公共的。<pre><code>* 默认修饰符：public static final
+* 建议：自己手动给出。</code></pre></li>
+<li>构造方法：接口没有构造方法。</li>
+<li>成员方法：只能是抽象方法。<pre><code>* 默认修饰符：public abstract
+* 建议：自己手动给出。</code></pre></li>
+</ul>
+</li>
+</ul>
+<h3 id="13-类与类-类与接口-接口与接口的关系"><a href="#13-类与类-类与接口-接口与接口的关系" class="headerlink" title="13.类与类,类与接口,接口与接口的关系"></a>13.类与类,类与接口,接口与接口的关系</h3><ul>
+<li>A:类与类,类与接口,接口与接口的关系<ul>
+<li>a:类与类：<ul>
+<li>继承关系,只能单继承,可以多层继承。</li>
+</ul>
+</li>
+<li>b:类与接口：<ul>
+<li>实现关系,可以单实现,也可以多实现。</li>
+<li>并且还可以在继承一个类的同时实现多个接口。</li>
+</ul>
+</li>
+<li>c:接口与接口：<ul>
+<li>继承关系,可以单继承,也可以多继承。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="14-抽象类和接口的区别"><a href="#14-抽象类和接口的区别" class="headerlink" title="14.抽象类和接口的区别"></a>14.抽象类和接口的区别</h3><ul>
+<li><p>A:成员区别</p>
 <ul>
-<li>a:通过getXxx()分别获取然后拼接</li>
-<li>b:通过调用show()方法搞定</li>
+<li>抽象类：<ul>
+<li>成员变量：可以变量，也可以常量</li>
+<li>构造方法：有</li>
+<li>成员方法：可以抽象，也可以非抽象</li>
 </ul>
 </li>
-</ul>
-<h3 id="6-创建一个对象的步骤-掌握"><a href="#6-创建一个对象的步骤-掌握" class="headerlink" title="6.创建一个对象的步骤(掌握)"></a>6.创建一个对象的步骤(掌握)</h3><ul>
-<li>A:画图演示<ul>
-<li>画图说明一个对象的创建过程做了哪些事情?</li>
-<li>Student s = new Student();</li>
-<li>1,Student.class加载进内存</li>
-<li>2,声明一个Student类型引用s</li>
-<li>3,在堆内存创建对象,</li>
-<li>4,给对象中属性默认初始化值</li>
-<li>5,属性进行显示初始化</li>
-<li>6,构造方法进栈,对对象中的属性赋值,构造方法弹栈</li>
-<li>7,将对象的地址值赋值给s</li>
-</ul>
-</li>
-</ul>
-<h3 id="7-static关键字的特点-掌握"><a href="#7-static关键字的特点-掌握" class="headerlink" title="7.static关键字的特点(掌握)"></a>7.static关键字的特点(掌握)</h3><ul>
-<li>A:static关键字的特点<ul>
-<li>a:随着类的加载而加载</li>
-<li>b:优先于对象存在</li>
-<li>c:被类的所有对象共享<ul>
-<li>举例：咱们班级的学生应该共用同一个班级编号。</li>
-<li>其实这个特点也是在告诉我们什么时候使用静态?<ul>
-<li>如果某个成员变量是被所有对象共享的，那么它就应该定义为静态的。</li>
-</ul>
-</li>
-<li>举例：<ul>
-<li>饮水机(用静态修饰)</li>
-<li>水杯(不能用静态修饰)</li>
-<li>共性用静态,特性用非静态</li>
+<li>接口：<ul>
+<li>成员变量：只可以常量</li>
+<li>成员方法：只可以抽象</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>d:可以通过类名调用<ul>
-<li>其实它本身也可以通过对象名调用。</li>
-<li>推荐使用类名调用。</li>
-<li>静态修饰的内容一般我们称其为：与类相关的，类成员</li>
+<li><p>B:关系区别</p>
+<ul>
+<li>类与类<ul>
+<li>继承，单继承</li>
+</ul>
+</li>
+<li>类与接口<ul>
+<li>实现，单实现，多实现</li>
+</ul>
+</li>
+<li>接口与接口<ul>
+<li>继承，单继承，多继承</li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-<h3 id="8-static的注意事项-掌握"><a href="#8-static的注意事项-掌握" class="headerlink" title="8.static的注意事项(掌握)"></a>8.static的注意事项(掌握)</h3><ul>
-<li>A:static的注意事项<ul>
-<li>a:在静态方法中是没有this关键字的<ul>
-<li>如何理解呢?<ul>
-<li>静态是随着类的加载而加载，this是随着对象的创建而存在。</li>
-<li>静态比对象先存在。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>b:静态方法只能访问静态的成员变量和静态的成员方法<ul>
-<li>静态方法：<ul>
-<li>成员变量：只能访问静态变量</li>
-<li>成员方法：只能访问静态成员方法</li>
-</ul>
-</li>
-<li>非静态方法：<ul>
-<li>成员变量：可以是静态的，也可以是非静态的</li>
-<li>成员方法：可是是静态的成员方法，也可以是非静态的成员方法。</li>
-</ul>
-</li>
-<li>简单记：<ul>
-<li>静态只能访问静态。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="9-静态变量和成员变量的区别-掌握"><a href="#9-静态变量和成员变量的区别-掌握" class="headerlink" title="9.静态变量和成员变量的区别(掌握)"></a>9.静态变量和成员变量的区别(掌握)</h3><ul>
-<li>静态变量也叫类变量  成员变量也叫对象变量</li>
-<li>A:所属不同<ul>
-<li>静态变量属于类，所以也称为为类变量</li>
-<li>成员变量属于对象，所以也称为实例变量(对象变量)</li>
-</ul>
-</li>
-<li>B:内存中位置不同<ul>
-<li>静态变量存储于方法区的静态区</li>
-<li>成员变量存储于堆内存</li>
-</ul>
-</li>
-<li>C:内存出现时间不同<ul>
-<li>静态变量随着类的加载而加载，随着类的消失而消失</li>
-<li>成员变量随着对象的创建而存在，随着对象的消失而消失</li>
-</ul>
-</li>
-<li>D:调用不同<ul>
-<li>静态变量可以通过类名调用，也可以通过对象调用</li>
-<li>成员变量只能通过对 象名调用</li>
-</ul>
-</li>
-</ul>
-<h3 id="10-main方法的格式详细解释-了解"><a href="#10-main方法的格式详细解释-了解" class="headerlink" title="10.main方法的格式详细解释(了解)"></a>10.main方法的格式详细解释(了解)</h3><ul>
-<li>A:格式<ul>
-<li>public static void main(String[] args) {}</li>
-</ul>
-</li>
-<li>B:针对格式的解释<ul>
-<li>public 被jvm调用，访问权限足够大。</li>
-<li>static 被jvm调用，不用创建对象，直接类名访问</li>
-<li>void被jvm调用，不需要给jvm返回值</li>
-<li>main 一个通用的名称，虽然不是关键字，但是被jvm识别</li>
-<li>String[] args 以前用于接收键盘录入的</li>
+<li><p>C:设计理念区别</p>
+<ul>
+<li>抽象类 被继承体现的是：”is a”的关系。抽象类中定义的是该继承体系的共性功能。</li>
+<li>接口 被实现体现的是：”like a”的关系。接口中定义的是该继承体系的扩展功能。</li>
 </ul>
 </li>
 </ul>
@@ -643,8 +748,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/21/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/" rel="next" title="原码补码反码">
-                <i class="fa fa-chevron-left"></i> 原码补码反码
+              <a href="/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/" rel="next" title="java基础面试题">
+                <i class="fa fa-chevron-left"></i> java基础面试题
               </a>
             
           </div>
@@ -652,10 +757,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/21/%E8%BF%90%E7%AE%97%E7%AC%A6&%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84&%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" rel="prev" title="运算符&选择结构&循环结构">
-                运算符&选择结构&循环结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -736,7 +837,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -807,7 +908,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-面向对象的特征"><span class="nav-text">1.面向对象的特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-构造方法Constructor概述和格式-掌握"><span class="nav-text">2.构造方法Constructor概述和格式(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-构造方法的重载及注意事项-掌握"><span class="nav-text">3.构造方法的重载及注意事项(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-给成员变量赋值的两种方式的区别"><span class="nav-text">4.给成员变量赋值的两种方式的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-学生类的代码及测试-掌握"><span class="nav-text">5.学生类的代码及测试(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-创建一个对象的步骤-掌握"><span class="nav-text">6.创建一个对象的步骤(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-static关键字的特点-掌握"><span class="nav-text">7.static关键字的特点(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-static的注意事项-掌握"><span class="nav-text">8.static的注意事项(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-静态变量和成员变量的区别-掌握"><span class="nav-text">9.静态变量和成员变量的区别(掌握)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-main方法的格式详细解释-了解"><span class="nav-text">10.main方法的格式详细解释(了解)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-多态的概述及其代码体现"><span class="nav-text">1.多态的概述及其代码体现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-多态中的成员访问特点之成员变量"><span class="nav-text">2.多态中的成员访问特点之成员变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-多态中的成员访问特点之成员方法"><span class="nav-text">3.多态中的成员访问特点之成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-多态中的成员访问特点之静态成员方法"><span class="nav-text">4.多态中的成员访问特点之静态成员方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-多态中向上转型和向下转型"><span class="nav-text">5.多态中向上转型和向下转型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-多态的好处和弊端"><span class="nav-text">6.多态的好处和弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-多态中的题目分析题"><span class="nav-text">7.多态中的题目分析题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-抽象类的概述及其特点"><span class="nav-text">8.抽象类的概述及其特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-抽象类的成员特点"><span class="nav-text">9.抽象类的成员特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-抽象类中的面试题"><span class="nav-text">10.抽象类中的面试题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-接口的概述及其特点"><span class="nav-text">11.接口的概述及其特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-接口的成员特点"><span class="nav-text">12.接口的成员特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-类与类-类与接口-接口与接口的关系"><span class="nav-text">13.类与类,类与接口,接口与接口的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-抽象类和接口的区别"><span class="nav-text">14.抽象类和接口的区别</span></a></li></ol></div>
             
 
           </div>
