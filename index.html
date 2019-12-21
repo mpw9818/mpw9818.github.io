@@ -202,7 +202,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">个人博客</p>
+        <p class="site-subtitle">业精于勤，荒于嬉</p>
       
   </div>
 
@@ -324,6 +324,1935 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">java基础面试题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T14:44:55+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础面试题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>第一题：哪句是编译失败的呢？为什么呢？
+ byte b1=3,b2=4,b;
+ b=b1+b2;//出错,因为在JAVA虚拟机中默认是int类型转换，虚拟机不知道b1，b2 中的数值到底是多少，所有会抛出可能损失精度的错误;
+    //虚拟机会把  b1,b2  转换成 int类型在进行运算，两个int类型的数值相加结果任然是int类型，int类型 不能赋值给 byte类型
+b=3+4;//没有错，java虚拟机会计算出结果7然后赋值给b.
+
+
+第二题：
+byte by = 130;有没有问题?有问题如何解决?结果是多少呢?  byte 的数值范围是 -128~127  130已经超出byte取值范围 运算是会砍掉前面的 三个8位，结果会变成-126，详细计算过程看原码补码反码那篇。
+
+第三题:哪句是编译失败的呢？为什么呢？
+byte b = 10;//没有错，检查右边没有超过byte的范围（-128到127）
+b = b + 1;//出错,这句java虚拟机会把，b转换成int类型 相当于  int b + int 类型的1 然后赋值给Byte类型 int是4个字节  byte是1个字节 所有会抛出损失精度.
+b++;//这句java虚拟机会做一个自动转换动作  相当于  b=(byte)(b+1)所以不会报错
+b+=1;//同上，如果b是127， 那么加1后变成128了，成了int类型了，超过了byte类型的最大范围了，系统会强转，把int类型的 前面三个高位丢弃，丢弃后，如果剩下的一位中，最高位为1，则取反然后加1，就成了负数了，如果最高位为0，直接把值赋给b 。</code></pre><p><font color='red'>++,–,+=,-=运算，系统会做一个自动转换动作</font></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见的算术运算符有哪些?  <span class="comment">// + - * / % ++ -- += -= *= /= </span></span><br><span class="line">+运算符的作用有哪些?<span class="comment">// 连接符号（当字符串在前面时 必须作为连接符来使用） 算数运算符  </span></span><br><span class="line">答:正号,字符串连接符号,算术运算符</span><br><span class="line">除法和取余的区别? <span class="comment">//  / 除法是求商   % 求余数</span></span><br><span class="line">++和--的使用规则?<span class="comment">//  a++ 先赋值在运算，  ++a  先运算  再赋值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常见的关系运算符有哪些?</span><br><span class="line">答:  ==  &gt; &lt; &lt;= &gt;= !=</span><br><span class="line">关系运算符的结果有什么特点?</span><br><span class="line">答：输出的结果是<span class="keyword">boolean</span>类型, 要么为 <span class="keyword">true</span>, 要么为 <span class="keyword">false</span>.</span><br></pre></td></tr></table></figure>
+<h3 id="基本数据类型的值传递"><a href="#基本数据类型的值传递" class="headerlink" title="基本数据类型的值传递"></a>基本数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/db7GC36IAwOsVS9.png" alt="" title="基本数据类型的值传递"></p>
+<h3 id="引用数据类型的值传递"><a href="#引用数据类型的值传递" class="headerlink" title="引用数据类型的值传递"></a>引用数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/9qhLmIoZ2xHWaAQ.png" alt="" title="引用数据类型的值传递"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E4%BB%A3%E7%A0%81%E5%9D%97&%E7%BB%A7%E6%89%BF&%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/%E4%BB%A3%E7%A0%81%E5%9D%97&%E7%BB%A7%E6%89%BF&%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/" itemprop="url">代码块&继承&方法重写</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T14:44:55+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###08.01_面向对象(代码块的概述和分类)(了解)(面试的时候会问,开发不用或者很少用)</p>
+<ul>
+<li>A:代码块概述<ul>
+<li>在Java中，使用{}括起来的代码被称为代码块。</li>
+</ul>
+</li>
+<li>B:代码块分类<ul>
+<li>根据其位置和声明的不同，可以分为局部代码块，构造代码块，静态代码块，同步代码块(多线程讲解)。</li>
+</ul>
+</li>
+<li>C:常见代码块的应用<ul>
+<li>a:局部代码块 <ul>
+<li>在方法中出现；限定变量生命周期，及早释放，提高内存利用率</li>
+</ul>
+</li>
+<li>b:构造代码块 (初始化块)<ul>
+<li>在类中方法外出现；多个构造方法方法中相同的代码存放到一起，每次调用构造都执行，并且在构造方法前执行</li>
+</ul>
+</li>
+<li>c:静态代码块 <ul>
+<li>在类中方法外出现，并加上static修饰；用于给类进行初始化，在加载的时候就执行，并且只执行一次。</li>
+<li>一般用于加载驱动</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.02_面向对象(代码块的面试题)(掌握)</p>
+<ul>
+<li><p>A:看程序写结果</p>
+</li>
+<li><pre><code>class Student {
+    static {
+        System.out.println(&quot;Student 静态代码块&quot;);
+    }
+
+    {
+        System.out.println(&quot;Student 构造代码块&quot;);
+    }
+
+    public Student() {
+        System.out.println(&quot;Student 构造方法&quot;);
+    }
+}
+
+class Demo2_Student {
+    static {
+        System.out.println(&quot;Demo2_Student静态代码块&quot;);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(&quot;我是main方法&quot;);
+
+        Student s1 = new Student();
+        Student s2 = new Student();
+    }
+}</code></pre></li>
+</ul>
+<p>###08.03_面向对象(继承案例演示)(掌握)</p>
+<ul>
+<li>A:继承(extends)<ul>
+<li>让类与类之间产生关系,子父类关系 </li>
+</ul>
+</li>
+<li>B:继承案例演示：<ul>
+<li>动物类,猫类,狗类</li>
+<li>定义两个属性(颜色,腿的个数)两个功能(吃饭，睡觉)</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>使用继承前</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>使用继承后</li>
+</ul>
+</li>
+</ul>
+<p>###08.04_面向对象(继承的好处和弊端)(掌握)</p>
+<ul>
+<li><p>A:继承的好处</p>
+<ul>
+<li>a:提高了代码的复用性</li>
+<li>b:提高了代码的维护性</li>
+<li>c:让类与类之间产生了关系，是多态的前提</li>
+</ul>
+</li>
+<li><p>B:继承的弊端</p>
+<ul>
+<li><p>类的耦合性增强了。</p>
+</li>
+<li><p>开发的原则：高内聚，低耦合。</p>
+</li>
+<li><p>耦合：类与类的关系</p>
+</li>
+<li><p>内聚：就是自己完成某件事情的能力</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.05_面向对象(Java中类的继承特点)(掌握)</p>
+<ul>
+<li>A:Java中类的继承特点<ul>
+<li>a:Java只支持单继承，不支持多继承。(一个儿子只能有一个爹)<ul>
+<li>有些语言是支持多继承，格式：extends 类1,类2,…</li>
+</ul>
+</li>
+<li>b:Java支持多层继承(继承体系)</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>Java中类的继承特点<ul>
+<li>如果想用这个体系的所有功能用最底层的类创建对象</li>
+<li>如果想看这个体系的共性功能,看最顶层的类 </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.06_面向对象(继承的注意事项和什么时候使用继承)(掌握)</p>
+<ul>
+<li><p>A:继承的注意事项</p>
+<ul>
+<li>a:子类只能继承父类所有非私有的成员(成员方法和成员变量)</li>
+<li>b:子类不能继承父类的构造方法，但是可以通过super(马上讲)关键字去访问父类构造方法。</li>
+<li>c:不要为了部分功能而去继承</li>
+<li>项目经理 姓名 工号 工资 奖金</li>
+<li>程序员    姓名 工号 工资</li>
+</ul>
+</li>
+<li><p>B:什么时候使用继承</p>
+<ul>
+<li><p>继承其实体现的是一种关系：”is a”。<br>  Person</p>
+<pre><code>Student
+Teacher</code></pre><p>  水果</p>
+<pre><code>苹果
+香蕉
+橘子</code></pre><p>采用假设法。<br>  如果有两个类A,B。只有他们符合A是B的一种，或者B是A的一种，就可以考虑使用继承。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.07_面向对象(继承中成员变量的关系)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>a:不同名的变量</li>
+<li>b:同名的变量<br>###08.08_面向对象(this和super的区别和应用)(掌握)</li>
+</ul>
+</li>
+<li>A:this和super都代表什么<ul>
+<li>this:代表当前对象的引用,谁来调用我,我就代表谁</li>
+<li>super:代表当前对象父类的引用</li>
+</ul>
+</li>
+<li>B:this和super的使用区别<ul>
+<li>a:调用成员变量<ul>
+<li>this.成员变量 调用本类的成员变量,也可以调用父类的成员变量</li>
+<li>super.成员变量 调用父类的成员变量</li>
+</ul>
+</li>
+<li>b:调用构造方法<ul>
+<li>this(…)    调用本类的构造方法</li>
+<li>super(…)    调用父类的构造方法</li>
+</ul>
+</li>
+<li>c:调用成员方法<ul>
+<li>this.成员方法 调用本类的成员方法,也可以调用父类的方法</li>
+<li>super.成员方法 调用父类的成员方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.09_面向对象(继承中构造方法的关系)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>子类中所有的构造方法默认都会访问父类中空参数的构造方法</li>
+</ul>
+</li>
+<li><p>B:为什么呢?</p>
+<ul>
+<li><p>因为子类会继承父类中的数据，可能还会使用父类的数据。</p>
+</li>
+<li><p>所以，子类初始化之前，一定要先完成父类数据的初始化。</p>
+</li>
+<li><p>其实：</p>
+<ul>
+<li>每一个构造方法的第一条语句默认都是：super() Object类最顶层的父类。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.10_面向对象(继承中构造方法的注意事项)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>父类没有无参构造方法,子类怎么办?</li>
+<li>super解决</li>
+<li>this解决</li>
+</ul>
+</li>
+<li>B:注意事项<ul>
+<li>super(…)或者this(….)必须出现在构造方法的第一条语句上</li>
+</ul>
+</li>
+</ul>
+<p>###08.11_面向对象(继承中的面试题)(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+</li>
+<li><p>看程序写结果1<br>class Fu{<br>  public int num = 10;<br>  public Fu(){</p>
+<pre><code>System.out.println(&quot;fu&quot;);</code></pre><p>  }<br>}<br>class Zi extends Fu{<br>  public int num = 20;<br>  public Zi(){</p>
+<pre><code>System.out.println(&quot;zi&quot;);</code></pre><p>  }<br>  public void show(){</p>
+<pre><code>int num = 30;
+System.out.println(num);
+System.out.println(this.num);
+System.out.println(super.num);</code></pre><p>  }<br>}<br>class Test1_Extends {<br>  public static void main(String[] args) {</p>
+<pre><code>Zi z = new Zi();
+z.show();</code></pre><p>  }<br>}</p>
+<p>看程序写结果2<br>class Fu {<br>  static {</p>
+<pre><code>System.out.println(&quot;静态代码块Fu&quot;);</code></pre><p>  }</p>
+<p>  {</p>
+<pre><code>System.out.println(&quot;构造代码块Fu&quot;);</code></pre><p>  }</p>
+<p>  public Fu() {</p>
+<pre><code>System.out.println(&quot;构造方法Fu&quot;);</code></pre><p>  }<br>}</p>
+<p>class Zi extends Fu {<br>  static {</p>
+<pre><code>System.out.println(&quot;静态代码块Zi&quot;);</code></pre><p>  }</p>
+<p>  {</p>
+<pre><code>System.out.println(&quot;构造代码块Zi&quot;);</code></pre><p>  }</p>
+<p>  public Zi() {</p>
+<pre><code>System.out.println(&quot;构造方法Zi&quot;);</code></pre><p>  }<br>}</p>
+<p>Zi z = new Zi(); 请执行结果。</p>
+</li>
+</ul>
+<p>###08.12_面向对象(继承中成员方法关系)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>a:不同名的方法</li>
+<li>b:同名的方法</li>
+</ul>
+</li>
+</ul>
+<p>###08.13_面向对象(方法重写概述及其应用)(掌握)</p>
+<ul>
+<li>A:什么是方法重写<ul>
+<li>重写:子父类出现了一模一样的方法(注意:返回值类型可以是子父类,这个我们学完面向对象讲) </li>
+</ul>
+</li>
+<li>B:方法重写的应用：<ul>
+<li>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法。这样，即沿袭了父类的功能，又定义了子类特有的内容。</li>
+</ul>
+</li>
+<li>C:案例演示<ul>
+<li>a:定义一个手机类。</li>
+</ul>
+</li>
+</ul>
+<p>###08.14_面向对象(方法重写的注意事项)(掌握)</p>
+<ul>
+<li><p>A:方法重写注意事项</p>
+<ul>
+<li><p>a:父类中私有方法不能被重写</p>
+<ul>
+<li>因为父类私有方法子类根本就无法继承</li>
+</ul>
+</li>
+<li><p>b:子类重写父类方法时，访问权限不能更低</p>
+<ul>
+<li>最好就一致</li>
+</ul>
+</li>
+<li><p>c:父类静态方法，子类也必须通过静态方法进行重写</p>
+<ul>
+<li>其实这个算不上方法重写，但是现象确实如此，至于为什么算不上方法重写，多态中我会讲解(静态只能覆盖静态)</li>
+</ul>
+</li>
+<li><p>子类重写父类方法的时候，最好声明一模一样。</p>
+</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li>方法重写注意事项</li>
+</ul>
+</li>
+</ul>
+<p>###08.15_面向对象(方法重写的面试题)(掌握)</p>
+<ul>
+<li><p>A:方法重写的面试题</p>
+<ul>
+<li><p>Override和Overload的区别?Overload能改变返回值类型吗?</p>
+</li>
+<li><p>overload可以改变返回值类型,只看参数列表</p>
+</li>
+<li><p>方法重写：子类中出现了和父类中方法声明一模一样的方法。与返回值类型有关,返回值是一致(或者是子父类)的</p>
+</li>
+<li><p>方法重载：本类中出现的方法名一样，参数列表不同的方法。与返回值类型无关。</p>
+</li>
+<li><p>子类对象调用方法的时候：</p>
+<ul>
+<li>先找子类本身，再找父类。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###08.16_面向对象(使用继承前的学生和老师案例)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>使用继承前的学生和老师案例</li>
+<li>属性:姓名,年龄</li>
+<li>行为:吃饭</li>
+<li>老师有特有的方法:讲课</li>
+<li>学生有特有的方法:学习</li>
+</ul>
+</li>
+</ul>
+<p>###08.17_面向对象(使用继承后的学生和老师案例)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>使用继承后的学生和老师案例</li>
+</ul>
+</li>
+</ul>
+<p>###08.18_面向对象(猫狗案例分析,实现及测试)(掌握)</p>
+<ul>
+<li>A:猫狗案例分析</li>
+<li>B:案例演示<ul>
+<li>猫狗案例继承版</li>
+<li>属性:毛的颜色,腿的个数</li>
+<li>行为:吃饭</li>
+<li>猫特有行为:抓老鼠catchMouse</li>
+<li>狗特有行为:看家lookHome</li>
+</ul>
+</li>
+</ul>
+<p>###08.19_面向对象(final关键字修饰类,方法以及变量的特点)(掌握)</p>
+<ul>
+<li>A:final概述</li>
+<li>B:final修饰特点<ul>
+<li>修饰类，类不能被继承</li>
+<li>修饰变量，变量就变成了常量，只能被赋值一次</li>
+<li>修饰方法，方法不能被重写</li>
+</ul>
+</li>
+</ul>
+<p>###08.20_面向对象(final关键字修饰局部变量)(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>方法内部或者方法声明上都演示一下(了解)</li>
+<li>基本类型，是值不能被改变</li>
+<li>引用类型，是地址值不能被改变,对象中的属性可以改变</li>
+</ul>
+</li>
+</ul>
+<p>###08.21_面向对象(final修饰变量的初始化时机)(掌握)</p>
+<ul>
+<li>A:final修饰变量的初始化时机<ul>
+<li>显示初始化 </li>
+<li>在对象构造完毕前即可</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E8%BF%90%E7%AE%97%E7%AC%A6&%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84&%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/%E8%BF%90%E7%AE%97%E7%AC%A6&%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84&%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/" itemprop="url">运算符&选择结构&循环结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T14:44:55+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###1.逻辑运算符的基本用法  掌握 </p>
+<ul>
+<li><p>A:逻辑运算符有哪些</p>
+<ul>
+<li>&amp;,|,^,!</li>
+<li>&amp;&amp;,|| </li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+</li>
+<li><p>逻辑运算符的基本用法</p>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>a:逻辑运算符一般用于连接boolean类型的表达式或者值。</li>
+<li>b:表达式：就是用运算符把常量或者变量连接起来的符合java语法的式子。<ul>
+<li>算术表达式：a + b</li>
+<li>比较表达式：a == b 条件表达式 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C:结论：</p>
+</li>
+<li><p>&amp;逻辑与:有false则false。</p>
+</li>
+<li><p>|逻辑或:有true则true。</p>
+</li>
+<li><p>^逻辑异或:相同为false，不同为true。</p>
+</li>
+<li><p>!逻辑非:非false则true，非true则false。</p>
+<ul>
+<li>特点：偶数个不改变本身。</li>
+</ul>
+</li>
+</ul>
+<p>###2.逻辑运算符&amp;&amp;和&amp;的区别  掌握 </p>
+<ul>
+<li>A:案例演示<ul>
+<li>&amp;&amp;和&amp;的区别?<ul>
+<li>a:最终结果一样。</li>
+<li>b:&amp;&amp;具有短路效果。左边是false，右边不执行。</li>
+<li>&amp;是无论左边是false还是true,右边都会执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:同理||和|的区别?</li>
+<li>C:开发中常用谁?<ul>
+<li>&amp;&amp;,||,!</li>
+</ul>
+</li>
+</ul>
+<p>###3.位运算符的基本用法1  了解 </p>
+<ul>
+<li><p>A:位运算符有哪些</p>
+<ul>
+<li>&amp;,|,^,~ ,&gt;&gt;,&gt;&gt;&gt;,&lt;&lt;</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>位运算符的基本用法1</p>
+</li>
+<li><p>&amp;,|,^,~ 的用法</p>
+</li>
+<li><p>&amp;:有0则0</p>
+</li>
+<li><p>|:有1则1</p>
+</li>
+<li><p>^:相同则0，不同则1</p>
+</li>
+<li><p>~:按位取反</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>###4.位异或运算符的特点及面试题  掌握 </p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>位异或运算符的特点</p>
+</li>
+<li><p>^的特点：一个数据对另一个数据位异或两次，该数本身不变。</p>
+</li>
+</ul>
+</li>
+<li><p>B:面试题：</p>
+<ul>
+<li>请自己实现两个整数变量的交换</li>
+<li>注意：以后讲课的过程中，我没有明确指定数据的类型，默认int类型。</li>
+</ul>
+</li>
+</ul>
+<p>###5.位运算符的基本用法2及面试题  了解 </p>
+<ul>
+<li>A:案例演示 &gt;&gt;,&gt;&gt;&gt;,&lt;&lt;的用法:<ul>
+<li>&lt;&lt;:左移    左边最高位丢弃，右边补齐0</li>
+<li>&gt;&gt;:右移    最高位是0，左边补齐0;最高为是1，左边补齐1</li>
+<li>&gt;&gt;&gt;:无符号右移 无论最高位是0还是1，左边补齐0</li>
+<li>最有效率的算出2 * 8的结果</li>
+</ul>
+</li>
+</ul>
+<p>###6.三元运算符的基本用法  掌握 </p>
+<ul>
+<li>A:三元运算符的格式</li>
+<li>关系表达式  ? 表达式1 : 表达式2;</li>
+<li>B:三元运算符的执行流程 </li>
+<li>C:案例演示<ul>
+<li>获取两个数中的最大值</li>
+</ul>
+</li>
+</ul>
+<p>###7.三元运算符的练习  掌握 </p>
+<ul>
+<li>A:案例演示<ul>
+<li>比较两个整数是否相同</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>获取三个整数中的最大值</li>
+</ul>
+</li>
+</ul>
+<p>###8.顺序结构语句  了解 </p>
+<ul>
+<li>A:什么是流程控制语句<ul>
+<li>流程控制语句：可以控制程序的执行流程。</li>
+</ul>
+</li>
+<li>B:流程控制语句的分类<ul>
+<li>顺序结构</li>
+<li>选择结构</li>
+<li>循环结构</li>
+</ul>
+</li>
+<li>C:执行流程：<ul>
+<li>从上往下，依次执行。</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>输出几句话看效果即可</li>
+</ul>
+</li>
+</ul>
+<p>###9.选择结构if语句格式1及其使用  掌握 </p>
+<ul>
+<li><p>A:选择结构的分类</p>
+<ul>
+<li>if语句</li>
+<li>switch语句</li>
+</ul>
+</li>
+<li><p>B:if语句有几种格式</p>
+<ul>
+<li>格式1</li>
+<li>格式2</li>
+<li>格式3</li>
+</ul>
+</li>
+<li><p>C:if语句的格式1</p>
+<pre><code>if 比较表达式  {
+    语句体;
+}</code></pre></li>
+<li><p>D:if语句的格式2</p>
+<pre><code>if 比较表达式  {
+    语句体1;
+}else {
+    语句体2;
+}</code></pre><p>E:if语句的格式3：</p>
+<pre><code>if 比较表达式1  {
+    语句体1;
+}else if 比较表达式2  {
+    语句体2;
+}else if 比较表达式3  {
+    语句体3;
+}
+...
+else {
+    语句体n+1;
+}</code></pre><font color ='red'>
+if必须出现一次且只能出现一次，else可出现0-1次，else if可出现0-N次。
+</font>
+
+</li>
+</ul>
+<p>###10.if语句的格式2和三元的相互转换问题  掌握 </p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>if语句和三元运算符完成同一个效果</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>if语句和三元运算符的区别</p>
+</li>
+<li><p>三元运算符实现的，都可以采用if语句实现。反之不成立。</p>
+</li>
+<li><p>什么时候if语句实现不能用三元改进呢?</p>
+<ul>
+<li>当if语句控制的操作是一个输出语句的时候就不能。</li>
+<li>为什么呢?因为三元运算符是一个运算符，运算符操作完毕就应该有一个结果，而不是一个输出。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###11.选择结构switch语句的格式及其解释  掌握 </p>
+<ul>
+<li><p>A:switch语句的格式</p>
+</li>
+<li><pre><code>switch 表达式  {
+      case 值1：
+        语句体1;
+        break;
+        case 值2：
+        语句体2;
+        break;
+        …
+        default：    
+        语句体n+1;
+        break;
+}</code></pre></li>
+<li><p>B:switch语句的格式解释</p>
+</li>
+<li><p>C:面试题</p>
+<ul>
+<li>byte可以作为switch的表达式吗?</li>
+<li>long可以作为switch的表达式吗?</li>
+<li>String可以作为switch的表达式吗?</li>
+</ul>
+</li>
+<li><p>switch 匹配的表达式可以是(重要)：</p>
+<ul>
+<li>byte、short、char、int类型及这4种类型的包装类型</li>
+<li>枚举类型</li>
+<li>String 类型</li>
+</ul>
+</li>
+<li><p>C:执行流程</p>
+<ul>
+<li>先计算表达式的值</li>
+<li>然后和case后面的匹配，如果有就执行对应的语句，否则执行default控制的语句</li>
+</ul>
+</li>
+</ul>
+<p>###12.选择结构switch语句的注意事项  掌握 </p>
+<ul>
+<li>A:案例演示<ul>
+<li>a:case后面只能是常量，不能是变量，而且，多个case后面的值不能出现相同的</li>
+<li>b:default可以省略吗?<ul>
+<li>可以省略，但是不建议，因为它的作用是对不正确的情况给出提示。</li>
+<li>特殊情况：<ul>
+<li>case就可以把值固定。</li>
+<li>A,B,C,D</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>c:break可以省略吗?<ul>
+<li>最后一个可以省略,其他不要省略，不然会出现一个现象：case穿透</li>
+</ul>
+</li>
+<li>d:default一定要在最后吗?<ul>
+<li>不是，可以在任意位置。但是建议在最后。</li>
+</ul>
+</li>
+<li>e:switch语句的结束条件<ul>
+<li>a:遇到break就结束了</li>
+<li>b:执行到switch的右大括号就结束了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###13.选择结构if语句和switch语句的区别  掌握 </p>
+<ul>
+<li>A:总结switch语句和if语句的各自使用场景</li>
+<li>switch建议判断固定值的时候用</li>
+<li>if建议判断区间或范围的时候用</li>
+</ul>
+<p>###14.循环结构概述和for语句的格式</p>
+<ul>
+<li><p>A:循环结构的分类</p>
+<ul>
+<li>for,while,do…while </li>
+</ul>
+</li>
+<li><p>B:循环结构for语句的格式：</p>
+<pre><code>for(初始化表达式;条件表达式;循环后的操作表达式) {
+    循环体;
+}</code></pre><p>###15.循环结构while语句</p>
+</li>
+<li><p>A:循环结构while语句的格式：</p>
+<pre><code>while循环的基本格式：
+while(判断条件语句) {
+    循环体语句;
+}
+
+完整格式：
+
+初始化语句;
+while(判断条件语句) {
+     循环体语句;
+     控制条件语句;
+}</code></pre><p>###16.循环结构do…while语句</p>
+</li>
+<li><p>A:循环结构do…while语句的格式：</p>
+<pre><code>do {
+    循环体语句;
+}while(判断条件语句);
+
+完整格式；
+初始化语句;
+do {
+    循环体语句;
+    控制条件语句;
+}while(判断条件语句);</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1&%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95&%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%B8%8E%E9%87%8D%E5%86%99/" itemprop="url">面向对象&构造方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T14:44:55+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###1.面向对象的特征</p>
+<ul>
+<li>继承：<br>继承是从已有类得到继承信息创建新类的过程。提供继承信息的类被称为父类（超类、基类）；得到继承信息的类被称为子类（派生类）。继承让变化中的软件系统有了一定的延续性，同时继承也是封装程序中可变因素的重要手段。</li>
+<li>封装：<br>通常认为封装是把数据和操作数据的方法绑定起来，对数据的访问只能通过已定义的接口。面向对象的本质就是将现实世界描绘成一系列完全自治、封闭的对象。我们在类中编写的方法就是对实现细节的一种封装；我们编写一个类就是对数据和数据操作的封装。可以说，封装就是隐藏一切可隐藏的东西，只向外界提供最简单的编程接口。</li>
+<li>多态：<br>多态性是指允许不同子类型的对象对同一消息作出不同的响应。简单的说就是用同样的对象引用调用同样的方法但是做了不同的事情。多态性分为编译时的多态性和运行时的多态性。如果将对象的方法视为对象向外界提供的服务，那么运行时的多态性可以解释为：当A系统访问B系统提供的服务时，B系统有多种提供服务的方式，但一切对A系统来说都是透明的（就像电动剃须刀是A系统，它的供电系统是B系统，B系统可以使用电池供电或者用交流电，甚至还有可能是太阳能，A系统只会通过B类对象调用供电的方法，但并不知道供电系统的底层实现是什么，究竟通过何种方式获得了动力）。方法重载（overload）实现的是编译时的多态性（也称为前绑定），而方法重写（override）实现的是运行时的多态性（也称为后绑定）。运行时的多态是面向对象最精髓的东西，要实现多态需要做两件事：1). 方法重写（子类继承父类并重写父类中已有的或抽象的方法）；2). 对象造型（用父类型引用引用子类型对象，这样同样的引用调用同样的方法就会根据子类对象的不同而表现出不同的行为）。 </li>
+</ul>
+<p>###2.构造方法Constructor概述和格式(掌握)</p>
+<ul>
+<li>A:构造方法概述和作用<ul>
+<li>给对象的数据(属性)进行初始化</li>
+</ul>
+</li>
+<li>B:构造方法格式特点<ul>
+<li>a:方法名与类名相同(大小也要与类名一致)</li>
+<li>b:没有返回值类型，连void都没有</li>
+<li>c:没有具体的返回值return;</li>
+</ul>
+</li>
+</ul>
+<p>###3.构造方法的重载及注意事项(掌握)</p>
+<ul>
+<li>A:案例演示<ul>
+<li>构造方法的重载</li>
+<li>重载:方法名相同,与返回值类型无关(构造方法没有返回值),只看参数列表</li>
+</ul>
+</li>
+<li>B:构造方法注意事项<ul>
+<li>a:如果我们没有给出构造方法，系统将自动提供一个无参构造方法。</li>
+<li>b:如果我们给出了构造方法，系统将不再提供默认的无参构造方法。<ul>
+<li>注意：这个时候，如果我们还想使用无参构造方法，就必须自己给出。建议永远自己给出无参构造方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###4.给成员变量赋值的两种方式的区别</p>
+<ul>
+<li>A:setXxx()方法<ul>
+<li>修改属性值 </li>
+</ul>
+</li>
+<li>B:构造方法<ul>
+<li>给对象中属性进行初始化 </li>
+</ul>
+</li>
+</ul>
+<p>###5.学生类的代码及测试(掌握)</p>
+<ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>学生类：<ul>
+<li>成员变量：<ul>
+<li>name，age</li>
+</ul>
+</li>
+<li>构造方法：<ul>
+<li>无参，带两个参</li>
+</ul>
+</li>
+<li>成员方法：<ul>
+<li>getXxx()/setXxx()</li>
+<li>show()：输出该类的所有成员变量值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>B:给成员变量赋值：</p>
+<ul>
+<li>a:setXxx()方法</li>
+<li>b:构造方法</li>
+</ul>
+</li>
+<li><p>C:输出成员变量值的方式：</p>
+<ul>
+<li>a:通过getXxx()分别获取然后拼接</li>
+<li>b:通过调用show()方法搞定</li>
+</ul>
+</li>
+</ul>
+<p>###6.创建一个对象的步骤(掌握)</p>
+<ul>
+<li>A:画图演示<ul>
+<li>画图说明一个对象的创建过程做了哪些事情?</li>
+<li>Student s = new Student();</li>
+<li>1,Student.class加载进内存</li>
+<li>2,声明一个Student类型引用s</li>
+<li>3,在堆内存创建对象,</li>
+<li>4,给对象中属性默认初始化值</li>
+<li>5,属性进行显示初始化</li>
+<li>6,构造方法进栈,对对象中的属性赋值,构造方法弹栈</li>
+<li>7,将对象的地址值赋值给s</li>
+</ul>
+</li>
+</ul>
+<p>###7.static关键字的特点(掌握)</p>
+<ul>
+<li>A:static关键字的特点<ul>
+<li>a:随着类的加载而加载</li>
+<li>b:优先于对象存在</li>
+<li>c:被类的所有对象共享<ul>
+<li>举例：咱们班级的学生应该共用同一个班级编号。</li>
+<li>其实这个特点也是在告诉我们什么时候使用静态?<ul>
+<li>如果某个成员变量是被所有对象共享的，那么它就应该定义为静态的。</li>
+</ul>
+</li>
+<li>举例：<ul>
+<li>饮水机(用静态修饰)</li>
+<li>水杯(不能用静态修饰)</li>
+<li>共性用静态,特性用非静态</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>d:可以通过类名调用<ul>
+<li>其实它本身也可以通过对象名调用。</li>
+<li>推荐使用类名调用。</li>
+<li>静态修饰的内容一般我们称其为：与类相关的，类成员</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###8.static的注意事项(掌握)</p>
+<ul>
+<li>A:static的注意事项<ul>
+<li>a:在静态方法中是没有this关键字的<ul>
+<li>如何理解呢?<ul>
+<li>静态是随着类的加载而加载，this是随着对象的创建而存在。</li>
+<li>静态比对象先存在。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>b:静态方法只能访问静态的成员变量和静态的成员方法<ul>
+<li>静态方法：<ul>
+<li>成员变量：只能访问静态变量</li>
+<li>成员方法：只能访问静态成员方法</li>
+</ul>
+</li>
+<li>非静态方法：<ul>
+<li>成员变量：可以是静态的，也可以是非静态的</li>
+<li>成员方法：可是是静态的成员方法，也可以是非静态的成员方法。</li>
+</ul>
+</li>
+<li>简单记：<ul>
+<li>静态只能访问静态。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>###9.静态变量和成员变量的区别(掌握)</p>
+<ul>
+<li>静态变量也叫类变量  成员变量也叫对象变量</li>
+<li>A:所属不同<ul>
+<li>静态变量属于类，所以也称为为类变量</li>
+<li>成员变量属于对象，所以也称为实例变量(对象变量)</li>
+</ul>
+</li>
+<li>B:内存中位置不同<ul>
+<li>静态变量存储于方法区的静态区</li>
+<li>成员变量存储于堆内存</li>
+</ul>
+</li>
+<li>C:内存出现时间不同<ul>
+<li>静态变量随着类的加载而加载，随着类的消失而消失</li>
+<li>成员变量随着对象的创建而存在，随着对象的消失而消失</li>
+</ul>
+</li>
+<li>D:调用不同<ul>
+<li>静态变量可以通过类名调用，也可以通过对象调用</li>
+<li>成员变量只能通过对 象名调用</li>
+</ul>
+</li>
+</ul>
+<p>###10.main方法的格式详细解释(了解)</p>
+<ul>
+<li>A:格式<ul>
+<li>public static void main(String[] args) {}</li>
+</ul>
+</li>
+<li>B:针对格式的解释<ul>
+<li>public 被jvm调用，访问权限足够大。</li>
+<li>static 被jvm调用，不用创建对象，直接类名访问</li>
+<li>void被jvm调用，不需要给jvm返回值</li>
+<li>main 一个通用的名称，虽然不是关键字，但是被jvm识别</li>
+<li>String[] args 以前用于接收键盘录入的</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/21/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/21/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/" itemprop="url">原码补码反码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-21T13:57:45+08:00">
+                2019-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><p>&emsp;&emsp;1.在计算机系统中，数值一律用补码来表示（存储）。用补码进行加法运算。</p>
+<p>&emsp;&emsp;2.正数和0的补码、反码是本身原码,所以对于正数来说，可以理解为不存在反码和补码。<br>&emsp;&emsp;3.负数的反码：符号位不变，其他位取反。<br>&emsp;&emsp;4.负数的补码：对于负数而言， 补码 =  它的反码 + 1 。<br>&emsp;&emsp;5.知道负数的补码，求原码：  原码 = 补码 -1 ，或对补码在取补码，就是先对补码取反码，然后将得到的数再 +1。</p>
+<h2 id="byte的取值范围为什么是-128-127？"><a href="#byte的取值范围为什么是-128-127？" class="headerlink" title="byte的取值范围为什么是-128~127？"></a>byte的取值范围为什么是-128~127？</h2><p>&emsp;&emsp;1.byte占用8位，每位用0或1表示，能够表示256(2^8)个数据。<br>&emsp;&emsp;2.这8位分为符号位（最高位）和数值位（剩余七位），符号位0表示正数，1表示负数。<br>&emsp;&emsp;3.按上一步的理解，容易得到（+127：0111 1111、+1：0000 0001、+0：0000 0000、-0：1000 0000、-1：1000 0001、-127：1111 1111），计算机底层定义了+0（0000 0000）就是0，那么“可怜的-0”又该何去何从呢？计算机遇到这个二进制该如何处理呢？总不能把这两个都对应0吧，这显然是资源浪费。<br>&emsp;&emsp;4.最后来解决这个-128为什么可以用1000 0000表示。这里我分析的是byte，它就8位。在无符号位的二进制中128的表示为1000 0000。有符号位的情况下byte好像无法表示+128或-128。如果我们假设现在byte不是占用8位，而是9位，最高位是符号位。那么-128就能够是1 1000 0000，其补码也是1 1000 0000，很神奇吧，一样的。-128的补码尾八位就是1000 0000。那就规定【1000 0000是-128的补码，且-128是没有原码和反码的，即不能利用1000 0000反推其原码和反码】。<br>&emsp;&emsp;5.你也可以简单就认为计算机规定了1000 0000就是-128，是一种人为设计没有什么道理可以言。</p>
+<h2 id="byte-by-byte-130-结果是多少呢"><a href="#byte-by-byte-130-结果是多少呢" class="headerlink" title="byte by = (byte)130,结果是多少呢?"></a>byte by = (byte)130,结果是多少呢?</h2><p>&emsp;&emsp;1、首先，java的正整数都会默认为int类型，所以130在强制转型之前，是int类型的数据<br>&emsp;&emsp;2、此时130的二进制码是（原码）：<br>     0000 0000 0000 0000 0000 0000 1000 0010<br>&emsp;&emsp;3、最高位是符号位，0代表正数1为负数，然而计算机运算的时候会事先将所有数据转成补码在运算<br>     而且正数的原码反码和补码都是一样，所以130的补码同样是：<br>     0000 0000 0000 0000 0000 0000 1000 0010<br>&emsp;&emsp;4、正整数的原码转成补码后，就开始强制转型了，因为byte的取值范围是 -2^7~2^7-1，所以byte类型的数据包含8个二进制位，最高一位属于正负符号位，所以不能计入取值范围<br>&emsp;&emsp;5、我们将int类型数强转为byte类型，就是直接把上面的二进制码超出第八位的所有数字都砍掉，因此，我们获得了强转之后的补码1000 0010<br>&emsp;&emsp;6、如果要获得这个补码的真实结果，我们还需要把它转化成原码，再计算它的十进制数值：<br>&emsp;&emsp;1000 0010的反码是：（所有位数减一，最高符号位不变）<br>&emsp;&emsp;1000 0001<br>&emsp;&emsp;以上反码的原码是：（所有位数取反，符号位不变）<br>&emsp;&emsp;1111 1110<br>&emsp;&emsp;根据以上原码计算二进制：<br>&emsp;&emsp;首位是1，是一个负数，得出结果为 -126</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/18/DDL%E5%92%8CDML%E8%AF%AD%E5%8F%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/18/DDL%E5%92%8CDML%E8%AF%AD%E5%8F%A5/" itemprop="url">DDL和DML语句</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-18T22:08:14+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Transaction Control:事务控制,COMMIT、ROLLBACK、SAVEPOINT等</p>
+<p>1.SQL语句主要可以划分为以下几类：<br>&emsp;&emsp;DDL(Data Definition Language):数据定义语言，定义对数据库对象(库、表、列、索引)的操作。CREATE、DROP、ALTER、RENAME、 TRUNCATE等<br>&emsp;&emsp;DML(Data Manipulation Language): 数据操作语言，定义对数据库记录的操作。INSERT、DELETE、UPDATE<br>&emsp;&emsp;DCL(Data Control Language): 数据控制语言，定义对数据库、表、字段、用户的访问权限和安全级别。GRANT、REVOKE等</p>
+<p>2.在数据库系统中，SQL语句不区分大小写(建议用大写) 。但字符串常量区分大小写。SQL语句可单行或多行书写，以“;”结尾。</p>
+<p>– 字符串常量(数据)区分大小写<br>SELECT * FROM Dba_Users;<br>SELECT * FROM Dba_Users WHERE username=’J1510’;<br>SELECT * FROM Dba_Users WHERE username=’j1510’;</p>
+<h2 id="常用的数据类型"><a href="#常用的数据类型" class="headerlink" title="常用的数据类型"></a>常用的数据类型</h2><p>数值型：int  number<br>字符型：<br>char：固定长度字符。CHAR(8),存入“jack”，数据库开辟8个字节的空间存储数据。速度快<br>varchar：可变长度。varchar(8),存入“jack”，数据库开辟4个字节的空间存储数据。节省空间<br>varchar2：可变长度。oracle不建议存储空字符，建议存储null，为了oracle的兼容性，推荐使用。<br>日期型：date</p>
+<h2 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h2><p>创建  表  表名(<br>列名[字段]  列类型(长度),<br>列名  列类型(长度),<br>列名  列类型(长度)<br>);</p>
+<p>CREATE TABLE tb_user(<br>NAME VARCHAR2(18),<br>sex CHAR(3),<br>age INT<br>);<br>注意：列和列之间用”,”隔开，最后一个列不需要”,”</p>
+<p>– 查询表<br>– 查询 所有列 从  表名 (命令语言，编程语言)<br>SELECT * FROM tb_user;</p>
+<p>– 修改  Alter<br>– 增加两个字段address,phone<br>– 修改 表  表名  add （列 类型[长度],列 类型[长度]）<br>ALTER TABLE tb_user ADD(address VARCHAR2(100),phone VARCHAR2(21));</p>
+<p>– 删除字段<br>– 修改 表  表名  DROP （列）<br>ALTER TABLE tb_user DROP (address,phone);</p>
+<p>– 修改字段的长度<br>– 修改 表  表名  MODIFY （列 类型[长度]）<br>ALTER TABLE tb_user MODIFY (address VARCHAR2(200));</p>
+<p>– 修改列名<br>– 修改 表  表名  RENAME COLUMN 旧列名 to  新列名<br>ALTER TABLE tb_user RENAME COLUMN phone TO iphone6s;</p>
+<p>– 修改表名<br>– 改名  旧表名 to  新表名<br>RENAME tb_user TO tb_student;<br>RENAME tb_student TO tb_user;</p>
+<p>– 删除表<br>– 删除  表  表名<br>– 注意：drop 会删除表结构和表所有数据，并且不能恢复，慎用<br>DROP TABLE tb_user;</p>
+<p>– 注释  简单了解<br>– 注释  on 表  表名  is  ‘自己的注释’<br>COMMENT  on table tb_user is ‘用户表’;<br>COMMENT  on column tb_user.name is ‘姓名’;</p>
+<p>–  用户.表名[对象名]<br>– 默认查询当前用户的表<br>SELECT * FROM tb_user;<br>SELECT * FROM j1510.tb_user;<br>SELECT * FROM scott.emp;</p>
+<p>– 数据字典分类<br>– dba:所有<br>– ALL:用户所能访问的所有对象<br>– user:当前用户<br>SELECT * FROM user_tables;<br>SELECT * FROM all_tables;<br>SELECT * FROM dba_tables;</p>
+<p>– 查询scott用户的dept表，前提是有查询scott表的权限<br>SELECT * FROM scott.dept;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/18/oracle%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%92%8C%E8%A1%A8%E7%A9%BA%E9%97%B4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="逍遥阁">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/18/oracle%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%92%8C%E8%A1%A8%E7%A9%BA%E9%97%B4/" itemprop="url">oracle创建用户和表空间</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-18T21:47:26+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Oracle是通过用户去管理数据。<br>我们要存储数据,必须先建表空间，再建用户，再建对象(表、索引、视图……)</p>
+<ol>
+<li>建议做自己的数据用自己的用户。不要使用System等系统用户。</li>
+<li>用户一定要使用表空间。</li>
+</ol>
+<h2 id="建表空间"><a href="#建表空间" class="headerlink" title="建表空间"></a>建表空间</h2><p>表空间： 映射数据实际存储位置，建议一个用户使用一个表空间</p>
+<p>格式：<br>创建 表空间 表空间名称<br>数据文件保存路径、<br>大小<br>自动扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLESPACE j1510</span><br><span class="line">DATAFILE &#39;C:\oracle\product\10.2.0\oradata\orcl\j1510.dbf&#39; SIZE 20M </span><br><span class="line">AUTOEXTEND ON;</span><br></pre></td></tr></table></figure>
+<p>注意：表空间名称j1510，执行成功后在路径下会有一个j1510.dbf文件产生。C:\oracle\product\10.2.0\oradata\orcl是Oracle安装路径。</p>
+<p>–删除表空间同时删除表空间的所在的物理文件</p>
+<blockquote>
+<p>DROP TABLESPACE j1510 INCLUDING CONTENTS AND DATAFILES;</p>
+</blockquote>
+<p>–严重注意: 千万不要手动去删除文件夹下面的dbf文件</p>
+<p>–数据字典查询所有表空间<br>select * from DBA_TABLESPACES;<br>–查询所有数据文件<br>select * from DBA_DATA_FILES;</p>
+<h2 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h2><p>create user j1510    –创建  用户  用户名<br>  identified by j1510   –密码  密码字符<br>  default tablespace j1510   –默认表空间  表空间名<br>  temporary tablespace TEMP;  –临时表空间  表空间名</p>
+<p>–删除用户,注意：drop会删除用户的所有表和表数据，表空间还存在。<br> drop user j1510;</p>
+<p>–数据字典，查询所有用户。<br> select * from dba_users;</p>
+<p>–oracle创建数据库会默认创建一个测试用户scott,密码tiger，这个用户默认是锁定</p>
+<p>ALTER USER j1510 ACCOUNT LOCK;  –加锁<br>ALTER USER j1510 ACCOUNT UNLOCK;–解锁</p>
+<p>– 赋予连接权限给j1506用户<br>GRANT CONNECT TO j1510;<br>– 赋予连接权限给j1506用户，j1506可以将该权限再赋给另一个用户<br>grant connect to j1510 with admin option;<br>– 角色  （一般直接赋予角色权限）<br>grant DBA to j1510 with admin option;</p>
+<p>– 收回权限<br>REVOKE CONNECT FROM j1510;</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -934,180 +2863,13 @@ invalidate() 强制让会话失效。</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/01/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="逍遥阁">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/01/Web%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">Web应用程序与Web服务器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-01T15:55:54+08:00">
-                2019-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaWeb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、web应用程序"><a href="#一、web应用程序" class="headerlink" title="一、web应用程序"></a>一、web应用程序</h2><p>&emsp;&emsp;应用程序可以基于2种不同的模式下开发，一种是CS架构，一种是BS架构。CS架构就是Client/Server，用户必须装客户端程序才能使用，Office，WPS,QQ就是基于CS架构的应用，也叫桌面应用程序。BS架构就是Browser/Server,用户只要有浏览器就行。像淘宝，京东，微博等的就是基于BS架构的应用程序，也叫web应用程序。</p>
-<h2 id="二、应用程序优缺点"><a href="#二、应用程序优缺点" class="headerlink" title="二、应用程序优缺点"></a>二、应用程序优缺点</h2><h3 id="C-S架构"><a href="#C-S架构" class="headerlink" title="C/S架构"></a>C/S架构</h3><p>优点:                         </p>
-<blockquote>
-<p>1.交互性强。<br>2.具有安全的存取模式。<br>3.网络通信量低。<br>4.响应速度快。<br>5.利于处理大量数据。</p>
-</blockquote>
-<p>缺点:</p>
-<blockquote>
-<p>1.需要专门的客户端安装程序。<br>2.兼容性差。<br>3.开发、维护成本较高。<br>4.用户群固定。</p>
-</blockquote>
-<h3 id="B-S架构"><a href="#B-S架构" class="headerlink" title="B/S架构"></a>B/S架构</h3><p>优点:                         </p>
-<blockquote>
-<p>1.只要有网络、有浏览器就行。<br>2.业务扩展简单方便，通过增加网页即可增加服务器功能。<br>3.维护简单方便。<br>4.开发简单，共享性强。</p>
-</blockquote>
-<p>缺点:</p>
-<blockquote>
-<p>1.无法实现具有个性化的功能要求。<br>2.不同的浏览器可能体验不同。<br>3.客户端服务器端的交互是请求-响应模式，通常动态刷新页面，响应速度明显降低<br>4.在速度和安全性上需要花费巨大的设计成本。</p>
-</blockquote>
-<h2 id="三、Web应用程序开发的相关知识"><a href="#三、Web应用程序开发的相关知识" class="headerlink" title="三、Web应用程序开发的相关知识"></a>三、Web应用程序开发的相关知识</h2><p>&emsp;&emsp;Web表示是网页，它是Internet上供外界访问的资源。Web资源分为静态web资源和动态web资源，也称静态网页和动态网页。像servlet/jsp可用来做动态网页</p>
-<p>&emsp;&emsp;JavaWeb就是用Java技术来解决相关web互联网领域的技术总和。</p>
-<p>&emsp;&emsp;http协议：HTTP是HyperText Transfer Protocal(超文本传输协议)的简写，它是TCP/IP协议的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的规则。</p>
-<p>&emsp;&emsp;Servlet：Servlet是sun公司提供的一门用于开发动态web资源的技术，同时它也是JSP技术的底层运行基础。Servlet是平台独立的Java类，编写一个Servlet，实际上就是按照Servlet规范编写一个Java类。一句话，Servlet是一个Java类。</p>
-<h2 id="四、Web服务器"><a href="#四、Web服务器" class="headerlink" title="四、Web服务器"></a>四、Web服务器</h2><h3 id="浏览器与服务器之间的交互示意图"><a href="#浏览器与服务器之间的交互示意图" class="headerlink" title="浏览器与服务器之间的交互示意图"></a>浏览器与服务器之间的交互示意图</h3><pre><code>             请求              解析请求消息
-浏览器  -----------&gt;  服务器  -------------&gt; 接收并处理请求（servlet）
-       &lt;-----------             &lt;-------------
-       返回消息             生成响应消息</code></pre><p>&emsp;&emsp;服务器是一个程序，用来接收用户的请求，获取用户传递的参数，将数据以及页面资源返回给用户。只有当Internet上运行在其他计算机中的浏览器发出请求时，服务器才会响应。</p>
-<blockquote>
-<p>HTTP协议传输数据时会自动将用户数据打成一个http数据包，发送到服务器，服务器根据http协议将数据包解开，获取数据，做相应的处理，并将处理结果再次打成http数据包返回客户端，浏览器解开http数据包，显示数据。</p>
-</blockquote>
-<p>&emsp;&emsp;JavaWeb服务器是一个不完整的JavaEE服务器，JAVA EE服务器完全实现JAVA EE标准。JavaWEB服务器主要是包含了Servlet/JSP、JNDI等基本规范的实现。开发中常用的服务器有：Tomcat、Resin、Jetty。</p>
-<p>&emsp;&emsp;Servlet容器（Tomcat）主要为JavaWeb应用提供运行时环境，所以也可以称为JavaWeb应用容器，或者Servlet/JSP容器。Servlet容器主要负责管Servlet、JSP的生命周期以及它们的共享数据。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1155,7 +2917,7 @@ invalidate() 强制让会话失效。</code></pre></li>
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1166,7 +2928,7 @@ invalidate() 强制让会话失效。</code></pre></li>
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1177,7 +2939,7 @@ invalidate() 强制让会话失效。</code></pre></li>
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
