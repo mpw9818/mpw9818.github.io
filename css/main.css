@@ -1215,23 +1215,6 @@ pre .javascript .function {
 .use-motion .menu-item {
   opacity: 0;
 }
-.page-post-detail .post-title {
-  font-size: 26px;
-  text-align: center;
-  word-break: break-word;
-  font-weight: 400;
-  background-color: #b9d3ee;
-  border-radius: 0.3em;
-  line-height: 1em;
-  padding-bottom: 0.12em;
-  padding-top: 0.12em;
-  box-shadow: 2px 2px 7px #9fb6cd;
-}
-@media (max-width: 767px) {
-  .page-post-detail .post-title {
-    font-size: 22px;
-  }
-}
 .post-body {
   font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
 }
@@ -1672,6 +1655,23 @@ pre .javascript .function {
 .rtl.post-title {
   font-family: UKIJ Ekran;
 }
+.page-post-detail .post-title {
+  font-size: 26px;
+  text-align: center;
+  word-break: break-word;
+  font-weight: 400;
+  background-color: #b9d3ee;
+  border-radius: 0.3em;
+  line-height: 1em;
+  padding-bottom: 0.12em;
+  padding-top: 0.12em;
+  box-shadow: 2px 2px 7px #9fb6cd;
+}
+@media (max-width: 767px) {
+  .page-post-detail .post-title {
+    font-size: 22px;
+  }
+}
 .sidebar {
   position: fixed;
   right: 0;
@@ -1845,7 +1845,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c92571;
+  background: #ffd50b;
 }
 .links-of-blogroll {
   font-size: 13px;
