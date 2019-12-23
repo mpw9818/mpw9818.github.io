@@ -29,31 +29,6 @@
     
     
     <entry>
-      <title>java基础面试题</title>
-      <link href="/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-      <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-      
-        <content type="html"><![CDATA[<pre><code>第一题：哪句是编译失败的呢？为什么呢？ byte b1=3,b2=4,b; b=b1+b2;//出错,因为在JAVA虚拟机中默认是int类型转换，虚拟机不知道b1，b2 中的数值到底是多少，所有会抛出可能损失精度的错误;    //虚拟机会把  b1,b2  转换成 int类型在进行运算，两个int类型的数值相加结果任然是int类型，int类型 不能赋值给 byte类型b=3+4;//没有错，java虚拟机会计算出结果7然后赋值给b.第二题：byte by = 130;有没有问题?有问题如何解决?结果是多少呢?  byte 的数值范围是 -128~127  130已经超出byte取值范围 运算是会砍掉前面的 三个8位，结果会变成-126，详细计算过程看原码补码反码那篇。第三题:哪句是编译失败的呢？为什么呢？byte b = 10;//没有错，检查右边没有超过byte的范围（-128到127）b = b + 1;//出错,这句java虚拟机会把，b转换成int类型 相当于  int b + int 类型的1 然后赋值给Byte类型 int是4个字节  byte是1个字节 所有会抛出损失精度.b++;//这句java虚拟机会做一个自动转换动作  相当于  b=(byte)(b+1)所以不会报错b+=1;//同上，如果b是127， 那么加1后变成128了，成了int类型了，超过了byte类型的最大范围了，系统会强转，把int类型的 前面三个高位丢弃，丢弃后，如果剩下的一位中，最高位为1，则取反然后加1，就成了负数了，如果最高位为0，直接把值赋给b 。</code></pre><p><font color='red'>++,–,+=,-=运算，系统会做一个自动转换动作</font></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见的算术运算符有哪些?  <span class="comment">// + - * / % ++ -- += -= *= /= </span></span><br><span class="line">+运算符的作用有哪些?<span class="comment">// 连接符号（当字符串在前面时 必须作为连接符来使用） 算数运算符  </span></span><br><span class="line">答:正号,字符串连接符号,算术运算符</span><br><span class="line">除法和取余的区别? <span class="comment">//  / 除法是求商   % 求余数</span></span><br><span class="line">++和--的使用规则?<span class="comment">//  a++ 先赋值在运算，  ++a  先运算  再赋值</span></span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常见的关系运算符有哪些?</span><br><span class="line">答:  ==  &gt; &lt; &lt;= &gt;= !=</span><br><span class="line">关系运算符的结果有什么特点?</span><br><span class="line">答：输出的结果是<span class="keyword">boolean</span>类型, 要么为 <span class="keyword">true</span>, 要么为 <span class="keyword">false</span>.</span><br></pre></td></tr></table></figure><h3 id="基本数据类型的值传递"><a href="#基本数据类型的值传递" class="headerlink" title="基本数据类型的值传递"></a>基本数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/db7GC36IAwOsVS9.png" alt="" title="基本数据类型的值传递"></p><h3 id="引用数据类型的值传递"><a href="#引用数据类型的值传递" class="headerlink" title="引用数据类型的值传递"></a>引用数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/9qhLmIoZ2xHWaAQ.png" alt="" title="引用数据类型的值传递"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> java基础面试题 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 面试题 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>代码块&amp;继承&amp;方法重写</title>
       <link href="/2019/12/21/%E4%BB%A3%E7%A0%81%E5%9D%97&amp;%E7%BB%A7%E6%89%BF&amp;%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/"/>
       <url>/2019/12/21/%E4%BB%A3%E7%A0%81%E5%9D%97&amp;%E7%BB%A7%E6%89%BF&amp;%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99/</url>
@@ -71,6 +46,31 @@
         <tags>
             
             <tag> java语法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>java基础面试题</title>
+      <link href="/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+      <url>/2019/12/21/java%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<pre><code>第一题：哪句是编译失败的呢？为什么呢？ byte b1=3,b2=4,b; b=b1+b2;//出错,因为在JAVA虚拟机中默认是int类型转换，虚拟机不知道b1，b2 中的数值到底是多少，所有会抛出可能损失精度的错误;    //虚拟机会把  b1,b2  转换成 int类型在进行运算，两个int类型的数值相加结果任然是int类型，int类型 不能赋值给 byte类型b=3+4;//没有错，java虚拟机会计算出结果7然后赋值给b.第二题：byte by = 130;有没有问题?有问题如何解决?结果是多少呢?  byte 的数值范围是 -128~127  130已经超出byte取值范围 运算是会砍掉前面的 三个8位，结果会变成-126，详细计算过程看原码补码反码那篇。第三题:哪句是编译失败的呢？为什么呢？byte b = 10;//没有错，检查右边没有超过byte的范围（-128到127）b = b + 1;//出错,这句java虚拟机会把，b转换成int类型 相当于  int b + int 类型的1 然后赋值给Byte类型 int是4个字节  byte是1个字节 所有会抛出损失精度.b++;//这句java虚拟机会做一个自动转换动作  相当于  b=(byte)(b+1)所以不会报错b+=1;//同上，如果b是127， 那么加1后变成128了，成了int类型了，超过了byte类型的最大范围了，系统会强转，把int类型的 前面三个高位丢弃，丢弃后，如果剩下的一位中，最高位为1，则取反然后加1，就成了负数了，如果最高位为0，直接把值赋给b 。</code></pre><p><font color='red'>++,–,+=,-=运算，系统会做一个自动转换动作</font></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">常见的算术运算符有哪些?  <span class="comment">// + - * / % ++ -- += -= *= /= </span></span><br><span class="line">+运算符的作用有哪些?<span class="comment">// 连接符号（当字符串在前面时 必须作为连接符来使用） 算数运算符  </span></span><br><span class="line">答:正号,字符串连接符号,算术运算符</span><br><span class="line">除法和取余的区别? <span class="comment">//  / 除法是求商   % 求余数</span></span><br><span class="line">++和--的使用规则?<span class="comment">//  a++ 先赋值在运算，  ++a  先运算  再赋值</span></span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">常见的关系运算符有哪些?</span><br><span class="line">答:  ==  &gt; &lt; &lt;= &gt;= !=</span><br><span class="line">关系运算符的结果有什么特点?</span><br><span class="line">答：输出的结果是<span class="keyword">boolean</span>类型, 要么为 <span class="keyword">true</span>, 要么为 <span class="keyword">false</span>.</span><br></pre></td></tr></table></figure><h3 id="基本数据类型的值传递"><a href="#基本数据类型的值传递" class="headerlink" title="基本数据类型的值传递"></a>基本数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/db7GC36IAwOsVS9.png" alt="" title="基本数据类型的值传递"></p><h3 id="引用数据类型的值传递"><a href="#引用数据类型的值传递" class="headerlink" title="引用数据类型的值传递"></a>引用数据类型的值传递</h3><p><img src="https://i.loli.net/2019/12/21/9qhLmIoZ2xHWaAQ.png" alt="" title="引用数据类型的值传递"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> java基础面试题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试题 </tag>
             
         </tags>
       
