@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>反射</title>
+      <link href="/2019/12/30/%E5%8F%8D%E5%B0%84/"/>
+      <url>/2019/12/30/%E5%8F%8D%E5%B0%84/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>&emsp;&emsp;每一个对象运行时都有一个对应的Class对象。如果要用反射，必须先获取Class对象。</p><h3 id="Class的获取有三种方式"><a href="#Class的获取有三种方式" class="headerlink" title="Class的获取有三种方式"></a>Class的获取有三种方式</h3><p>&emsp;1. 已经有对象的情况，调用对象的getClass方法。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">Class&lt;?&gt; clazz = user.getClass();</span><br></pre></td></tr></table></figure><p>&emsp;2.直接 类名.class。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure><p>&emsp;3.不知道对象的情况，只知道对象的全限名字符串。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(String className)</span><br><span class="line">Class&lt;?&gt; clazz = Class.forName(<span class="string">"org.fkjava.bean.User"</span>);</span><br></pre></td></tr></table></figure><h3 id="Class重点掌握方法"><a href="#Class重点掌握方法" class="headerlink" title="Class重点掌握方法"></a>Class重点掌握方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = Class.forName(<span class="string">"org.fkjava.bean.User"</span>); <span class="comment">//根据全限名获得Class对象</span></span><br><span class="line">Object obj = clazz.newInstance();<span class="comment">//通过Class创建实例，相当于调用无参数构造器创建实例</span></span><br></pre></td></tr></table></figure><h2 id="Field-–-Class的字段信息"><a href="#Field-–-Class的字段信息" class="headerlink" title="Field – Class的字段信息"></a>Field – Class的字段信息</h2><p>Field没有构造器，只能通过Class获取</p><h3 id="重点方法"><a href="#重点方法" class="headerlink" title="重点方法"></a>重点方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">getDeclaredFields()：获得所有字段(私有和非私有都可以获取)，返回字段数组。</span><br><span class="line"></span><br><span class="line">getDeclaredField(<span class="string">"字段名"</span>)：根据字段名获得字段对象(私有和非私有都可以获取)。</span><br><span class="line"></span><br><span class="line">getFields()：获得所有字段(不能获取私有字段)，返回字段数组。</span><br><span class="line"></span><br><span class="line">getField(<span class="string">"字段名"</span>)：根据字段名获得字段对象(不能获取私有字段)</span><br><span class="line"></span><br><span class="line">getName()：获得字段名。</span><br><span class="line"></span><br><span class="line">getType()：获得字段类型。</span><br><span class="line"></span><br><span class="line">set(Object obj, Object value)：给字段赋值的方法，value表示字段要赋的值，obj表示字段的对象。</span><br><span class="line"></span><br><span class="line">get(Object obj)：从字段上取值的方法。obj表示字段的对象。</span><br><span class="line"></span><br><span class="line">isAccessible()：判断是否进行安全检查，可访问返回<span class="keyword">true</span>，不可访问返回<span class="keyword">false</span>。</span><br><span class="line"></span><br><span class="line">setAccessible(<span class="keyword">true</span>)：设置是否进行安全检查，值为 <span class="keyword">true</span> 则指示反射的对象在使用时应该取消 Java 语言访问检查。值为 <span class="keyword">false</span> 则指示反射的对象应该实施 Java 语言访问检查。</span><br></pre></td></tr></table></figure><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> reflect获取<span class="class"><span class="keyword">class</span>类型的常用方式</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javaApp.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"><span class="comment">// 创建User对象</span></span><br><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取对象的class类型</span></span><br><span class="line">Class&lt;?&gt; clazz = user.getClass();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取类中声明的所有的字段，不能获取私有的字段</span></span><br><span class="line">Field[] fields = clazz.getFields();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据字段名字获取字段对象</span></span><br><span class="line"><span class="comment">//Field field = clazz.getField("id");</span></span><br><span class="line"><span class="comment">//System.out.println("字段名："+field.getName()+"type:"+field.getType()+"modifiers"+field.getModifiers());</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//获取所有的字段信息 </span></span><br><span class="line">Field[] declardFields= clazz.getDeclaredFields();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据字段名字获取字段对象,可以获取私有的字段</span></span><br><span class="line">Field field2 = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取类中生命的所有的方法，不能获取私有的方法</span></span><br><span class="line">Method[] method= clazz.getMethods();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据方法名字获取方法,不能获取私有的方法</span></span><br><span class="line">Method method2 = clazz.getMethod(<span class="string">"getId"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取所有的方法，可以获取私有的方法，但方法一般都不会去私有</span></span><br><span class="line">Method [] method3 = clazz.getDeclaredMethods();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据方法名字获取方法，可以获取私有的方法</span></span><br><span class="line">Method method4 = clazz.getDeclaredMethod(<span class="string">"setId"</span>,<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//利用反射技术调用user对象的setId()方法</span></span><br><span class="line">        method4.invoke(user, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//利用反射技术调用user对象的getId()方法</span></span><br><span class="line">        method2.invoke(user);</span><br><span class="line"> System.out.println(<span class="string">"id:"</span>+method2.invoke(user));</span><br><span class="line"> </span><br><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment"> 当字段是public修饰时，可以用以下方法,</span></span><br><span class="line"><span class="comment"> 私有的直接这样做会发生异常，java.lang.IllegalAccessException</span></span><br><span class="line"><span class="comment"> 可以通过field.setAccessible(true) 取消安全检查解决，这样做会破坏java的封装性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//account字段是public的，</span></span><br><span class="line"> Field field3 = clazz.getField(<span class="string">"account"</span>);</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//给user对象的account属性赋值</span></span><br><span class="line"> field3.set(user,<span class="string">"jack"</span>);</span><br><span class="line"> <span class="comment">//取值</span></span><br><span class="line"> field3.get(user);</span><br><span class="line"> System.out.println(<span class="string">"account:"</span>+field3.get(user));</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="Method-–-Class的方法"><a href="#Method-–-Class的方法" class="headerlink" title="Method – Class的方法"></a>Method – Class的方法</h2><p>Method没有构造器，只能通过Class获取。</p><h3 id="重点方法-1"><a href="#重点方法-1" class="headerlink" title="重点方法"></a>重点方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getDeclaredMethods()：获取所有方法。</span><br><span class="line"></span><br><span class="line">getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)：根据方法名获取方法，name是方法名，parameterTypes是可变参数，表示方法所需要的参数。</span><br><span class="line"></span><br><span class="line">invoke(Object obj,  Object... args)：调用方法，obj表示调用方法的对象，args是可变参数，表示调用该方法需要传递的参数。</span><br><span class="line"></span><br><span class="line">getName()：获得方法名。</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> javaWeb </category>
+          
+          <category> java高级技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 反射 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>模拟Tomcat解析xml文件</title>
       <link href="/2019/12/28/%E6%A8%A1%E6%8B%9FTomcat%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/"/>
       <url>/2019/12/28/%E6%A8%A1%E6%8B%9FTomcat%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/</url>
@@ -279,31 +306,6 @@
     
     
     <entry>
-      <title>Tomcat服务器和eclipse部署Web应用</title>
-      <link href="/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/"/>
-      <url>/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、下载和安装Tomcat"><a href="#一、下载和安装Tomcat" class="headerlink" title="一、下载和安装Tomcat"></a>一、下载和安装Tomcat</h2><p>&emsp;&emsp;官方站点：<a href="http://tomcat.apache.org/index.html" target="_blank" rel="noopener">http://tomcat.apache.org/index.html</a> 获取Tomcat安装程序包.</p><p>&emsp;&emsp;tar.gz文件是Linux操作系统下的压缩版本，解压到一个非中文、无空格目录即可。zip文件也是压缩版本，可用于Linux和Windows，解压到一个非中文、无空格目录即可。exe文件是Windows系统下的安装版本，双击运行按照向导进行安装。无论是解压还是安装的，都需要配置JAVA_HOME环境变量，该变量的值是JDK的安装目录</p><h3 id="Tomcat目录结构："><a href="#Tomcat目录结构：" class="headerlink" title="Tomcat目录结构："></a>Tomcat目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/zl1KSnZYO8PHJyo.png" alt="" title="tomcat目录结构"></p><h2 id="二、eclipse下部署Web应用"><a href="#二、eclipse下部署Web应用" class="headerlink" title="二、eclipse下部署Web应用"></a>二、eclipse下部署Web应用</h2><p>步骤：<br>&emsp;&emsp;1.创建Runtime：开发WEB应用之前，必须要创建一个Runtime。Runtime并不是JRE，而是指WEB应用在开发的时候使用的应用服务器（如Tomcat等）。<br>&emsp;&emsp;操作流程：Window——&gt;Preferences——&gt;Server——&gt;Runtime Environment ，Add对应的Tomcat版本，next， 将Tomcat的安装根路径加进来，选上自己的jdk版本，然后Finish完成。</p><p>&emsp;&emsp;2.创建Server：创建了Runtime，只是说明开发时使用的WEB应用运行时环境。在这个环境的基础上，eclipse要托管服务器，才能真正在eclipse里面集成开发。eclipse底下的server窗口将Tomcat托管上。</p><p>&emsp;&emsp;3.创建web项目：File——&gt;New——&gt;Dynamic Web Object,</p><p><img src="https://i.loli.net/2019/12/02/oQpvJDX6x8lF5C7.png" alt="" title="创建web项目"></p><p>&emsp;&emsp;4.部署WEB应用:<br>&emsp;<img src="https://i.loli.net/2019/12/02/TjsVe1LUWa6DP2I.png" alt="" title="部署WEB应用"><br>&emsp;<img src="https://i.loli.net/2019/12/02/n4TjLsMKaF9812q.png" alt="" title="部署WEB应用过程成功"><br><br><br>&emsp;&emsp;5.运行WEB应用：项目run on server<br><br></p><h3 id="web工程目录结构："><a href="#web工程目录结构：" class="headerlink" title="web工程目录结构："></a>web工程目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/RIpTjkMYF9hAPlv.png" alt="" title="web工程目录结构"></p><h3 id="部署war包到Tomcat"><a href="#部署war包到Tomcat" class="headerlink" title="部署war包到Tomcat"></a>部署war包到Tomcat</h3><p>&emsp;&emsp;war文件：war表示一个WEB应用压缩包。是一个可直接运行的web模块，通常用于网站，将其打成包部署到容器中。以Tomcat来说，将war包放在其\webapps\目录下，然后启动Tomcat，这个包就自动解压，相当于发布项目。直接可以用eclipse导出war file<br>&emsp;&emsp;1.一般是开发打war包给测试，比如说现在测试拿到一个war包，名字叫Servlet01.war。<br>&emsp;&emsp;2.打开Tomcat的安装路径，假设是“D:\Tomcat\apache-tomcat-7.0.68”，进入到其webapps文件夹中，把 Servlet01.war放到 webapps文件夹。<br>&emsp;&emsp;3.启动Tomcat。（双击Tomcat-bin-startup.bat）<br>&emsp;&emsp;4.在浏览器输入“http:localhost:tomcat_port/Servlet01即可打开Servlet01项目的 index.html页面（port是tomcat的端口号）。如果Servlet01项目没有index.html页面，那就需要打开其他相应的页面。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> javaWeb </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Web </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Cookie详细笔记</title>
       <link href="/2019/12/02/Cookie%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/12/02/Cookie%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/</url>
@@ -321,6 +323,31 @@
         <tags>
             
             <tag> Cookie </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Tomcat服务器和eclipse部署Web应用</title>
+      <link href="/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/"/>
+      <url>/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、下载和安装Tomcat"><a href="#一、下载和安装Tomcat" class="headerlink" title="一、下载和安装Tomcat"></a>一、下载和安装Tomcat</h2><p>&emsp;&emsp;官方站点：<a href="http://tomcat.apache.org/index.html" target="_blank" rel="noopener">http://tomcat.apache.org/index.html</a> 获取Tomcat安装程序包.</p><p>&emsp;&emsp;tar.gz文件是Linux操作系统下的压缩版本，解压到一个非中文、无空格目录即可。zip文件也是压缩版本，可用于Linux和Windows，解压到一个非中文、无空格目录即可。exe文件是Windows系统下的安装版本，双击运行按照向导进行安装。无论是解压还是安装的，都需要配置JAVA_HOME环境变量，该变量的值是JDK的安装目录</p><h3 id="Tomcat目录结构："><a href="#Tomcat目录结构：" class="headerlink" title="Tomcat目录结构："></a>Tomcat目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/zl1KSnZYO8PHJyo.png" alt="" title="tomcat目录结构"></p><h2 id="二、eclipse下部署Web应用"><a href="#二、eclipse下部署Web应用" class="headerlink" title="二、eclipse下部署Web应用"></a>二、eclipse下部署Web应用</h2><p>步骤：<br>&emsp;&emsp;1.创建Runtime：开发WEB应用之前，必须要创建一个Runtime。Runtime并不是JRE，而是指WEB应用在开发的时候使用的应用服务器（如Tomcat等）。<br>&emsp;&emsp;操作流程：Window——&gt;Preferences——&gt;Server——&gt;Runtime Environment ，Add对应的Tomcat版本，next， 将Tomcat的安装根路径加进来，选上自己的jdk版本，然后Finish完成。</p><p>&emsp;&emsp;2.创建Server：创建了Runtime，只是说明开发时使用的WEB应用运行时环境。在这个环境的基础上，eclipse要托管服务器，才能真正在eclipse里面集成开发。eclipse底下的server窗口将Tomcat托管上。</p><p>&emsp;&emsp;3.创建web项目：File——&gt;New——&gt;Dynamic Web Object,</p><p><img src="https://i.loli.net/2019/12/02/oQpvJDX6x8lF5C7.png" alt="" title="创建web项目"></p><p>&emsp;&emsp;4.部署WEB应用:<br>&emsp;<img src="https://i.loli.net/2019/12/02/TjsVe1LUWa6DP2I.png" alt="" title="部署WEB应用"><br>&emsp;<img src="https://i.loli.net/2019/12/02/n4TjLsMKaF9812q.png" alt="" title="部署WEB应用过程成功"><br><br><br>&emsp;&emsp;5.运行WEB应用：项目run on server<br><br></p><h3 id="web工程目录结构："><a href="#web工程目录结构：" class="headerlink" title="web工程目录结构："></a>web工程目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/RIpTjkMYF9hAPlv.png" alt="" title="web工程目录结构"></p><h3 id="部署war包到Tomcat"><a href="#部署war包到Tomcat" class="headerlink" title="部署war包到Tomcat"></a>部署war包到Tomcat</h3><p>&emsp;&emsp;war文件：war表示一个WEB应用压缩包。是一个可直接运行的web模块，通常用于网站，将其打成包部署到容器中。以Tomcat来说，将war包放在其\webapps\目录下，然后启动Tomcat，这个包就自动解压，相当于发布项目。直接可以用eclipse导出war file<br>&emsp;&emsp;1.一般是开发打war包给测试，比如说现在测试拿到一个war包，名字叫Servlet01.war。<br>&emsp;&emsp;2.打开Tomcat的安装路径，假设是“D:\Tomcat\apache-tomcat-7.0.68”，进入到其webapps文件夹中，把 Servlet01.war放到 webapps文件夹。<br>&emsp;&emsp;3.启动Tomcat。（双击Tomcat-bin-startup.bat）<br>&emsp;&emsp;4.在浏览器输入“http:localhost:tomcat_port/Servlet01即可打开Servlet01项目的 index.html页面（port是tomcat的端口号）。如果Servlet01项目没有index.html页面，那就需要打开其他相应的页面。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javaWeb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
             
         </tags>
       
