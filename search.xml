@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>代理</title>
+      <link href="/2019/12/30/%E4%BB%A3%E7%90%86/"/>
+      <url>/2019/12/30/%E4%BB%A3%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h3 id="代理类型"><a href="#代理类型" class="headerlink" title="代理类型"></a>代理类型</h3><p>&emsp;Java的代理分为静态代理和动态代理。Java的代理都是基于接口实现的。</p><pre><code>静态代理的局限性：只能代理某一类型接口的实例。不能代理任意接口任意方法的操作。动态代理灵活性很大，在任意时候任意地方都可以使用代理功能，前提是该对象有接口。</code></pre><p>&emsp;Java 动态代理机制的出现，使得 Java 开发人员不用手工编写代理类，只要简单地指定一组接口及委托类对象，便能动态地获得代理类。代理类会负责将所有的方法调用分派到委托对象上反射执行，在分派执行的过程中，开发人员还可以按需调整委托类对象及其功能，这是一套非常灵活有弹性的代理框架。</p><p>1.要了解 Java 动态代理的机制，首先需要了解以下相关的类或接口：</p><p>&emsp;java.lang.reflect.Proxy：这是 Java 动态代理机制的主类，它提供了一组静态方法来为一组接口动态地生成代理类及其对象。</p><p>重点方法:该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> Object <span class="title">newProxyInstance</span><span class="params">(ClassLoader loader, Class[] interfaces, InvocationHandler h)</span></span></span><br></pre></td></tr></table></figure><p>java.lang.reflect.InvocationHandler：这是调用处理器接口，它自定义了一个 invoke 方法，用于集中处理在动态代理类对象上的方法调用，通常在该方法中实现对委托类的代理访问。</p><h3 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h3><p>InvocationHandler():该方法用于为指定类装载器、一组接口及调用处理器生成动态代理类实例。该方法负责集中处理动态代理类上的所有方法调用。第一个参数既是代理类实例，第二个参数是被调用的方法对象 第三个参数是调用参数。调用处理器根据这三个参数进行预处理或分派到委托类实例上发射执行。</p><p>###代码实现动态代理<br>Test类：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.静态代理;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.动态代理.DynamicMapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span>  </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建被代理对象</span></span><br><span class="line">StudentMapper sm = <span class="keyword">new</span> StudentMapper();</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建被代理对象</span></span><br><span class="line">UserMapper um = <span class="keyword">new</span> UserMapper();</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建代理对象</span></span><br><span class="line">DynamicMapper staticMapper = <span class="keyword">new</span> DynamicMapper();</span><br><span class="line"></span><br><span class="line"><span class="comment">//代理对象不能转成被代理对象，接收的时候，必须用实现的接口进行接收</span></span><br><span class="line">IMapper im = (IMapper) staticMapper.bindObj(sm);</span><br><span class="line"></span><br><span class="line">String val = im.eat(<span class="string">"abc"</span>);</span><br><span class="line">System.out.println(<span class="string">"val:"</span>+val);</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>DynamicMapper类：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.动态代理;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DynamicMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 提供方法为被代理对象进行动然代理，代理完成之后 需要将别代理对象返回</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">bindObj</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> Proxy.newProxyInstance(obj.getClass().getClassLoader(), obj.getClass().getInterfaces(),</span><br><span class="line"><span class="keyword">new</span> InvocationHandler() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"====做饭==="</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//回调被代理 对象的业务逻辑，args:目标方法参数信息  result：目标方法返回值</span></span><br><span class="line">Object result = method.invoke(obj,args);</span><br><span class="line"> </span><br><span class="line">System.out.println(<span class="string">"===收拾==="</span>);</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>StudentMapper类：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.静态代理;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentMapper</span> <span class="keyword">implements</span> <span class="title">IMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">eat</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"===StudentMapper===="</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="string">"StudentMapper--eat"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>IMapper接口：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.静态代理;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">eat</span><span class="params">(String name)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> javaWeb </category>
+          
+          <category> java高级技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 代理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>注解--Annotation</title>
       <link href="/2019/12/30/%E6%B3%A8%E8%A7%A3-Annotation/"/>
       <url>/2019/12/30/%E6%B3%A8%E8%A7%A3-Annotation/</url>
@@ -360,31 +387,6 @@
     
     
     <entry>
-      <title>Tomcat服务器和eclipse部署Web应用</title>
-      <link href="/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/"/>
-      <url>/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/</url>
-      
-        <content type="html"><![CDATA[<h2 id="一、下载和安装Tomcat"><a href="#一、下载和安装Tomcat" class="headerlink" title="一、下载和安装Tomcat"></a>一、下载和安装Tomcat</h2><p>&emsp;&emsp;官方站点：<a href="http://tomcat.apache.org/index.html" target="_blank" rel="noopener">http://tomcat.apache.org/index.html</a> 获取Tomcat安装程序包.</p><p>&emsp;&emsp;tar.gz文件是Linux操作系统下的压缩版本，解压到一个非中文、无空格目录即可。zip文件也是压缩版本，可用于Linux和Windows，解压到一个非中文、无空格目录即可。exe文件是Windows系统下的安装版本，双击运行按照向导进行安装。无论是解压还是安装的，都需要配置JAVA_HOME环境变量，该变量的值是JDK的安装目录</p><h3 id="Tomcat目录结构："><a href="#Tomcat目录结构：" class="headerlink" title="Tomcat目录结构："></a>Tomcat目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/zl1KSnZYO8PHJyo.png" alt="" title="tomcat目录结构"></p><h2 id="二、eclipse下部署Web应用"><a href="#二、eclipse下部署Web应用" class="headerlink" title="二、eclipse下部署Web应用"></a>二、eclipse下部署Web应用</h2><p>步骤：<br>&emsp;&emsp;1.创建Runtime：开发WEB应用之前，必须要创建一个Runtime。Runtime并不是JRE，而是指WEB应用在开发的时候使用的应用服务器（如Tomcat等）。<br>&emsp;&emsp;操作流程：Window——&gt;Preferences——&gt;Server——&gt;Runtime Environment ，Add对应的Tomcat版本，next， 将Tomcat的安装根路径加进来，选上自己的jdk版本，然后Finish完成。</p><p>&emsp;&emsp;2.创建Server：创建了Runtime，只是说明开发时使用的WEB应用运行时环境。在这个环境的基础上，eclipse要托管服务器，才能真正在eclipse里面集成开发。eclipse底下的server窗口将Tomcat托管上。</p><p>&emsp;&emsp;3.创建web项目：File——&gt;New——&gt;Dynamic Web Object,</p><p><img src="https://i.loli.net/2019/12/02/oQpvJDX6x8lF5C7.png" alt="" title="创建web项目"></p><p>&emsp;&emsp;4.部署WEB应用:<br>&emsp;<img src="https://i.loli.net/2019/12/02/TjsVe1LUWa6DP2I.png" alt="" title="部署WEB应用"><br>&emsp;<img src="https://i.loli.net/2019/12/02/n4TjLsMKaF9812q.png" alt="" title="部署WEB应用过程成功"><br><br><br>&emsp;&emsp;5.运行WEB应用：项目run on server<br><br></p><h3 id="web工程目录结构："><a href="#web工程目录结构：" class="headerlink" title="web工程目录结构："></a>web工程目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/RIpTjkMYF9hAPlv.png" alt="" title="web工程目录结构"></p><h3 id="部署war包到Tomcat"><a href="#部署war包到Tomcat" class="headerlink" title="部署war包到Tomcat"></a>部署war包到Tomcat</h3><p>&emsp;&emsp;war文件：war表示一个WEB应用压缩包。是一个可直接运行的web模块，通常用于网站，将其打成包部署到容器中。以Tomcat来说，将war包放在其\webapps\目录下，然后启动Tomcat，这个包就自动解压，相当于发布项目。直接可以用eclipse导出war file<br>&emsp;&emsp;1.一般是开发打war包给测试，比如说现在测试拿到一个war包，名字叫Servlet01.war。<br>&emsp;&emsp;2.打开Tomcat的安装路径，假设是“D:\Tomcat\apache-tomcat-7.0.68”，进入到其webapps文件夹中，把 Servlet01.war放到 webapps文件夹。<br>&emsp;&emsp;3.启动Tomcat。（双击Tomcat-bin-startup.bat）<br>&emsp;&emsp;4.在浏览器输入“http:localhost:tomcat_port/Servlet01即可打开Servlet01项目的 index.html页面（port是tomcat的端口号）。如果Servlet01项目没有index.html页面，那就需要打开其他相应的页面。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> javaWeb </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Web </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Cookie详细笔记</title>
       <link href="/2019/12/02/Cookie%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/"/>
       <url>/2019/12/02/Cookie%E8%AF%A6%E7%BB%86%E7%AC%94%E8%AE%B0/</url>
@@ -402,6 +404,31 @@
         <tags>
             
             <tag> Cookie </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Tomcat服务器和eclipse部署Web应用</title>
+      <link href="/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/"/>
+      <url>/2019/12/02/Tomcat%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Ceclipse%E9%83%A8%E7%BD%B2Web%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、下载和安装Tomcat"><a href="#一、下载和安装Tomcat" class="headerlink" title="一、下载和安装Tomcat"></a>一、下载和安装Tomcat</h2><p>&emsp;&emsp;官方站点：<a href="http://tomcat.apache.org/index.html" target="_blank" rel="noopener">http://tomcat.apache.org/index.html</a> 获取Tomcat安装程序包.</p><p>&emsp;&emsp;tar.gz文件是Linux操作系统下的压缩版本，解压到一个非中文、无空格目录即可。zip文件也是压缩版本，可用于Linux和Windows，解压到一个非中文、无空格目录即可。exe文件是Windows系统下的安装版本，双击运行按照向导进行安装。无论是解压还是安装的，都需要配置JAVA_HOME环境变量，该变量的值是JDK的安装目录</p><h3 id="Tomcat目录结构："><a href="#Tomcat目录结构：" class="headerlink" title="Tomcat目录结构："></a>Tomcat目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/zl1KSnZYO8PHJyo.png" alt="" title="tomcat目录结构"></p><h2 id="二、eclipse下部署Web应用"><a href="#二、eclipse下部署Web应用" class="headerlink" title="二、eclipse下部署Web应用"></a>二、eclipse下部署Web应用</h2><p>步骤：<br>&emsp;&emsp;1.创建Runtime：开发WEB应用之前，必须要创建一个Runtime。Runtime并不是JRE，而是指WEB应用在开发的时候使用的应用服务器（如Tomcat等）。<br>&emsp;&emsp;操作流程：Window——&gt;Preferences——&gt;Server——&gt;Runtime Environment ，Add对应的Tomcat版本，next， 将Tomcat的安装根路径加进来，选上自己的jdk版本，然后Finish完成。</p><p>&emsp;&emsp;2.创建Server：创建了Runtime，只是说明开发时使用的WEB应用运行时环境。在这个环境的基础上，eclipse要托管服务器，才能真正在eclipse里面集成开发。eclipse底下的server窗口将Tomcat托管上。</p><p>&emsp;&emsp;3.创建web项目：File——&gt;New——&gt;Dynamic Web Object,</p><p><img src="https://i.loli.net/2019/12/02/oQpvJDX6x8lF5C7.png" alt="" title="创建web项目"></p><p>&emsp;&emsp;4.部署WEB应用:<br>&emsp;<img src="https://i.loli.net/2019/12/02/TjsVe1LUWa6DP2I.png" alt="" title="部署WEB应用"><br>&emsp;<img src="https://i.loli.net/2019/12/02/n4TjLsMKaF9812q.png" alt="" title="部署WEB应用过程成功"><br><br><br>&emsp;&emsp;5.运行WEB应用：项目run on server<br><br></p><h3 id="web工程目录结构："><a href="#web工程目录结构：" class="headerlink" title="web工程目录结构："></a>web工程目录结构：</h3><p><img src="https://i.loli.net/2019/12/02/RIpTjkMYF9hAPlv.png" alt="" title="web工程目录结构"></p><h3 id="部署war包到Tomcat"><a href="#部署war包到Tomcat" class="headerlink" title="部署war包到Tomcat"></a>部署war包到Tomcat</h3><p>&emsp;&emsp;war文件：war表示一个WEB应用压缩包。是一个可直接运行的web模块，通常用于网站，将其打成包部署到容器中。以Tomcat来说，将war包放在其\webapps\目录下，然后启动Tomcat，这个包就自动解压，相当于发布项目。直接可以用eclipse导出war file<br>&emsp;&emsp;1.一般是开发打war包给测试，比如说现在测试拿到一个war包，名字叫Servlet01.war。<br>&emsp;&emsp;2.打开Tomcat的安装路径，假设是“D:\Tomcat\apache-tomcat-7.0.68”，进入到其webapps文件夹中，把 Servlet01.war放到 webapps文件夹。<br>&emsp;&emsp;3.启动Tomcat。（双击Tomcat-bin-startup.bat）<br>&emsp;&emsp;4.在浏览器输入“http:localhost:tomcat_port/Servlet01即可打开Servlet01项目的 index.html页面（port是tomcat的端口号）。如果Servlet01项目没有index.html页面，那就需要打开其他相应的页面。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> javaWeb </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
             
         </tags>
       
