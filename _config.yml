@@ -3,25 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 逍遥阁
+title: m'blog
 subtitle: '业精于勤，荒于嬉'
 description: '厚积薄发'
 keywords:
-author: John
+author: mpw
 language: zh-Hans
 timezone: ''
 
-live2d:
-    enable: true
-    scriptFrom: local
-    model: 
-        use: live2d-widget-model-shizuku #模型选择
-    display: 
-        position: left  #模型位置
-        width: 140       #模型宽度
-        height: 280      #模型高度
-    mobile: 
-        show: false      #是否在手机端显示
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
