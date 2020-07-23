@@ -730,6 +730,89 @@ RetentionPolicy.SOURCE：丢弃。</code></pre><h3 id="自定义注解类编写�
 
         
       </div>
+       <script src="https://cdn.staticfile.org/jquery/3.1.1/jquery.min.js"></script>
+<script>
+    //��ʱ���������е�����
+    var div = $('.post-body');
+    //��ʱ����Ŀ¼������
+    var toc=$('.post-toc')
+    function password() {
+        if(''){
+            //����������ɾ��
+            div.remove();
+            //��Ŀ¼ɾ��
+            toc.remove();
+            //������ɾ������ԭ�����µĵط����ӣ�Ӧ�ó��ֵ���ʾ�û������������ʽ
+            //��������ĵ�һ����textarea����Ϊ������ֻ��˵�ʱ��ֻ����ʾһ�������֣�
+            //ֻ����չ:input�������ֻ����ʾһ�У������Զ����У�Ŀǰ��������û�з��ֺõİ취����������textarea�����½ǵ�С����ͨ��resize:none ȥ����
+            $('.post-header').after(
+            '<span class="description" value="���������룬Ȼ�� Enter ���Ķ�" style="font-style: oblique;font-weight: bold;border: none;display: block;'+
+            'width: 60%;margin: 0 auto;text-align: center;outline: none;margin-bottom: 40px;resize:none ">'+
+            '<i class="fa fa-heartbeat" id="myheartbeat"></i>'+
+            '���������룬Ȼ�� Enter ���Ķ�' +
+            '<i class="fa fa-heartbeat" id="myheartbeat"></i>'+
+            '</span>' +
+            '<div class="qiang" style="height: 100px;width: 60%;margin:0 auto">' +
+            '<input class="password"  type="password" autocomplete="new-password" autofocus="autofocus" value="" style="border-radius: 5px;height: 30px;border: none;display: block;border-bottom: 1px solid #ccc;' +
+            'margin: 0 auto;outline: none;width:95%"/>' +
+            '</div>')
+            //�󶨵���¼�������ǵ����.password ���div�͸ı���ʽ�������document�г���div֮��������κ�Ԫ�أ��ͱ��ԭ������ʽ��
+            document.onclick = function (event) {
+                var e = event || window.event;
+                var elem = e.srcElement || e.target;
+
+                while (elem) {
+                    if (elem != document) {
+                        if (elem.className == "password") {
+                            //$(".password").animate({paddingTop:"30px",width:"100%",borderWidth:"2px"},300)
+                            return;
+                        }
+                        elem = elem.parentNode;
+                    } else {
+                        //$(".password").animate({paddingTop:"0px",width:"95%",borderWidth:"1px"},300)
+                        return;
+                    }
+                }
+            }
+            //��enter�����º��뿪���¼�
+            $(document).keyup(function(event){
+                if(event.keyCode ==13&&$('.password').length>0){
+                    //console.log($('.password').val())
+                    //console.log('')
+                    if ($('.password').val() == '') {
+                        //�ָ���������
+                        (div).appendTo($(".post-header"))
+                        //�ָ�Ŀ¼
+                        toc.appendTo($(".sidebar-inner"))
+                        //ɾ����ҳ��������������
+                        $(".description").remove();
+                        $(".qiang").remove();
+                        $(".password").remove();
+
+                        //���´���pjax�¼�,���û�м�pjax�Ĵ����������������else֮��Ĵ�����Ҫȥ����
+                        //ͼƬ�����أ�û�м���˹��ܵ����������Ҫȥ��
+                        $('img').lazyload({
+                            placeholder: '/images/loading.gif',
+                            effect: 'fadeIn',
+                            threshold : 100,
+                            failure_limit : 20,
+                            skip_invisible : false
+                        });
+                        //pjax��������²���ʾ��û��pjax������������Ҫȥ��
+                        $(".post-block").css({opacity:1});
+                        $(".post-header").css({opacity:1});
+                        $(".post-body").css({opacity:1});
+                        $(".pagination").css({opacity:1});
+                    }else {
+                        alert("�Բ��������������")
+                    }
+                }
+                //��document��keyup�Ƴ�����ֹ��pjax������»��ظ����¼�
+            });
+        }
+    }
+    password();
+</script>
     </main>
 
     <footer id="footer" class="footer">
