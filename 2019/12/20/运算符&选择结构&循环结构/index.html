@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+
+  
+    
+
+    
+  
+
+  
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.useso.com/css?family=Roboto Slab:300,300italic,400,400italic,700,700italicLobster Two:300,300italic,400,400italic,700,700italicPT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/bitbug_favicon32.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/bitbug_favicon16.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java语法," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.逻辑运算符的基本用法  掌握 A:逻辑运算符有哪些  &amp;,|,^,! &amp;&amp;,||    B:案例演示  逻辑运算符的基本用法  注意事项：  a:逻辑运算符一般用于连接boolean类型的表达式或者值。 b:表达式：就是用运算符把常量或者变量连接起来的符合java语法的式子。 算术表达式：a + b 比较表达式：a &#x3D;&#x3D; b 条件表达式      C:结论：  &amp;amp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运算符&amp;选择结构&amp;循环结构">
+<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;20&#x2F;%E8%BF%90%E7%AE%97%E7%AC%A6&amp;%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84&amp;%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84&#x2F;index.html">
+<meta property="og:site_name" content="m&#39;blog">
+<meta property="og:description" content="1.逻辑运算符的基本用法  掌握 A:逻辑运算符有哪些  &amp;,|,^,! &amp;&amp;,||    B:案例演示  逻辑运算符的基本用法  注意事项：  a:逻辑运算符一般用于连接boolean类型的表达式或者值。 b:表达式：就是用运算符把常量或者变量连接起来的符合java语法的式子。 算术表达式：a + b 比较表达式：a &#x3D;&#x3D; b 条件表达式      C:结论：  &amp;amp">
+<meta property="article:published_time" content="2019-12-20T06:44:55.000Z">
+<meta property="article:modified_time" content="2019-12-21T09:44:41.209Z">
+<meta property="article:author" content="mpw">
+<meta property="article:tag" content="java语法">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mpw9818.github.io/2019/12/20/运算符&选择结构&循环结构/"/>
+
+
+
+
+
+  <title>运算符&选择结构&循环结构 | m'blog</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+   
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">m'blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">业精于勤，荒于嬉</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/20/%E8%BF%90%E7%AE%97%E7%AC%A6&%E9%80%89%E6%8B%A9%E7%BB%93%E6%9E%84&%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="mpw">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="m'blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">运算符&选择结构&循环结构</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-20T14:44:55+08:00">
+                2019-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                  <span class="post-meta-divider">|</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.6k 字
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6 分钟
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1-逻辑运算符的基本用法-掌握"><a href="#1-逻辑运算符的基本用法-掌握" class="headerlink" title="1.逻辑运算符的基本用法  掌握"></a>1.逻辑运算符的基本用法  掌握</h2><ul>
+<li><p>A:逻辑运算符有哪些</p>
+<ul>
+<li>&amp;,|,^,!</li>
+<li>&amp;&amp;,|| </li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+</li>
+<li><p>逻辑运算符的基本用法</p>
+</li>
+<li><p>注意事项：</p>
+<ul>
+<li>a:逻辑运算符一般用于连接boolean类型的表达式或者值。</li>
+<li>b:表达式：就是用运算符把常量或者变量连接起来的符合java语法的式子。<ul>
+<li>算术表达式：a + b</li>
+<li>比较表达式：a == b 条件表达式 </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>C:结论：</p>
+</li>
+<li><p>&amp;逻辑与:有false则false。</p>
+</li>
+<li><p>|逻辑或:有true则true。</p>
+</li>
+<li><p>^逻辑异或:相同为false，不同为true。</p>
+</li>
+<li><p>!逻辑非:非false则true，非true则false。</p>
+<ul>
+<li>特点：偶数个不改变本身。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-逻辑运算符-amp-amp-和-amp-的区别-掌握"><a href="#2-逻辑运算符-amp-amp-和-amp-的区别-掌握" class="headerlink" title="2.逻辑运算符&amp;&amp;和&amp;的区别  掌握"></a>2.逻辑运算符&amp;&amp;和&amp;的区别  掌握</h2><ul>
+<li>A:案例演示<ul>
+<li>&amp;&amp;和&amp;的区别?<ul>
+<li>a:最终结果一样。</li>
+<li>b:&amp;&amp;具有短路效果。左边是false，右边不执行。</li>
+<li>&amp;是无论左边是false还是true,右边都会执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>B:同理||和|的区别?</li>
+<li>C:开发中常用谁?<ul>
+<li>&amp;&amp;,||,!</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-位运算符的基本用法1-了解"><a href="#3-位运算符的基本用法1-了解" class="headerlink" title="3.位运算符的基本用法1  了解"></a>3.位运算符的基本用法1  了解</h2><ul>
+<li><p>A:位运算符有哪些</p>
+<ul>
+<li>&amp;,|,^,~ ,&gt;&gt;,&gt;&gt;&gt;,&lt;&lt;</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>位运算符的基本用法1</p>
+</li>
+<li><p>&amp;,|,^,~ 的用法</p>
+</li>
+<li><p>&amp;:有0则0</p>
+</li>
+<li><p>|:有1则1</p>
+</li>
+<li><p>^:相同则0，不同则1</p>
+</li>
+<li><p>~:按位取反</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-位异或运算符的特点及面试题-掌握"><a href="#4-位异或运算符的特点及面试题-掌握" class="headerlink" title="4.位异或运算符的特点及面试题  掌握"></a>4.位异或运算符的特点及面试题  掌握</h2><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li><p>位异或运算符的特点</p>
+</li>
+<li><p>^的特点：一个数据对另一个数据位异或两次，该数本身不变。</p>
+</li>
+</ul>
+</li>
+<li><p>B:面试题：</p>
+<ul>
+<li>请自己实现两个整数变量的交换</li>
+<li>注意：以后讲课的过程中，我没有明确指定数据的类型，默认int类型。</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-位运算符的基本用法2及面试题-了解"><a href="#5-位运算符的基本用法2及面试题-了解" class="headerlink" title="5.位运算符的基本用法2及面试题  了解"></a>5.位运算符的基本用法2及面试题  了解</h2><ul>
+<li>A:案例演示 &gt;&gt;,&gt;&gt;&gt;,&lt;&lt;的用法:<ul>
+<li>&lt;&lt;:左移    左边最高位丢弃，右边补齐0</li>
+<li>&gt;&gt;:右移    最高位是0，左边补齐0;最高为是1，左边补齐1</li>
+<li>&gt;&gt;&gt;:无符号右移 无论最高位是0还是1，左边补齐0</li>
+<li>最有效率的算出2 * 8的结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="6-三元运算符的基本用法-掌握"><a href="#6-三元运算符的基本用法-掌握" class="headerlink" title="6.三元运算符的基本用法  掌握"></a>6.三元运算符的基本用法  掌握</h2><ul>
+<li>A:三元运算符的格式</li>
+<li>关系表达式  ? 表达式1 : 表达式2;</li>
+<li>B:三元运算符的执行流程 </li>
+<li>C:案例演示<ul>
+<li>获取两个数中的最大值</li>
+</ul>
+</li>
+</ul>
+<h2 id="7-三元运算符的练习-掌握"><a href="#7-三元运算符的练习-掌握" class="headerlink" title="7.三元运算符的练习  掌握"></a>7.三元运算符的练习  掌握</h2><ul>
+<li>A:案例演示<ul>
+<li>比较两个整数是否相同</li>
+</ul>
+</li>
+<li>B:案例演示<ul>
+<li>获取三个整数中的最大值</li>
+</ul>
+</li>
+</ul>
+<h2 id="8-顺序结构语句-了解"><a href="#8-顺序结构语句-了解" class="headerlink" title="8.顺序结构语句  了解"></a>8.顺序结构语句  了解</h2><ul>
+<li>A:什么是流程控制语句<ul>
+<li>流程控制语句：可以控制程序的执行流程。</li>
+</ul>
+</li>
+<li>B:流程控制语句的分类<ul>
+<li>顺序结构</li>
+<li>选择结构</li>
+<li>循环结构</li>
+</ul>
+</li>
+<li>C:执行流程：<ul>
+<li>从上往下，依次执行。</li>
+</ul>
+</li>
+<li>D:案例演示<ul>
+<li>输出几句话看效果即可</li>
+</ul>
+</li>
+</ul>
+<h2 id="9-选择结构if语句格式1及其使用-掌握"><a href="#9-选择结构if语句格式1及其使用-掌握" class="headerlink" title="9.选择结构if语句格式1及其使用  掌握"></a>9.选择结构if语句格式1及其使用  掌握</h2><ul>
+<li><p>A:选择结构的分类</p>
+<ul>
+<li>if语句</li>
+<li>switch语句</li>
+</ul>
+</li>
+<li><p>B:if语句有几种格式</p>
+<ul>
+<li>格式1</li>
+<li>格式2</li>
+<li>格式3</li>
+</ul>
+</li>
+<li><p>C:if语句的格式1</p>
+<pre><code>if 比较表达式  {
+    语句体;
+}</code></pre></li>
+<li><p>D:if语句的格式2</p>
+<pre><code>if 比较表达式  {
+    语句体1;
+}else {
+    语句体2;
+}</code></pre><p>E:if语句的格式3：</p>
+<pre><code>if 比较表达式1  {
+    语句体1;
+}else if 比较表达式2  {
+    语句体2;
+}else if 比较表达式3  {
+    语句体3;
+}
+...
+else {
+    语句体n+1;
+}</code></pre><font color ='red'>
+if必须出现一次且只能出现一次，else可出现0-1次，else if可出现0-N次。
+</font>
+
+</li>
+</ul>
+<h2 id="10-if语句的格式2和三元的相互转换问题-掌握"><a href="#10-if语句的格式2和三元的相互转换问题-掌握" class="headerlink" title="10.if语句的格式2和三元的相互转换问题  掌握"></a>10.if语句的格式2和三元的相互转换问题  掌握</h2><ul>
+<li><p>A:案例演示</p>
+<ul>
+<li>if语句和三元运算符完成同一个效果</li>
+</ul>
+</li>
+<li><p>B:案例演示</p>
+<ul>
+<li><p>if语句和三元运算符的区别</p>
+</li>
+<li><p>三元运算符实现的，都可以采用if语句实现。反之不成立。</p>
+</li>
+<li><p>什么时候if语句实现不能用三元改进呢?</p>
+<ul>
+<li>当if语句控制的操作是一个输出语句的时候就不能。</li>
+<li>为什么呢?因为三元运算符是一个运算符，运算符操作完毕就应该有一个结果，而不是一个输出。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="11-选择结构switch语句的格式及其解释-掌握"><a href="#11-选择结构switch语句的格式及其解释-掌握" class="headerlink" title="11.选择结构switch语句的格式及其解释  掌握"></a>11.选择结构switch语句的格式及其解释  掌握</h2><ul>
+<li><p>A:switch语句的格式</p>
+</li>
+<li><pre><code>switch 表达式  {
+      case 值1：
+        语句体1;
+        break;
+        case 值2：
+        语句体2;
+        break;
+        …
+        default：    
+        语句体n+1;
+        break;
+}</code></pre></li>
+<li><p>B:switch语句的格式解释</p>
+</li>
+<li><p>C:面试题</p>
+<ul>
+<li>byte可以作为switch的表达式吗?</li>
+<li>long可以作为switch的表达式吗?</li>
+<li>String可以作为switch的表达式吗?</li>
+</ul>
+</li>
+<li><p>switch 匹配的表达式可以是(重要)：</p>
+<ul>
+<li>byte、short、char、int类型及这4种类型的包装类型</li>
+<li>枚举类型</li>
+<li>String 类型</li>
+</ul>
+</li>
+<li><p>C:执行流程</p>
+<ul>
+<li>先计算表达式的值</li>
+<li>然后和case后面的匹配，如果有就执行对应的语句，否则执行default控制的语句</li>
+</ul>
+</li>
+</ul>
+<h2 id="12-选择结构switch语句的注意事项-掌握"><a href="#12-选择结构switch语句的注意事项-掌握" class="headerlink" title="12.选择结构switch语句的注意事项  掌握"></a>12.选择结构switch语句的注意事项  掌握</h2><ul>
+<li>A:案例演示<ul>
+<li>a:case后面只能是常量，不能是变量，而且，多个case后面的值不能出现相同的</li>
+<li>b:default可以省略吗?<ul>
+<li>可以省略，但是不建议，因为它的作用是对不正确的情况给出提示。</li>
+<li>特殊情况：<ul>
+<li>case就可以把值固定。</li>
+<li>A,B,C,D</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>c:break可以省略吗?<ul>
+<li>最后一个可以省略,其他不要省略，不然会出现一个现象：case穿透</li>
+</ul>
+</li>
+<li>d:default一定要在最后吗?<ul>
+<li>不是，可以在任意位置。但是建议在最后。</li>
+</ul>
+</li>
+<li>e:switch语句的结束条件<ul>
+<li>a:遇到break就结束了</li>
+<li>b:执行到switch的右大括号就结束了</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="13-选择结构if语句和switch语句的区别-掌握"><a href="#13-选择结构if语句和switch语句的区别-掌握" class="headerlink" title="13.选择结构if语句和switch语句的区别  掌握"></a>13.选择结构if语句和switch语句的区别  掌握</h2><ul>
+<li>A:总结switch语句和if语句的各自使用场景</li>
+<li>switch建议判断固定值的时候用</li>
+<li>if建议判断区间或范围的时候用</li>
+</ul>
+<h2 id="14-循环结构概述和for语句的格式"><a href="#14-循环结构概述和for语句的格式" class="headerlink" title="14.循环结构概述和for语句的格式"></a>14.循环结构概述和for语句的格式</h2><ul>
+<li><p>A:循环结构的分类</p>
+<ul>
+<li>for,while,do…while </li>
+</ul>
+</li>
+<li><p>B:循环结构for语句的格式：</p>
+<pre><code>for(初始化表达式;条件表达式;循环后的操作表达式) {
+    循环体;
+}</code></pre><h2 id="15-循环结构while语句"><a href="#15-循环结构while语句" class="headerlink" title="15.循环结构while语句"></a>15.循环结构while语句</h2></li>
+<li><p>A:循环结构while语句的格式：</p>
+<pre><code>while循环的基本格式：
+while(判断条件语句) {
+    循环体语句;
+}
+
+完整格式：
+
+初始化语句;
+while(判断条件语句) {
+     循环体语句;
+     控制条件语句;
+}</code></pre><h2 id="16-循环结构do…while语句"><a href="#16-循环结构do…while语句" class="headerlink" title="16.循环结构do…while语句"></a>16.循环结构do…while语句</h2></li>
+<li><p>A:循环结构do…while语句的格式：</p>
+<pre><code>do {
+    循环体语句;
+}while(判断条件语句);
+
+完整格式；
+初始化语句;
+do {
+    循环体语句;
+    控制条件语句;
+}while(判断条件语句);</code></pre></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+     <div>
+  
+    ﻿<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+     </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java%E8%AF%AD%E6%B3%95/" rel= "tag" ><i class="fa fa-envira"></i> java语法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+                 
+              <a href="/2019/12/21/%E5%8E%9F%E7%A0%81%E8%A1%A5%E7%A0%81%E5%8F%8D%E7%A0%81/" rel="prev" title="原码补码反码">
+                <i class="fa fa-chevron-left"></i> 原码补码反码
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/18/DDL%E5%92%8CDML%E8%AF%AD%E5%8F%A5/" rel="next" title="DDL和DML语句">
+                DDL和DML语句 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+             <a href="/">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="mpw" />
+             </a>
+            
+              <p class="site-author-name" itemprop="name">mpw</p>
+              <p class="site-description motion-element" itemprop="description">厚积薄发</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mpw9818" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mpw9818@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-gratipay"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-weibo"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-逻辑运算符的基本用法-掌握"><span class="nav-text">1.逻辑运算符的基本用法  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-逻辑运算符-amp-amp-和-amp-的区别-掌握"><span class="nav-text">2.逻辑运算符&amp;&amp;和&amp;的区别  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-位运算符的基本用法1-了解"><span class="nav-text">3.位运算符的基本用法1  了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-位异或运算符的特点及面试题-掌握"><span class="nav-text">4.位异或运算符的特点及面试题  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-位运算符的基本用法2及面试题-了解"><span class="nav-text">5.位运算符的基本用法2及面试题  了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-三元运算符的基本用法-掌握"><span class="nav-text">6.三元运算符的基本用法  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-三元运算符的练习-掌握"><span class="nav-text">7.三元运算符的练习  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-顺序结构语句-了解"><span class="nav-text">8.顺序结构语句  了解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-选择结构if语句格式1及其使用-掌握"><span class="nav-text">9.选择结构if语句格式1及其使用  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-if语句的格式2和三元的相互转换问题-掌握"><span class="nav-text">10.if语句的格式2和三元的相互转换问题  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-选择结构switch语句的格式及其解释-掌握"><span class="nav-text">11.选择结构switch语句的格式及其解释  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-选择结构switch语句的注意事项-掌握"><span class="nav-text">12.选择结构switch语句的注意事项  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-选择结构if语句和switch语句的区别-掌握"><span class="nav-text">13.选择结构if语句和switch语句的区别  掌握</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-循环结构概述和for语句的格式"><span class="nav-text">14.循环结构概述和for语句的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-循环结构while语句"><span class="nav-text">15.循环结构while语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-循环结构do…while语句"><span class="nav-text">16.循环结构do…while语句</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+       
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mpw</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+   
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
