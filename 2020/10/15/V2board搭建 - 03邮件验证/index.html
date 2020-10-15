@@ -116,15 +116,15 @@
 
 <meta name="description" content="V2board的邮件可用于注册验证、重置密码、订阅或群发邮件通知用户，设置不恰当会导致邮件无法发出，这篇文章主要介绍V2board如何正确设置邮件信息，对接阿里云的域名邮件服务。 1、如果自己有域名，可以到阿里云开通自己的域名邮件服务，也可以使用其它邮件服务，有的邮箱的发信容易进垃圾箱，自己选择即可，我使用的是阿里云企业邮箱。 登陆阿里云企业邮箱    https:&#x2F;&#x2F;qiye.aliyun.co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="v2board搭建-02后端对接节点">
+<meta property="og:title" content="v2board搭建-03邮箱验证">
 <meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2020&#x2F;10&#x2F;15&#x2F;V2board%E6%90%AD%E5%BB%BA%20-%2003%E9%82%AE%E4%BB%B6%E9%AA%8C%E8%AF%81&#x2F;index.html">
 <meta property="og:site_name" content="m&#39;blog">
 <meta property="og:description" content="V2board的邮件可用于注册验证、重置密码、订阅或群发邮件通知用户，设置不恰当会导致邮件无法发出，这篇文章主要介绍V2board如何正确设置邮件信息，对接阿里云的域名邮件服务。 1、如果自己有域名，可以到阿里云开通自己的域名邮件服务，也可以使用其它邮件服务，有的邮箱的发信容易进垃圾箱，自己选择即可，我使用的是阿里云企业邮箱。 登陆阿里云企业邮箱    https:&#x2F;&#x2F;qiye.aliyun.co">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.niupic.com&#x2F;images&#x2F;2020&#x2F;10&#x2F;15&#x2F;8Srb.JPG">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.niupic.com&#x2F;images&#x2F;2020&#x2F;10&#x2F;15&#x2F;8Srd.JPG">
 <meta property="og:image" content="https:&#x2F;&#x2F;i.niupic.com&#x2F;images&#x2F;2020&#x2F;10&#x2F;15&#x2F;8Sre.JPG">
-<meta property="article:published_time" content="2020-10-15T03:40:26.000Z">
-<meta property="article:modified_time" content="2020-10-15T03:38:16.276Z">
+<meta property="article:published_time" content="2020-10-15T04:40:26.000Z">
+<meta property="article:modified_time" content="2020-10-15T03:39:15.468Z">
 <meta property="article:author" content="mpw">
 <meta property="article:tag" content="v2board">
 <meta name="twitter:card" content="summary">
@@ -164,7 +164,7 @@
 
 
 
-  <title>v2board搭建-02后端对接节点 | m'blog</title>
+  <title>v2board搭建-03邮箱验证 | m'blog</title>
   
 
 
@@ -352,7 +352,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">v2board搭建-02后端对接节点</h1>
+          <h1 class="post-title" itemprop="name headline">v2board搭建-03邮箱验证</h1>
         
 
         <div class="post-meta">
@@ -364,7 +364,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T11:40:26+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-15T12:40:26+08:00">
                 2020-10-15
               </time>
             
@@ -510,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
                  
-              <a href="/2020/10/15/V2board%E6%90%AD%E5%BB%BA%20-%2002%E5%90%8E%E7%AB%AF%E5%AF%B9%E6%8E%A5%E8%8A%82%E7%82%B9/" rel="prev" title="v2board搭建-02后端对接节点">
-                <i class="fa fa-chevron-left"></i> v2board搭建-02后端对接节点
+              <a href="/2020/10/15/V2board%E6%90%AD%E5%BB%BA%20-%2004%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" rel="prev" title="v2board搭建-04支付对接">
+                <i class="fa fa-chevron-left"></i> v2board搭建-04支付对接
               </a>
             
           </div>
@@ -520,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/10/15/V2board%E6%90%AD%E5%BB%BA%20-%2001%E5%89%8D%E7%AB%AF%E9%9D%A2%E6%9D%BF/" rel="next" title="v2board搭建-01前端面板">
-                v2board搭建-01前端面板 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/15/V2board%E6%90%AD%E5%BB%BA%20-%2002%E5%90%8E%E7%AB%AF%E5%AF%B9%E6%8E%A5%E8%8A%82%E7%82%B9/" rel="next" title="v2board搭建-02后端对接节点">
+                v2board搭建-02后端对接节点 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -596,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
