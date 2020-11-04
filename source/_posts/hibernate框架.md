@@ -328,16 +328,16 @@ public class Test {
 
 	//获取连接    Session类似于mybaits中的 sqlSession  底层封装了 Connection
 	Session session = sessionFactory.openSession();
-	
+
 	//获取事务对象
 	Transaction tr = session.beginTransaction();
 
 	User  user = new User();
 	//指定需要删除的用户的id
 	user.setId(7);
-	
+
 	session.delete(user);
-	
+
 	//提交事务
 	tr.commit();
 	//关闭连接

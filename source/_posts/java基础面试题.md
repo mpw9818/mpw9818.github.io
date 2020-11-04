@@ -497,3 +497,155 @@ Where rowNumId between 1 and 10;
 3、执行次数不同。
  IN 语句：只执行一次，确定给定的值是否与子查询或列表中的值相匹配。in在查询的时候，首先查询子查询的表，然后将内表和外表做一个笛卡尔积，然后按照条件进行筛选。所以相对内表比较小的时候，in的速度较快。
  EXISTS语句：执行次数根据表的长度而定。指定一个子查询，检测行的存在。遍历循环外表，然后看外表中的记录有没有和内表的数据一样的。匹配上就将结果放入结果集中。
+
+### 26.一个文件中的数据要在控制台上显示，首先需要（ ）。
+
+A.System.out.print (buffer[i]);      
+B.FileOutputStream fout = new FileOutputStream(this.filename);   
+C.FileInputStream fin = new FileInputStream(this.filename);  
+D.System.in.read(buffer);
+
+    答案：C 一个文件中的数据要在控制台显示，首先需要获取文件中的内容，使用FileInputStream fin = new FileInputStream(this.filename);
+
+### 27.执行语句“int a= '2' ”后，a的值是（ ）
+
+    50，一个简便的记忆法：0：48  A:65  a:97，数字连起来是486597 -> 486 597 -> 486 (486 + 111)
+
+### 28.以下是java concurrent包下的4个类，选出差别最大的一个()
+
+A.Semaphore      
+B.ReentrantLock    
+C.Future    
+D.CountDownLatch   
+
+    答案：C
+    A、Semaphore：类，控制某个资源可被同时访问的个数;
+    B、ReentrantLock：类，具有与使用synchronized方法和语句所访问的隐式监视器锁相同的一些基本行为和语义，但功能更强大；
+    C、Future：接口，表示异步计算的结果；
+    D、CountDownLatch： 类，可以用来在一个线程中等待多个线程完成任务的类。
+
+### 29.如果一个list初始化为{5，3，1}，执行以下代码后，其结果为（）？
+```java
+nums.add(6);
+nums.add(0,4);
+nums.remove(1);
+```
+解析：
+初始化为{5,3,1}
+nums.add(6)后list为{5,3,1,6}
+nums.add(0,4)是在0号索引上添加数字4得到list为{4,5,3,1,6}
+nums.remove(1)是将1号索引上的5进行remove得到list为{4,3,1,6}
+
+### 30.given the following code,what will be the output?
+
+```java
+class Value{
+    public int i=15;
+}
+public class Test{
+    public static void main(String argv[]){
+        Test t=new Test( );
+        t.first( );
+    }
+ 
+public void first( ){
+    int i=5;
+    Value v=new Value( );
+    v.i=25;
+    second(v,i);
+    System.out.println(v.i);
+}
+ 
+public void second(Value v,int i){
+    i = 0;
+    v.i = 20;
+    Value val = new Value( );
+    v = val;
+    System.out.println(v.i+" "+i);
+   }
+}
+
+```
+
+    答案：15 0 20 ，考察的是值传递与引用传递，Java中原始数据类型都是值传递，传递的是值得副本，形参的改变不会影响实际参数的值， 引用传递传递的是引用类型数据，包括String,数组，列表, map,类对象等类型，形参与实参指向的是同一内存地址，因此形参改变会影响实参的值。
+    可能有人会选择B，包括我刚开始也是。总以为v不是已经指向了val了吗？？为什么还是20呢？不应该是15吗？
+    其实，原因很简单。现在我们把second（）换一下
+    public void second(Value tmp,int i){
+        i = 0;
+        tmp.i = 20;
+        Value val = newValue( );
+        tmp = val;
+        System.out.println(tmp.i+" "+i);
+    }
+    这个tmp其实相当于是一个指向原来first中的V这个对象的指针，也就是对v对象的引用而已。但是引用是会改变所指的地址的值的。所以在second中当tmp.i= 20的时候，就把原来first中的v的i值改为20了。接下来，又把tmp指向了新建的一个对象，所以在second中的tmp现在指的是新的对象val，i值为15.当执行完毕second后，在first中在此输出v.i的时候，应为前面second中已经把该位置的i的值改为了20，所以输出的是20.至于疑惑v指向了val，其实只是名字的问题，在second中的v实践也是另外的一个变量，名字相同了而已，这个估计也是纠结的重点。
+   
+### 30.下面哪段程序能够正确的实现了GBK编码字节流到UTF-8编码字节流的转换：
+```java
+byte[] src,dst;
+```
+A.dst=String.fromBytes(src，"GBK").getBytes("UTF-8")   
+B.dst=new String(src，"GBK").getBytes("UTF-8")
+C.dst=new String("GBK"，src).getBytes()
+D.dst=String.encode(String.decode(src，"GBK"))，"UTF-8" )  
+
+<font color='red'>正确答案: B ,先解码再编码,用new String(src，"GBK")解码得到字符串,再用getBytes("UTF-8")得到UTF8编码字节数组</font>
+
+### 31.以下代码的输出结果是？
+```java
+public class B
+{
+    public static B t1 = new B();
+    public static B t2 = new B();
+    {
+        System.out.println("构造块");
+    }
+    static
+    {
+        System.out.println("静态块");
+    }
+    public static void main(String[] args)
+    {
+        B t = new B();
+    }
+}
+```
+    正确答案: C   你的答案: A (错误)    
+类加载时，<font color='red'>并不是静态块最先初始化,而是静态域，而静态域中包含静态变量、静态块和静态方法,其中需要初始化的是静态变量和静态块.而他们两个的初始化顺序是靠他们俩的位置决定的!</font>
+开始时JVM加载B.class，对所有的静态成员进行声明，t1 t2被初始化为默认值，为null，又因为t1 t2需要被显式初始化，所以对t1进行显式初始化，初始化代码块→构造函数（没有就是调用默认的构造函数），咦！静态代码块咋不初始化？因为在开始时已经对static部分进行了初始化，虽然只对static变量进行了初始化，但在初始化t1时也不会再执行static块了，因为JVM认为这是第二次加载类B了，所以static会在t1初始化时被忽略掉，所以直接初始化非static部分，也就是构造块部分（输出''构造块''）接着构造函数（无输出）。接着对t2进行初始化过程同t1相同（输出'构造块'），此时就对所有的static变量都完成了初始化，接着就执行static块部分（输出'静态块'），接着执行，main方法，同样也，new了对象，调用构造函数输出（'构造块'）
+总结：程序入口main方法要执行首先要加载类B 2.静态域：分为静态变量，静态方法，静态块。这里面涉及到的是静态变量和静态块，当执行到静态域时，按照静态域的顺序加载。并且静态域只在类的第一次加载时执行 3.每次new对象时，会执行一次构造块和构造方法，构造块总是在构造方法前执行（当然，第一次new时，会先执行静态域，静态域〉构造块〉构造方法） 注意：加载类时并不会调用构造块和构造方法，只有静态域会执行 4.根据前三点，首先加载类B，执行静态域的第一个静态变量，static b1=new B，输出构造块和构造方法（空）。ps:这里为什么不加载静态方法呢？因为执行了静态变量的初始化，意味着已经加载了B的静态域的一部分，这时候不能再加载另一个静态域了，否则属于重复加载 了（静态域必须当成一个整体来看待。否则加载会错乱） 于是，依次static b2 =new B，输出构造块，再执行静态块，完成对整个静态域的加载，再执行main方法，new b，输出构造块。
+
+### 32.以下哪一个正则表达式不能与字符串“https://www.tensorflow.org/”（不含引号）匹配？（）
+
+A.[a-z]+://[a-z.]+/   
+B.https[://]www[.]tensorflow[.]org[/]   
+C.[htps]+://www.tensorflow.org/   
+D.[a-zA-Z.:/]+
+
+    正确答案: B   你的答案: D (错误)
+```java
+[://]
+```
+这是个很明显的陷阱
+[ ] 里面是不重复的，所以等价于[:/]
+如果[ ]后面没有带+号的话，是不会贪婪匹配的，就只能匹配到:/中的其中一个 
+
+### 33.java8中，忽略内部接口的情况，不能用来修饰interface里的方法的有（ ）
+
+A.private
+B.public
+C.protected
+D.static
+
+    正确答案: A C   你的答案: A (错误)
+
+### 33.有关finally语句块说法正确的是（ ）
+
+A.不管catch是否捕获异常，finally语句块都是要被执行的
+B.在try语句块或catch语句块中执行到System.exit(0)直接退出程序
+C.finally块中的return语句会覆盖try块中的return返回
+D.finally 语句块在 catch语句块中的return语句之前执行
+
+    正确答案: A B C   你的答案: A (错误)
+A：选项存在疑问，一般情况下不管try{}catch(){}语句块如何结束，finally保证其所包含的语句块最终被执行，但是存在特殊情况：1.try语句没有被执行到，如在try语句之前就返回了；2.在try块中有System.exit(0)），此时finally中的语句块是不会执行的；
+B：System.exit(0)。表示将整个虚拟机里的内容都释放，JVM停止工作，此时程序正常退出；
+C和D： finally块中的内容会先于try中的return语句执行，如果finall语句块中也有return语句的话，那么直接从finally中返回了，但是不建议在finally中return。

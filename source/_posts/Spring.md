@@ -15,9 +15,9 @@ categories:
 ### 2.依赖注入
 
 依赖注入可分为3种：
-= 接口注入。很少使用。
-= 设值注入：就是通过property元素控制调用setter方法，就是所谓的设值注入。
-= 构造注入：就是constructor-arg控制调用有参数的构造器，由构造器来注入被依赖组件。就是所谓的构造器注入。
+1. 接口注入。很少使用。
+2. 设值注入：就是通过property元素控制调用setter方法，就是所谓的设值注入。
+3. 构造注入：就是constructor-arg控制调用有参数的构造器，由构造器来注入被依赖组件。就是所谓的构造器注入。
 
 - bean元素 ：驱动使用new调用构造器。 默认它总是调用无参数的构造器。如果想控制它调用有参数的构造器，就需要在<bean.../>元素里添加<constructor-arg.../>子元素，每个该元素代表一个构造器参数。
 
@@ -80,19 +80,19 @@ Test类：
 ```java
 public class Test {
 
-	/**
-	 * 强内聚（一个类的功能越多越好） 低耦合（对象所依赖的尽量少）
-	 * 依赖关系（耦合），service依赖dao
-	 * */
-	    public static void main(String[] args) {
-	    	
-	    	//加载spring核心配置文件，让spring容器进行初始化
-	    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-	    	
-	    	//从容器中获取User对象
-	    	User user = context.getBean("user",User.class);
-	    	System.out.println("user:"+user);    
-		}
+/**
+*强内聚（一个类的功能越多越好） 低耦合（对象所依赖的尽量少）
+* 依赖关系（耦合），service依赖dao
+  * */
+  public static void main(String[] args) {
+      
+  //加载spring核心配置文件，让spring容器进行初始化
+   ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+      
+   //从容器中获取User对象
+   User user = context.getBean("user",User.class);
+   System.out.println("user:"+user);    
+  }
 }
 
 ```
@@ -132,23 +132,23 @@ Test类：
 ```java
 public class Test {
 
-	/**
-	 * 强内聚（一个类的功能越多越好） 低耦合（对象所依赖的尽量少）
-	 * 依赖关系（耦合），service依赖dao
-	 * */
-	    public static void main(String[] args) {
-	    	
-	    	//加载spring核心配置文件，让spring容器进行初始化
-	    	ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-	    	
-	    	//从容器中根据bean的id获取User对象   如果id不存在则在程序运行的时候会出现异常
-	    	User user = context.getBean("user",User.class);
-	    	System.out.println("user:"+user);   
-	    	
-	    	//从容器中获取User对象
-	    	User user02 = context.getBean("user02",User.class);
-	    	System.out.println("user02:"+user02);   
-		}
+/**
+  * 强内聚（一个类的功能越多越好） 低耦合（对象所依赖的尽量少）
+  * 依赖关系（耦合），service依赖dao
+  * */
+  public static void main(String[] args) {
+    
+    //加载spring核心配置文件，让spring容器进行初始化
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    
+    //从容器中根据bean的id获取User对象   如果id不存在则在程序运行的时候会出现异常
+    User user = context.getBean("user",User.class);
+    System.out.println("user:"+user);   
+    
+    //从容器中获取User对象
+    User user02 = context.getBean("user02",User.class);
+    System.out.println("user02:"+user02);   
+  }
 }
 
 ```
@@ -273,6 +273,210 @@ applicationContext.xml:
                <bean class="com.zx.bean.Dog" p:id="2" p:dogName="阿拉斯加"></bean>
            </constructor-arg>
        </bean>
+     
+</beans>
+```
+
+### 6.bean的自动装配
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    default-autowire="byName"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ 
+   <!--  
+      byName：根据setter方法名来自动装配。Spring查找容器中全部Bean，
+               找出其中id属性与setter方法名去掉set前缀后同名的Bean来完成注入。
+               如果没有找到匹配的Bean实例，则Spring不会进行任何注入，也不报错
+      <bean id="user" class="com.zx.bean.User" p:id="1" 
+      p:name="jack" p:sex="男" autowire="byName"></bean> 
+      
+      byType：根据setter方法的形参类型来自动装配。BeanFactory查找容器中全部Bean，
+		      如果正好有一个Bean类型与setter形参类型匹配，就自动注入这个Bean；
+		      如果有多个这样的Bean，就抛出一个异常：NoUniqueBeanDefinitionException；
+		      如果没有找到匹配的Bean实例，则Spring不会进行任何注入，也不报错。
+	
+	constructor：通过构造器进行注入，首先查找是否有bean的id和形参名字一致，如果有则注入
+	如果没有则查找是否有和参数类型匹配的进行注入
+		      
+     no：不使用自动装配。Bean依赖必须通过ref元素定义
+     
+     default： 由上级标签<beans>的default-autowire属性确定。这是默认的配置
+		       --> 
+     
+       <!-- <bean id="user" class="com.zx.bean.User" p:id="1" 
+      p:name="jack" p:sex="男" autowire="byType"></bean> -->
+      
+      <!-- <bean id="user" class="com.zx.bean.User" c:_0="1" 
+      c:_1="jack" c:_2="男" autowire="constructor"></bean> -->
+      
+      <!-- <bean id="user" class="com.zx.bean.User" p:id="1" 
+      p:name="jack" p:sex="男" autowire="no"></bean> -->
+      
+      <bean id="user" class="com.zx.bean.User" p:id="1" 
+      p:name="jack" p:sex="男" autowire="default"></bean> 
+      
+      <bean id="dog" class="com.zx.bean.Dog" p:id="3" p:dogName="旺旺"></bean>
+
+</beans>
+```
+### 7.集合属性的注入
+User类：
+```java
+public class User {
+	
+	private int id;
+	
+	private String[] names;
+	
+	private List<String> address;
+	
+	private Set<Integer> ages;
+	
+	private Map<String,String> maps;
+	
+	private Properties  props;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String[] getNames() {
+		return names;
+	}
+
+	public void setNames(String[] names) {
+		this.names = names;
+	}
+
+	public List<String> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<String> address) {
+		this.address = address;
+	}
+
+	public Set<Integer> getAges() {
+		return ages;
+	}
+
+	public void setAges(Set<Integer> ages) {
+		this.ages = ages;
+	}
+
+	public Map<String, String> getMaps() {
+		return maps;
+	}
+
+	public void setMaps(Map<String, String> maps) {
+		this.maps = maps;
+	}
+
+	public Properties getProps() {
+		return props;
+	}
+
+	public void setProps(Properties props) {
+		this.props = props;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", names=" + Arrays.toString(names) + ", address=" + address + ", ages=" + ages
+				+ ", maps=" + maps + ", props=" + props + "]";
+	}
+	
+}
+
+```
+xml:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    default-autowire="byName"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ 
+    <bean id="user" class="com.zx.bean.User" p:id="1">
+        <property name="names">
+            <array>
+                <value>jack</value>
+                <value>rose</value>
+            </array>
+        </property>
+    
+        <property name="address">
+            <list>
+                <value>开福区</value>
+                <value>岳麓区</value>
+            </list>
+        </property>
+        
+        <property name="ages">
+            <set>
+              <value>20</value>
+              <value>21</value>
+            </set>
+        </property>
+        
+        <property name="maps">
+          <map>
+              <entry key="0001" value="中南大学"></entry>
+              <entry key="0002" value="湖南大学"></entry>
+              <entry key="0003">
+                <value>长沙理工</value>
+              </entry>
+          </map>
+        </property>
+        
+        <property name="props">
+            <props>
+                <prop key="01">java</prop>
+                <prop key="02">python</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
+```
+### 8.抽象bean
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+    default-autowire="byName"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+     <!-- 配置抽象bean 
+         
+         abstract="true":声明该 bean是抽象bean
+         
+         当多个bean中属性名与属性值都一致的情况下  可以将 公共的信息抽取至抽象bean中
+         子bean可以通过 parent  指定 抽象父bean的信息,并不需要创建一个Animal类。
+     
+     -->
+     <bean id="animal"   p:id="1" p:name="旺财" p:age="1" abstract="true"></bean>
+ 
+     <bean id="dog" class="com.zx.bean.Dog" parent="animal"></bean>
+
+     <bean id="cat" class="com.zx.bean.Cat"  p:address="开福区XX" parent="animal"></bean>
      
 </beans>
 ```
