@@ -98,6 +98,10 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-    type: git
-    repo: https://github.com/mpw9818/mpw9818.github.io.git
-    branch: master
+-    type: git
+     repo: https://github.com/mpw9818/mpw9818.github.io.git
+     branch: master
+-    type: git
+     repo: git@78.141.216.222:/home/git/blog.git
+     branch: master                            
+     
