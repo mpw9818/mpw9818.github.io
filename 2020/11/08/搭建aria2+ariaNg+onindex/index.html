@@ -103,7 +103,7 @@
 
 
 
-  <meta name="keywords" content="反射," />
+  <meta name="keywords" content="aria2," />
 
 
 
@@ -114,17 +114,19 @@
 
 
 
-<meta name="description" content="Class&amp;emsp;&amp;emsp;每一个对象运行时都有一个对应的Class对象。如果要用反射，必须先获取Class对象。 Class的获取有三种方式&amp;emsp;1. 已经有对象的情况，调用对象的getClass方法。 12User user &#x3D; new User();Class&lt;?&gt; clazz &#x3D; user.getClass(); &amp;emsp;2.直接 类名.class。 1Clas">
+<meta name="description" content="VPS安装宝塔面板、oneindex、Aria2 &amp; AriaNg，下载完成自动上传到onedrive 提前准备VPS,域名，并解析3个域名到VPS的IP、onedrice账号 vps.xx.xx作为宝塔面板地址 pan.xx.xx作为oneindex网站地址 xiazai.xx.xx作为下载网站地址 1.安装宝塔Centos系统 1yum install -y wget &amp;&amp;am">
 <meta property="og:type" content="article">
-<meta property="og:title" content="反射">
-<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2019&#x2F;12&#x2F;30&#x2F;%E5%8F%8D%E5%B0%84&#x2F;index.html">
+<meta property="og:title" content="搭建aria2+ariaNg+onindex并自动上传到onedrive网盘">
+<meta property="og:url" content="https:&#x2F;&#x2F;mpw9818.github.io&#x2F;2020&#x2F;11&#x2F;08&#x2F;%E6%90%AD%E5%BB%BAaria2+ariaNg+onindex&#x2F;index.html">
 <meta property="og:site_name" content="m&#39;blog">
-<meta property="og:description" content="Class&amp;emsp;&amp;emsp;每一个对象运行时都有一个对应的Class对象。如果要用反射，必须先获取Class对象。 Class的获取有三种方式&amp;emsp;1. 已经有对象的情况，调用对象的getClass方法。 12User user &#x3D; new User();Class&lt;?&gt; clazz &#x3D; user.getClass(); &amp;emsp;2.直接 类名.class。 1Clas">
-<meta property="article:published_time" content="2019-12-30T07:52:33.000Z">
-<meta property="article:modified_time" content="2019-12-30T08:20:15.838Z">
+<meta property="og:description" content="VPS安装宝塔面板、oneindex、Aria2 &amp; AriaNg，下载完成自动上传到onedrive 提前准备VPS,域名，并解析3个域名到VPS的IP、onedrice账号 vps.xx.xx作为宝塔面板地址 pan.xx.xx作为oneindex网站地址 xiazai.xx.xx作为下载网站地址 1.安装宝塔Centos系统 1yum install -y wget &amp;&amp;am">
+<meta property="og:image" content="https:&#x2F;&#x2F;i.niupic.com&#x2F;images&#x2F;2020&#x2F;11&#x2F;11&#x2F;8Yvx.png">
+<meta property="article:published_time" content="2020-11-08T14:16:04.000Z">
+<meta property="article:modified_time" content="2020-11-11T12:05:58.322Z">
 <meta property="article:author" content="mpw">
-<meta property="article:tag" content="反射">
+<meta property="article:tag" content="aria2">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;i.niupic.com&#x2F;images&#x2F;2020&#x2F;11&#x2F;11&#x2F;8Yvx.png">
 
 
 
@@ -154,13 +156,13 @@
 
 
 
-  <link rel="canonical" href="https://mpw9818.github.io/2019/12/30/反射/"/>
+  <link rel="canonical" href="https://mpw9818.github.io/2020/11/08/搭建aria2+ariaNg+onindex/"/>
 
 
 
 
 
-  <title>反射 | m'blog</title>
+  <title>搭建aria2+ariaNg+onindex并自动上传到onedrive网盘 | m'blog</title>
   
 
 
@@ -331,7 +333,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2019/12/30/%E5%8F%8D%E5%B0%84/">
+    <link itemprop="mainEntityOfPage" href="https://mpw9818.github.io/2020/11/08/%E6%90%AD%E5%BB%BAaria2+ariaNg+onindex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="mpw">
@@ -348,7 +350,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">反射</h1>
+          <h1 class="post-title" itemprop="name headline">搭建aria2+ariaNg+onindex并自动上传到onedrive网盘</h1>
         
 
         <div class="post-meta">
@@ -360,8 +362,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-30T15:52:33+08:00">
-                2019-12-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-08T22:16:04+08:00">
+                2020-11-08
               </time>
             
 
@@ -383,19 +385,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">javaWeb</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javaWeb/java%E9%AB%98%E7%BA%A7%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
-                    <span itemprop="name">java高级技术</span>
+                  <a href="/categories/aria2/" itemprop="url" rel="index">
+                    <span itemprop="name">aria2</span>
                   </a>
                 </span>
 
@@ -427,7 +418,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  943 字
+                  1.8k 字
                 </span>
               
 
@@ -443,7 +434,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3 分钟
+                  8 分钟
                 </span>
               
             </div>
@@ -464,23 +455,116 @@
       
 
       
-        <h2 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h2><p>&emsp;&emsp;每一个对象运行时都有一个对应的Class对象。如果要用反射，必须先获取Class对象。</p>
-<h3 id="Class的获取有三种方式"><a href="#Class的获取有三种方式" class="headerlink" title="Class的获取有三种方式"></a>Class的获取有三种方式</h3><p>&emsp;1. 已经有对象的情况，调用对象的getClass方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">Class&lt;?&gt; clazz = user.getClass();</span><br></pre></td></tr></table></figure>
-<p>&emsp;2.直接 类名.class。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure>
-<p>&emsp;3.不知道对象的情况，只知道对象的全限名字符串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(String className)</span><br><span class="line">Class&lt;?&gt; clazz = Class.forName(<span class="string">"org.fkjava.bean.User"</span>);</span><br></pre></td></tr></table></figure>
+        <p>VPS安装宝塔面板、oneindex、Aria2 &amp; AriaNg，下载完成自动上传到onedrive</p>
+<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><p>VPS,域名，并解析3个域名到VPS的IP、onedrice账号</p>
+<p>vps.xx.xx作为宝塔面板地址 <br><br>pan.xx.xx作为oneindex网站地址 <br><br>xiazai.xx.xx作为下载网站地址</p>
+<h2 id="1-安装宝塔"><a href="#1-安装宝塔" class="headerlink" title="1.安装宝塔"></a>1.安装宝塔</h2><p>Centos系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+<p>Ubuntu系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
+<p>Debian系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http:&#x2F;&#x2F;download.bt.cn&#x2F;install&#x2F;install-ubuntu.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+<p>记住Bt-Panel地址,username和password。</p>
+<p>在浏览器登录宝塔面板，安装Nginx1.8、PHP7.0。</p>
+<h2 id="2-安装Oneindex"><a href="#2-安装Oneindex" class="headerlink" title="2.安装Oneindex"></a>2.安装Oneindex</h2><p>添加域名: 宝塔面板左侧&gt; 点击“网站”&gt; “添加站点”</p>
+<p>输入pan.xx.xx，点击提交</p>
+<h3 id="安装Oneindex"><a href="#安装Oneindex" class="headerlink" title="安装Oneindex"></a>安装Oneindex</h3><p>使用ssh工具 进入网站目录</p>
+<p>cd /www/wwwroot/pan.xx.xx </p>
+<p>然后根据不同的系统，安装git</p>
+<p>Debian/Ubuntu系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git -y</span><br></pre></td></tr></table></figure>
+<p>CentOS系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install git -y</span><br></pre></td></tr></table></figure>
+<p>安装oneindex</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;avedu&#x2F;oneindex.git</span><br></pre></td></tr></table></figure>
 
-<h3 id="Class重点掌握方法"><a href="#Class重点掌握方法" class="headerlink" title="Class重点掌握方法"></a>Class重点掌握方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; clazz = Class.forName(<span class="string">"org.fkjava.bean.User"</span>); <span class="comment">//根据全限名获得Class对象</span></span><br><span class="line">Object obj = clazz.newInstance();<span class="comment">//通过Class创建实例，相当于调用无参数构造器创建实例</span></span><br></pre></td></tr></table></figure>
+<p>移动文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv oneindex&#x2F;* .&#x2F;</span><br></pre></td></tr></table></figure>
+<p>赋予执行权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 .&#x2F;config &amp;&amp; chmod 777 .&#x2F;cache</span><br></pre></td></tr></table></figure>
 
-<h2 id="Field-–-Class的字段信息"><a href="#Field-–-Class的字段信息" class="headerlink" title="Field – Class的字段信息"></a>Field – Class的字段信息</h2><p>Field没有构造器，只能通过Class获取</p>
-<h3 id="重点方法"><a href="#重点方法" class="headerlink" title="重点方法"></a>重点方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">getDeclaredFields()：获得所有字段(私有和非私有都可以获取)，返回字段数组。</span><br><span class="line"></span><br><span class="line">getDeclaredField(<span class="string">"字段名"</span>)：根据字段名获得字段对象(私有和非私有都可以获取)。</span><br><span class="line"></span><br><span class="line">getFields()：获得所有字段(不能获取私有字段)，返回字段数组。</span><br><span class="line"></span><br><span class="line">getField(<span class="string">"字段名"</span>)：根据字段名获得字段对象(不能获取私有字段)</span><br><span class="line"></span><br><span class="line">getName()：获得字段名。</span><br><span class="line"></span><br><span class="line">getType()：获得字段类型。</span><br><span class="line"></span><br><span class="line">set(Object obj, Object value)：给字段赋值的方法，value表示字段要赋的值，obj表示字段的对象。</span><br><span class="line"></span><br><span class="line">get(Object obj)：从字段上取值的方法。obj表示字段的对象。</span><br><span class="line"></span><br><span class="line">isAccessible()：判断是否进行安全检查，可访问返回<span class="keyword">true</span>，不可访问返回<span class="keyword">false</span>。</span><br><span class="line"></span><br><span class="line">setAccessible(<span class="keyword">true</span>)：设置是否进行安全检查，值为 <span class="keyword">true</span> 则指示反射的对象在使用时应该取消 Java 语言访问检查。值为 <span class="keyword">false</span> 则指示反射的对象应该实施 Java 语言访问检查。</span><br></pre></td></tr></table></figure>
+<p>宝塔&gt;“网站”&gt;点击我们的域名右侧的“设置”&gt;“伪静态”，粘贴代码，然后保存。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">location</span> / &#123;</span><br><span class="line"><span class="attribute">if</span> (!-f <span class="variable">$request_filename</span>)&#123;</span><br><span class="line"><span class="attribute">set</span> <span class="variable">$rule_0</span> <span class="number">1</span><span class="variable">$rule_0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">if</span> (!-d <span class="variable">$request_filename</span>)&#123;</span><br><span class="line"><span class="attribute">set</span> <span class="variable">$rule_0</span> <span class="number">2</span><span class="variable">$rule_0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">if</span> (<span class="variable">$rule_0</span> = <span class="string">"21"</span>)&#123;</span><br><span class="line"><span class="attribute">rewrite</span><span class="regexp"> ^/(.*)$</span> /index.php?/<span class="variable">$1</span> <span class="literal">last</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>“SSL&gt;”  申请Let’s Encrypt证书。</p>
+<h3 id="挂载OneDrive"><a href="#挂载OneDrive" class="headerlink" title="挂载OneDrive"></a>挂载OneDrive</h3><p>打开Oneindex的域名（pan.xx.xx），进行安装和绑定OneDrive密匙,</p>
+<p>点击”下一步”，在下一个页面，点击“获取应用ID和机密”</p>
+<p>登陆我们想要绑定的onedrive账号</p>
+<p>登陆完成以后，会出现另外一个页面，复制应用机密并填入oneindex网页中的应用机密栏里</p>
+<p>回到应用机密那个网页，点击“知道了，返回到快速启动” 找到App ID并填入oneindex网页中的应用ID栏里</p>
+<p>点击下一步，之后的页面里点击“绑定账号”</p>
+<p>选择我们要绑定的账号，点击接受</p>
+<p>提示安装成功页面<br><img src="https://i.niupic.com/images/2020/11/11/8Yvx.png" alt="" title="成功页面"></p>
+<p>我们点击“管理后台”，输入初始密码“oneindex”，就可以进入我们的后台了</p>
+<h2 id="安装Aria2"><a href="#安装Aria2" class="headerlink" title="安装Aria2"></a>安装Aria2</h2><p>返回ssh工具，回到主目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+<p>下载并安装aria2</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/ToyoDAdoubi/doubi/master/aria2.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> aria2.<span class="keyword">sh</span> &amp;&amp; bash aria2.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<p>备用地址</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//www.moerats.<span class="keyword">com</span>/usr/<span class="keyword">shell</span>/Aria2/aria2.<span class="keyword">sh</span> &amp;&amp; chmod +<span class="keyword">x</span> aria2.<span class="keyword">sh</span> &amp;&amp; bash aria2.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<p>输入1，等待安装，后面还有一个关于版本选择的，直接回车就好</p>
+<p>安装完成后，记住这些信息。</p>
+<p>修改密码可以使用命令来修改</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bash </span>aria2.sh</span><br></pre></td></tr></table></figure>
+<h2 id="安装AriaNg"><a href="#安装AriaNg" class="headerlink" title="安装AriaNg"></a>安装AriaNg</h2><p>宝塔添加域名（xiazai.xx.xx）</p>
+<p>上传程序</p>
+<p>Debian/Ubuntu系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install unzip -y</span><br></pre></td></tr></table></figure>
+<p>CentOS系统</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install unzip -y</span><br></pre></td></tr></table></figure>
+<p>使用ssh工具</p>
+<p>cd /www/wwwroot/xiazai.xx.xx</p>
+<p>下载命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;www.moerats.com&#x2F;usr&#x2F;down&#x2F;aria-ng-0.2.0.zip &amp;&amp; unzip aria-ng-0.2.0.zip</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> reflect获取<span class="class"><span class="keyword">class</span>类型的常用方式</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javaApp.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">// 创建User对象</span></span><br><span class="line">		User user = <span class="keyword">new</span> User();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取对象的class类型</span></span><br><span class="line">		Class&lt;?&gt; clazz = user.getClass();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 获取类中声明的所有的字段，不能获取私有的字段</span></span><br><span class="line">		Field[] fields = clazz.getFields();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 根据字段名字获取字段对象</span></span><br><span class="line">		<span class="comment">//Field field = clazz.getField("id");</span></span><br><span class="line">		<span class="comment">//System.out.println("字段名："+field.getName()+"type:"+field.getType()+"modifiers"+field.getModifiers());</span></span><br><span class="line">    </span><br><span class="line">		<span class="comment">//获取所有的字段信息 </span></span><br><span class="line">		Field[] declardFields= clazz.getDeclaredFields();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 根据字段名字获取字段对象,可以获取私有的字段</span></span><br><span class="line">		Field field2 = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取类中生命的所有的方法，不能获取私有的方法</span></span><br><span class="line">		Method[] method= clazz.getMethods();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 根据方法名字获取方法,不能获取私有的方法</span></span><br><span class="line">		Method method2 = clazz.getMethod(<span class="string">"getId"</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取所有的方法，可以获取私有的方法，但方法一般都不会去私有</span></span><br><span class="line">		Method [] method3 = clazz.getDeclaredMethods();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 根据方法名字获取方法，可以获取私有的方法</span></span><br><span class="line">		Method method4 = clazz.getDeclaredMethod(<span class="string">"setId"</span>,<span class="keyword">int</span><span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//利用反射技术调用user对象的setId()方法</span></span><br><span class="line">        method4.invoke(user, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//利用反射技术调用user对象的getId()方法</span></span><br><span class="line">        method2.invoke(user);</span><br><span class="line"> 		System.out.println(<span class="string">"id:"</span>+method2.invoke(user));</span><br><span class="line"> 		</span><br><span class="line"> 		<span class="comment">/*</span></span><br><span class="line"><span class="comment"> 		当字段是public修饰时，可以用以下方法,</span></span><br><span class="line"><span class="comment"> 		私有的直接这样做会发生异常，java.lang.IllegalAccessException</span></span><br><span class="line"><span class="comment"> 		可以通过field.setAccessible(true) 取消安全检查解决，这样做会破坏java的封装性</span></span><br><span class="line"><span class="comment"> 		*/</span></span><br><span class="line"></span><br><span class="line"> 		<span class="comment">//account字段是public的，</span></span><br><span class="line"> 		Field field3 = clazz.getField(<span class="string">"account"</span>);</span><br><span class="line"> 		</span><br><span class="line"> 		<span class="comment">//给user对象的account属性赋值</span></span><br><span class="line"> 		field3.set(user,<span class="string">"jack"</span>);</span><br><span class="line"> 		<span class="comment">//取值</span></span><br><span class="line"> 		field3.get(user);</span><br><span class="line"> 		System.out.println(<span class="string">"account:"</span>+field3.get(user));	</span><br><span class="line"> 		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>打开你为AriaNg添加的域名（xiazai.xx.xx）</p>
+<p>点击左边AriaNg设置，然后点击RPC，在下面RPC密匙中输入我们在安装Aria2时记下来的信息，然后右上角会蹦出来个“重新加载页面”，点击它</p>
+<p>就可以看到我们的aria2状态已经连接上了</p>
+<p>点击左边的”Aria2设置”，再点击”BitTorrent设置”，再拉到最后，把最小做种时间改成0，然后刷新一下网页。</p>
+<h2 id="配置上传"><a href="#配置上传" class="headerlink" title="配置上传"></a>配置上传</h2><p>回到我们的宝塔面板，点击左侧“文件”，进入“root/.aria2”文件夹下，然后新建一个空白文件，文件名叫”oneindexup.sh”</p>
+<p>然后将下面的代码复制进去，记住修改成自己的oneindex的域名，不然不会自动上传到onedrive，之后右下角保存</p>
+<p>#!/bin/bash<br>path=$3<br>downloadpath=’/usr/local/caddy/www/aria2/Download’<br>domain=’pan.xx.xx’  #修改成自己域名</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> [ <span class="variable">$2</span> -eq <span class="number">0</span> ]</span><br><span class="line">		then</span><br><span class="line">				<span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">fi</span><br><span class="line"><span class="keyword">while</span> true; <span class="keyword">do</span></span><br><span class="line">filepath=<span class="variable">$path</span></span><br><span class="line">path=<span class="variable">$&#123;path%/*&#125;</span>;</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"$path"</span> = <span class="string">"$downloadpath"</span> ] &amp;&amp; [ <span class="variable">$2</span> -eq <span class="number">1</span> ]</span><br><span class="line">	then</span><br><span class="line">	php <span class="regexp">/www/</span>wwwroot<span class="regexp">/$domain/</span>one.php upload:file <span class="variable">$filepath</span> <span class="regexp">/$folder/</span></span><br><span class="line">	rm -rf <span class="variable">$filepath</span></span><br><span class="line">	php <span class="regexp">/www/</span>wwwroot<span class="regexp">/$domain/</span>one.php cache:refresh</span><br><span class="line">	<span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">elif [ <span class="string">"$path"</span> = <span class="string">"$downloadpath"</span> ]</span><br><span class="line">	then</span><br><span class="line">	php <span class="regexp">/www/</span>wwwroot<span class="regexp">/$domain/</span>one.php upload:folder <span class="variable">$filepath</span> <span class="regexp">/$folder/</span></span><br><span class="line">	rm -rf <span class="string">"$filepath/"</span></span><br><span class="line">	php <span class="regexp">/www/</span>wwwroot<span class="regexp">/$domain/</span>one.php cache:refresh</span><br><span class="line">	<span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 
-<h2 id="Method-–-Class的方法"><a href="#Method-–-Class的方法" class="headerlink" title="Method – Class的方法"></a>Method – Class的方法</h2><p>Method没有构造器，只能通过Class获取。</p>
-<h3 id="重点方法-1"><a href="#重点方法-1" class="headerlink" title="重点方法"></a>重点方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">getDeclaredMethods()：获取所有方法。</span><br><span class="line"></span><br><span class="line">getDeclaredMethod(String name, Class&lt;?&gt;... parameterTypes)：根据方法名获取方法，name是方法名，parameterTypes是可变参数，表示方法所需要的参数。</span><br><span class="line"></span><br><span class="line">invoke(Object obj,  Object... args)：调用方法，obj表示调用方法的对象，args是可变参数，表示调用该方法需要传递的参数。</span><br><span class="line"></span><br><span class="line">getName()：获得方法名。</span><br></pre></td></tr></table></figure>
+<p>（下载完发现没有自动上传，看aria.log（/root/.aria2下）日志文件发现出了问题 Could not execute user command: /root/.aria2/oneindexup.sh: No such file or directory）</p>
+<p>我们有时候在电脑上编辑一些脚本或者文件时，放到linux vps服务器上会出现问题，其实需要转换下格式就可以用了。</p>
+<p>安装dos2unix</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Centos</span></span><br><span class="line">yum <span class="keyword">install</span> dos2unix</span><br><span class="line"></span><br><span class="line"><span class="comment">#Debian/Ubuntu</span></span><br><span class="line">apt-<span class="keyword">get</span> <span class="keyword">install</span> dos2unix</span><br></pre></td></tr></table></figure>
+<p>若出现dos2unix安装失败，提示</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Reading <span class="keyword">package</span> <span class="title">l</span>ists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">You might want to run <span class="symbol">'apt</span> <span class="comment">--fix-broken install' to correct these.</span></span><br><span class="line">The following packages have unmet dependencies:</span><br><span class="line"> linux-headers-<span class="number">4.11</span>.<span class="number">8</span>-<span class="number">041108</span>-<span class="keyword">generic</span> : <span class="type">Depends</span>: libssl1.<span class="number">0.0</span> (&gt;= <span class="number">1.0</span>.<span class="number">0</span>) but it <span class="keyword">is</span> <span class="keyword">not</span> installable</span><br><span class="line">E: Unmet dependencies. Try <span class="symbol">'apt</span> <span class="comment">--fix-broken install' with no packages (or specify a solution)</span></span><br></pre></td></tr></table></figure>
+<p>则运行 apt –fix-broken install 后，重新 apt-get install dos2unix 一次就可以了</p>
+<p>转换文件</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dos2unix <span class="regexp">/root/</span>xx   <span class="comment">#注意文件位置填对</span></span><br></pre></td></tr></table></figure>
+<p>这样就能解决 Could not execute user command: /root/.aria2/oneindexup.sh: No such file or directory 的问题了。</p>
+<p>然后在ssh工具里，分别输入下面的代码</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x <span class="regexp">/root/</span>.aria2<span class="regexp">/oneindexup.sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> <span class="string">"on-download-complete=/root/.aria2/oneindexup.sh"</span> &gt;&gt;<span class="string">/root/.aria2/aria2.conf</span></span><br></pre></td></tr></table></figure>
+
+<p>再重启Aria2</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service aria2 <span class="built_in">restart</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="crontab定时刷新缓存"><a href="#crontab定时刷新缓存" class="headerlink" title="crontab定时刷新缓存"></a>crontab定时刷新缓存</h2><p>为了提高提高系统访问性能，我们需要定时刷新缓存，不然你存取的文件有的时候看不到，影响体验。</p>
+<p>使用ssh工具</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">crontab -e</span></span><br></pre></td></tr></table></figure>
+<p>选择3</p>
+<p>配置crontab文件,注意替换pan.xx.xx为oneinex域名</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每十分钟后台刷新一遍缓存</span></span><br><span class="line"><span class="number">0</span> * * * * php <span class="regexp">/www/</span>wwwroot<span class="regexp">/pan.xx.xx/</span>one.php token:refresh   <span class="comment"># 每小时刷新一次token</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每十分钟后台刷新一遍缓存</span></span><br><span class="line">*<span class="regexp">/10 * * * * php /</span>www<span class="regexp">/wwwroot/</span>pan.xx.xx<span class="regexp">/one.php cache:refresh</span></span><br></pre></td></tr></table></figure>
+
+<p>ok,这样一个下载站就搭建完成了。之后要就解决bt下载没速度或速度慢的问题</p>
+<h2 id="下载提速"><a href="#下载提速" class="headerlink" title="下载提速"></a>下载提速</h2><h3 id="开放端口"><a href="#开放端口" class="headerlink" title="开放端口"></a>开放端口</h3><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># BT监听端口(TCP)</span></span><br><span class="line">iptables -I INPUT -p tcp --dport <span class="number">51413</span> -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta"># DHT网络监听端口(UDP)</span></span><br><span class="line">iptables -I INPUT -p udp --dport <span class="number">6881</span>:<span class="number">6999</span> -j ACCEPT</span><br><span class="line"></span><br><span class="line"><span class="meta"># 保存</span></span><br><span class="line">iptables-save</span><br><span class="line"></span><br><span class="line"><span class="meta"># 安装iptables-persistent</span></span><br><span class="line">apt-<span class="keyword">get</span> install iptables-persistent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#保存规则持续生效</span></span><br><span class="line">netfilter-persistent save</span><br><span class="line">netfilter-persistent reload</span><br></pre></td></tr></table></figure>
+<h3 id="添加-BitTorrent-tracker"><a href="#添加-BitTorrent-tracker" class="headerlink" title="添加 BitTorrent tracker"></a>添加 BitTorrent tracker</h3><p>在 Aria2 配置文件 (aria2.conf) 所在目录（/root/.aria2）执行</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(<span class="name">curl</span> -fsSL git.io/tracker.sh)</span><br></pre></td></tr></table></figure>
+<p>即可获取最新 tracker 列表并自动添加到配置文件中。</p>
+<h3 id="获取-DHT-网络节点数据"><a href="#获取-DHT-网络节点数据" class="headerlink" title="获取 DHT 网络节点数据"></a>获取 DHT 网络节点数据</h3><p>DHT 网络由无数节点组成，只要是开启 DHT 功能的 BT 客户端都是一个节点，所以你也可以是其中的一份子。当接触到一个节点，通过这个节点又能接触到更多的节点，接触的节点越多，你获取资源的能力就越强，下载的速度间接也就会有提升。</p>
+<p>Aria2 有个 dht.dat 文件（开启 IPv6 还有个 dht6.dat），里面记录了 DHT 网络节点信息。但是！文件本身是不存在的，需要手动创建。如果你在没有对 Aria2 进行任何配置的情况下第一次运行时直接下载磁力链接或者冷门种子，会因为文件内没有任何数据，就无法获取到 DHT 网络中的节点，所以就会遇到无法下载的情况。</p>
+<p>解决方案是生成 DHT 数据。找几个热门种子下载，比如 <a href="https://ubuntu.com/download/alternative-downloads" target="_blank" rel="noopener"">Ubuntu 镜像</a>。下载后做种几个小时，你会发现 dht.dat 从空文件变成有数据了。</p>
+<h3 id="解决外部因素"><a href="#解决外部因素" class="headerlink" title="解决外部因素"></a>解决外部因素</h3><h4 id="公网-IP"><a href="#公网-IP" class="headerlink" title="公网 IP"></a>公网 IP</h4><p>在没有公网 IP 的情况下其它的 BT 客户端很难发现你的存在，只有你去发现别人，所以这大大削弱了你的 BT 客户端的资源搜寻能力。</p>
+<p>中国由于发展互联网的时间比较晚，所持有的公网 IPv4 地址并不是很多。早期因为接入互联网的家庭并不多，所以基本都会分配公网 IP 。然而随着互联网的快速发展，这些地址很快就不够用了，所以现在基本上运营都不会主动给家庭宽带分配公网 IP 。但这并不代表你不能获得公网 IP ，你所要做的是向运营商提出要求，若不满足可以尝试投诉。</p>
+<p>另外目前 IPv6 网络已经建设得很好了，很多运营商虽然不提供 IPv4 公网，但 IPv6 都会是公网 IP ，所以如果你懂得如何去设置路由器，获取到 IPv6 公网地址，也算是一个曲线救国的方式。当然如果你能 IPv4 和 IPv6 公网双持，那么对于 BT 下载速度会有很大加成</p>
+<h4 id="UDP-受限"><a href="#UDP-受限" class="headerlink" title="UDP 受限"></a>UDP 受限</h4><p>BT 下载部分通讯使用的是 UDP 协议。由于 BT 下载占用了很大的带宽，所以运营商会干扰 UDP 协议，从而导致 BT 下载出现问题。这在早期 BT 下载还未使用加密通讯时尤其严重。目前来说只要你开启加密选项，那么就可以在一定程度上避免这个情况</p>
+<p>经过以上的一波操作，也许下载并没有多么的快，但至少正常了。可能有些非常老而且冷门的资源不会一直有人在做种，这种情况要么是一直挂着等待有缘人突然做种，BT 就是这样，能下载都是缘分。要么把种子放到百度或者 115 进行离线下载，你会看到那虚假的进度条比你正常用 BT 下热门资源还要快（毕竟资源已经在服务器上存在了，进度条只是给你一种下载速度快的幻觉）。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 按G单位列出目录及其子目录下所有目录和文件的大小</span></span><br><span class="line"><span class="attr">du</span> <span class="string">-ah 目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#  删除 /root/Download 目录下所有的文件</span></span><br><span class="line"><span class="attr">rm</span> <span class="string">-rf /root/Download/*</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># aria2服务重启</span></span><br><span class="line"><span class="attr">service</span> <span class="string">aria2 restart</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看aria2服务状态</span></span><br><span class="line"><span class="attr">service</span> <span class="string">aria2 status</span></span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -506,7 +590,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E5%8F%8D%E5%B0%84/" rel= "tag" ><i class="fa fa-envira"></i> 反射</a>
+            <a href="/tags/aria2/" rel= "tag" ><i class="fa fa-envira"></i> aria2</a>
           
         </div>
       
@@ -518,10 +602,6 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
-                 
-              <a href="/2019/12/30/%E6%B3%A8%E8%A7%A3-Annotation/" rel="prev" title="注解--Annotation">
-                <i class="fa fa-chevron-left"></i> 注解--Annotation
-              </a>
             
           </div>
 
@@ -529,8 +609,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/28/%E6%A8%A1%E6%8B%9FTomcat%E8%A7%A3%E6%9E%90xml%E6%96%87%E4%BB%B6/" rel="next" title="模拟Tomcat解析xml文件">
-                模拟Tomcat解析xml文件 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/10/15/V2board%E6%90%AD%E5%BB%BA%20-%2004%E6%94%AF%E4%BB%98%E5%AF%B9%E6%8E%A5/" rel="next" title="v2board搭建-04支付对接">
+                v2board搭建-04支付对接 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -703,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class"><span class="nav-text">Class</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Class的获取有三种方式"><span class="nav-text">Class的获取有三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class重点掌握方法"><span class="nav-text">Class重点掌握方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Field-–-Class的字段信息"><span class="nav-text">Field – Class的字段信息</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重点方法"><span class="nav-text">重点方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method-–-Class的方法"><span class="nav-text">Method – Class的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重点方法-1"><span class="nav-text">重点方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#提前准备"><span class="nav-text">提前准备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装宝塔"><span class="nav-text">1.安装宝塔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装Oneindex"><span class="nav-text">2.安装Oneindex</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Oneindex"><span class="nav-text">安装Oneindex</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#挂载OneDrive"><span class="nav-text">挂载OneDrive</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Aria2"><span class="nav-text">安装Aria2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装AriaNg"><span class="nav-text">安装AriaNg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置上传"><span class="nav-text">配置上传</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crontab定时刷新缓存"><span class="nav-text">crontab定时刷新缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载提速"><span class="nav-text">下载提速</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开放端口"><span class="nav-text">开放端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-BitTorrent-tracker"><span class="nav-text">添加 BitTorrent tracker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取-DHT-网络节点数据"><span class="nav-text">获取 DHT 网络节点数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决外部因素"><span class="nav-text">解决外部因素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#公网-IP"><span class="nav-text">公网 IP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP-受限"><span class="nav-text">UDP 受限</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-text">常用命令</span></a></li></ol></div>
             
 
           </div>
