@@ -164,12 +164,12 @@ wget https://www.moerats.com/usr/down/aria-ng-0.2.0.zip && unzip aria-ng-0.2.0.z
 回到我们的宝塔面板，点击左侧“文件”，进入“root/.aria2”文件夹下，然后新建一个空白文件，文件名叫”oneindexup.sh”
 
 然后将下面的代码复制进去，记住修改成自己的oneindex的域名，不然不会自动上传到onedrive，之后右下角保存
-
+```
 #!/bin/bash
 path=$3
 downloadpath='/usr/local/caddy/www/aria2/Download'
 domain='pan.xx.xx'  #修改成自己域名
-```
+
 if [ $2 -eq 0 ]
 		then
 				exit 0
@@ -219,7 +219,7 @@ E: Unmet dependencies. Try 'apt --fix-broken install' with no packages (or speci
 
 转换文件
 ```
-dos2unix /root/xx   #注意文件位置填对
+dos2unix /root/.aria2/oneindexup.sh   #注意文件位置填对
 ```
 这样就能解决 Could not execute user command: /root/.aria2/oneindexup.sh: No such file or directory 的问题了。
 
