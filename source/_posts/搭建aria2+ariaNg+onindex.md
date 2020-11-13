@@ -102,7 +102,7 @@ rewrite ^/(.*)$ /index.php?/$1 last;
 选择我们要绑定的账号，点击接受
 
 提示安装成功页面
-![](https://i.niupic.com/images/2020/11/11/8Yvx.png "成功页面")
+![](https://niupic.com/images/2020/11/11/8Yvx.png "成功页面")
 
 我们点击“管理后台”，输入初始密码“oneindex”，就可以进入我们的后台了
 

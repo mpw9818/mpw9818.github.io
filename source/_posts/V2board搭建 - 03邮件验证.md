@@ -13,12 +13,12 @@ V2board的邮件可用于注册验证、重置密码、订阅或群发邮件通�
     https://qiye.aliyun.com/alimail/auth/login?reurl=%2Falimail%2F%23h%3DWyJmbV8yIixbIjIiLCIiLHsiZklkIjoiNSJ9LHsibGFiZWwiOiLpgq7ku7YifV1d
 
 2.组织与用户 -->员工账号管理
-![](https://i.niupic.com/images/2020/10/15/8Srb.JPG "员工账号管理")
+![](https://niupic.com/images/2020/10/15/8Srb.JPG "员工账号管理")
 
 点击账号开启POP3/SMTP服务，然后保存
-![](https://i.niupic.com/images/2020/10/15/8Srd.JPG "点击账号")
+![](https://niupic.com/images/2020/10/15/8Srd.JPG "点击账号")
 
-![](https://i.niupic.com/images/2020/10/15/8Sre.JPG "开启服务")
+![](https://niupic.com/images/2020/10/15/8Sre.JPG "开启服务")
 
 
 之后在网站根目录找到.env文件编辑修改以下内容；

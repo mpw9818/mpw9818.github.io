@@ -11,22 +11,22 @@ V2board集成了支付宝、Stripe、BitpayX、PayTaro四种支付方式，可�
 
 
 1、首先需要获得三种资料：支付宝当面付的APPID、支付宝公钥、应用私钥，打开支付宝开放平台，找到网页&移动应用，获得当面付的APPID：（https://open.alipay.com/platform/developerIndex.htm）
-![](https://i.niupic.com/images/2020/10/15/8Srk.JPG "获得当面付的APPID")
+![](https://niupic.com/images/2020/10/15/8Srk.JPG "获得当面付的APPID")
 
 2、在支付宝官方下载支付宝开放平台开发者助手，打开生成应用私钥和公钥，获得应用私钥；
-![](https://i.niupic.com/images/2020/10/15/8Srl.webp "获得应用私钥")
+![](https://niupic.com/images/2020/10/15/8Srl.webp "获得应用私钥")
 
 
 3、打开支付宝开放平台-右上角帐号的密钥管理，选择接口加签方式，设置或查看密钥；
-![](https://i.niupic.com/images/2020/10/15/8Srm.JPG "设置接口加签方式")
+![](https://niupic.com/images/2020/10/15/8Srm.JPG "设置接口加签方式")
 
 
 4、打开后输入刚才的应用公钥生成支付宝公钥，获得支付宝公钥；
-![](https://i.niupic.com/images/2020/10/15/8Srn.webp "加签")
+![](https://niupic.com/images/2020/10/15/8Srn.webp "加签")
 
 
 5、打开面板支付宝配置，按照提示分别输入支付宝当面付的APPID、支付宝公钥、应用私钥；
-![](https://i.niupic.com/images/2020/10/15/8Sro.webp "面板支付宝配置")
+![](https://niupic.com/images/2020/10/15/8Sro.webp "面板支付宝配置")
 
 好了，到这里就可以找其他支付宝扫码付款测试是否成功，如果付款到账网站没回调往往是把公钥私钥弄错了，付款后订单没成功请检查队列服务是否正常运行。
 

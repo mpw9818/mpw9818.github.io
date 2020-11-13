@@ -31,14 +31,14 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash i
 * PHP 7.3
 
 3、安装web环境后打开PHP版本的设置，安装redis扩展
-![](https://i.niupic.com/images/2020/10/15/8SpZ.webp "安装redis扩展")
+![](https://niupic.com/images/2020/10/15/8SpZ.webp "安装redis扩展")
 
 4、解除被禁用的函数：putenv ， proc_open ， pcntl_alarm ， pcntl_signal
-![](https://i.niupic.com/images/2020/10/15/8Sq2.webp "解除被禁用的函数")
+![](https://niupic.com/images/2020/10/15/8Sq2.webp "解除被禁用的函数")
 
 
 5、点击宝塔左侧的网站，选择添加站点，输入网站域名或IP地址，域名需解析指向到该服务器IP，站点根目录的文件名不要有点号之类的特殊符号，否则后面可能无法执行队列服务；
-![](https://i.niupic.com/images/2020/10/15/8Sq5.webp "添加站点")
+![](https://niupic.com/images/2020/10/15/8Sq5.webp "添加站点")
 
 
 ## 安装V2board
@@ -75,7 +75,7 @@ sh update.sh
 
 ## 配置网站目录和伪静态规则
 1、回到宝塔面板，左侧网站-设置-网站目录，取消防跨站攻击，目录设置为/public 并保存。
-![](https://i.niupic.com/images/2020/10/15/8Sqm.webp "配置网站目录")
+![](https://niupic.com/images/2020/10/15/8Sqm.webp "配置网站目录")
 
 2、继续选择旁边的伪静态，输入以下规则并保存，如后面打开网站后台显示404报错可以把伪静态的规则改成thinkphp的规则：
 ```linux
@@ -99,7 +99,7 @@ location ~ .*\.(js|css)?$
 php /www/wwwroot/站点文件名/artisan schedule:run
 ```
 2、v2board的邮件和支付都依赖队列服务，在宝塔面板左侧软件商店搜索PM2，找到PM2 Manager进行安装，然后添加项目，项目根目录选择站点根目录，启动文件名：pm2.yaml，项目名称：v2board，然后确定添加：
-![](https://i.niupic.com/images/2020/10/15/8Squ.webp "添加守护队列")
+![](https://niupic.com/images/2020/10/15/8Squ.webp "添加守护队列")
 
 
 这时候就搭建好一个完整的v2board前端网站，在浏览器输入域名即可访问v2board面板前端网站了，域名后面加/admin则进入管理员面板，同时也可以在宝塔面板的网站设置开启SSL证书访问。
